@@ -3,6 +3,8 @@ import { anthropic, MODELS } from '@/lib/anthropic'
 import { createClient } from '@/lib/supabase/server'
 
 export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+export const maxDuration = 300
 
 const SYSTEM_PROMPT = `You are a senior GRC consultant specializing in GCC regulatory frameworks (SAMA, NCA, SDAIA, ISO 27001, NIST). You write formal, board-grade compliance policies for GCC enterprises. Your output is precise, authoritative, and suitable for executive and audit review.`
 
@@ -92,7 +94,7 @@ export async function POST(request: Request) {
   try {
     const messageStream = anthropic.messages.stream({
       model: MODELS.SONNET,
-      max_tokens: 16000,
+      max_tokens: 8192,
       system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: userPrompt }],
     })
@@ -100,6 +102,8 @@ export async function POST(request: Request) {
     const readable = new ReadableStream<Uint8Array>({
       async start(controller) {
         const encoder = new TextEncoder()
+        // Flush response headers immediately (helps Render/proxy streaming).
+        controller.enqueue(encoder.encode(''))
         try {
           for await (const event of messageStream) {
             if (
@@ -111,7 +115,11 @@ export async function POST(request: Request) {
           }
           controller.close()
         } catch (error) {
-          controller.error(error)
+          console.error('[generate-policy] stream', error)
+          controller.enqueue(
+            encoder.encode(`\n\n---\nError: ${getErrorMessage(error)}`)
+          )
+          controller.close()
         }
       },
     })
@@ -119,7 +127,9 @@ export async function POST(request: Request) {
     return new Response(readable, {
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
-        'Cache-Control': 'no-cache',
+        'Cache-Control': 'no-cache, no-transform',
+        Connection: 'keep-alive',
+        'X-Accel-Buffering': 'no',
       },
     })
   } catch (error) {

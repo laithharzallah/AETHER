@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Check, Copy, Loader2 } from 'lucide-react'
@@ -32,9 +32,22 @@ export default function PolicyGeneratorPage() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [elapsedSeconds, setElapsedSeconds] = useState(0)
+  const [hasStreamContent, setHasStreamContent] = useState(false)
 
   const canGenerate =
     Boolean(policyType) && frameworks.length > 0 && !isGenerating
+
+  useEffect(() => {
+    if (!isGenerating) return
+
+    const startedAt = Date.now()
+    const timer = window.setInterval(() => {
+      setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000))
+    }, 1000)
+
+    return () => window.clearInterval(timer)
+  }, [isGenerating])
 
   function toggleFramework(framework: string) {
     setFrameworks((prev) =>
@@ -51,12 +64,15 @@ export default function PolicyGeneratorPage() {
     setMarkdown('')
     setIsComplete(false)
     setCopied(false)
+    setHasStreamContent(false)
+    setElapsedSeconds(0)
     setIsGenerating(true)
 
     try {
       const res = await fetch('/api/generate-policy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        redirect: 'manual',
         body: JSON.stringify({
           policyType,
           frameworks,
@@ -64,9 +80,20 @@ export default function PolicyGeneratorPage() {
         }),
       })
 
+      if (res.status === 401 || res.status === 307 || res.status === 302) {
+        setError('Session expired. Please refresh the page and sign in again.')
+        return
+      }
+
       if (!res.ok) {
         const data = (await res.json()) as { error?: string }
         setError(data.error ?? 'Failed to generate policy.')
+        return
+      }
+
+      const contentType = res.headers.get('content-type') ?? ''
+      if (!contentType.includes('text/plain')) {
+        setError('Unexpected response from server. Please try again.')
         return
       }
 
@@ -83,7 +110,15 @@ export default function PolicyGeneratorPage() {
         const { done, value } = await reader.read()
         if (done) break
         accumulated += decoder.decode(value, { stream: true })
+        if (accumulated.trim().length > 0) {
+          setHasStreamContent(true)
+        }
         setMarkdown(accumulated)
+      }
+
+      if (!accumulated.trim()) {
+        setError('Generation finished with no content. Please try again.')
+        return
       }
 
       setIsComplete(true)
@@ -169,7 +204,9 @@ export default function PolicyGeneratorPage() {
               })}
             </div>
             <p className="text-xs text-muted-foreground">
-              Select at least one framework.
+              {frameworks.length === 0
+                ? 'Select at least one framework.'
+                : `${frameworks.length} framework${frameworks.length === 1 ? '' : 's'} selected.`}
             </p>
           </div>
 
@@ -251,12 +288,25 @@ export default function PolicyGeneratorPage() {
         </CardHeader>
         <CardContent>
           {isGenerating && (
-            <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-              </span>
-              Generating policy…
+            <div className="mb-4 space-y-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                </span>
+                {hasStreamContent
+                  ? 'Streaming policy content…'
+                  : elapsedSeconds < 15
+                    ? 'Starting generation…'
+                    : 'Still working — first output can take up to a minute after idle periods on the free hosting tier.'}
+              </div>
+              {!hasStreamContent && elapsedSeconds > 0 && (
+                <p className="text-xs tabular-nums">
+                  Elapsed: {elapsedSeconds}s
+                  {elapsedSeconds >= 10 &&
+                    ' — the model is drafting a full board-grade policy with framework control mappings.'}
+                </p>
+              )}
             </div>
           )}
 
@@ -327,11 +377,17 @@ export default function PolicyGeneratorPage() {
               </ReactMarkdown>
             </div>
           ) : (
-            !isGenerating && (
+            isGenerating && (
               <p className="text-sm text-muted-foreground">
-                Configure the form above and click Generate Policy to start.
+                Waiting for the first section of your policy…
               </p>
             )
+          )}
+
+          {!isGenerating && !markdown && (
+            <p className="text-sm text-muted-foreground">
+              Configure the form above and click Generate Policy to start.
+            </p>
           )}
         </CardContent>
       </Card>
