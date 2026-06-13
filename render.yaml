@@ -3,14 +3,19 @@ services:
     name: aether-ai
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
+    region: oregon
+    branch: main
+    buildCommand: npm ci && npm run build
     startCommand: npm start
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "20"
       - key: NODE_ENV
         value: production
-      # Set in Render Dashboard (sync: false = secret):
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=4096
+      # Required — set values in Render Dashboard before deploy:
       - key: NEXT_PUBLIC_SUPABASE_URL
         sync: false
       - key: NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
