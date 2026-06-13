@@ -14,7 +14,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: NODE_OPTIONS
-        value: --max-old-space-size=4096
+        value: "--max-old-space-size=4096"
       # Required — set values in Render Dashboard before deploy:
       - key: NEXT_PUBLIC_SUPABASE_URL
         sync: false
