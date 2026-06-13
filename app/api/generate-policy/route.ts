@@ -6,6 +6,9 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 300
 
+// Render/nginx may buffer until ~4KB; pad early so tokens stream to the browser.
+const STREAM_PAD = '<!-- stream-pad -->\n'.repeat(180)
+
 const SYSTEM_PROMPT = `You are a senior GRC consultant specializing in GCC regulatory frameworks (SAMA, NCA, SDAIA, ISO 27001, NIST). You write formal, board-grade compliance policies for GCC enterprises. Your output is precise, authoritative, and suitable for executive and audit review.`
 
 type GeneratePolicyRequest = {
@@ -94,7 +97,7 @@ export async function POST(request: Request) {
   try {
     const messageStream = anthropic.messages.stream({
       model: MODELS.SONNET,
-      max_tokens: 8192,
+      max_tokens: 4096,
       system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: userPrompt }],
     })
@@ -102,8 +105,16 @@ export async function POST(request: Request) {
     const readable = new ReadableStream<Uint8Array>({
       async start(controller) {
         const encoder = new TextEncoder()
-        // Flush response headers immediately (helps Render/proxy streaming).
-        controller.enqueue(encoder.encode(''))
+        controller.enqueue(encoder.encode(STREAM_PAD))
+
+        const heartbeat = setInterval(() => {
+          try {
+            controller.enqueue(encoder.encode('\u200B'))
+          } catch {
+            clearInterval(heartbeat)
+          }
+        }, 3000)
+
         try {
           for await (const event of messageStream) {
             if (
@@ -120,6 +131,8 @@ export async function POST(request: Request) {
             encoder.encode(`\n\n---\nError: ${getErrorMessage(error)}`)
           )
           controller.close()
+        } finally {
+          clearInterval(heartbeat)
         }
       },
     })
@@ -127,7 +140,8 @@ export async function POST(request: Request) {
     return new Response(readable, {
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
-        'Cache-Control': 'no-cache, no-transform',
+        'Transfer-Encoding': 'chunked',
+        'Cache-Control': 'no-cache, no-store, no-transform, must-revalidate',
         Connection: 'keep-alive',
         'X-Accel-Buffering': 'no',
       },

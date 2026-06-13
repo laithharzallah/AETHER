@@ -23,6 +23,12 @@ import {
 import { FRAMEWORKS, POLICY_TYPES } from '@/lib/policy-generator/constants'
 import { cn } from '@/lib/utils'
 
+function cleanStreamChunk(raw: string): string {
+  return raw
+    .replace(/(?:<!-- stream-pad -->\n?)+/g, '')
+    .replace(/\u200B/g, '')
+}
+
 export default function PolicyGeneratorPage() {
   const [policyType, setPolicyType] = useState<string>('')
   const [frameworks, setFrameworks] = useState<string[]>([])
@@ -110,12 +116,14 @@ export default function PolicyGeneratorPage() {
         const { done, value } = await reader.read()
         if (done) break
         accumulated += decoder.decode(value, { stream: true })
-        if (accumulated.trim().length > 0) {
+        const cleaned = cleanStreamChunk(accumulated)
+        if (cleaned.trim().length > 0) {
           setHasStreamContent(true)
         }
-        setMarkdown(accumulated)
+        setMarkdown(cleaned)
       }
 
+      accumulated = cleanStreamChunk(accumulated)
       if (!accumulated.trim()) {
         setError('Generation finished with no content. Please try again.')
         return
@@ -296,9 +304,11 @@ export default function PolicyGeneratorPage() {
                 </span>
                 {hasStreamContent
                   ? 'Streaming policy content…'
-                  : elapsedSeconds < 15
+                  : elapsedSeconds < 20
                     ? 'Starting generation…'
-                    : 'Still working — first output can take up to a minute after idle periods on the free hosting tier.'}
+                    : elapsedSeconds < 90
+                      ? 'Drafting policy — first text usually appears within a few seconds; large policies can take 1–2 minutes on the free tier.'
+                      : 'Still generating — almost done. Full policies can take up to 2 minutes.'}
               </div>
               {!hasStreamContent && elapsedSeconds > 0 && (
                 <p className="text-xs tabular-nums">
