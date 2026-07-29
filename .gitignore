@@ -43,3 +43,6 @@ supabase/.temp/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# test-only build output
+.test-build/

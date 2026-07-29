@@ -1,0 +1,40 @@
+{
+  // Test-only build.
+  //
+  // The tests exercise the Machine's deterministic core, which is deliberately
+  // free of framework, alias and I/O imports. Compiling that subset to CommonJS
+  // in .test-build lets `node --test` run it directly, without adding a runtime
+  // transpiler dependency and without contorting the application source with
+  // explicit .ts import extensions.
+  //
+  // Anything requiring Next.js, Supabase or network access is out of scope here
+  // by design — that surface is covered by scripts/verify-migrations.sh and the
+  // build.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".test-build",
+    "rootDir": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "incremental": false,
+    "declaration": false,
+    "sourceMap": true,
+    "plugins": []
+  },
+  "include": [
+    "lib/machine/topics.ts",
+    "lib/machine/relevance.ts",
+    "lib/machine/classify-ai.ts",
+    "lib/machine/feed.ts",
+    "lib/machine/hash.ts",
+    "lib/machine/analyze-heuristic.ts",
+    "lib/policy/completeness.ts",
+    "lib/policy-generator/constants.ts",
+    "lib/utils/slug.ts",
+    "tests/**/*.ts"
+  ]
+}

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Compiled output of tsconfig.test.json — generated CommonJS, not source.
+    ".test-build/**",
   ]),
 ]);
 
