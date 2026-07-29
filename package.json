@@ -10,7 +10,11 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/",
     "db:types": "supabase gen types typescript --local > lib/database.types.ts",
+    "db:types:local": "node scripts/gen-types.mjs --out lib/database.types.ts",
+    "db:verify": "scripts/verify-migrations.sh",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset"
   },

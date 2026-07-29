@@ -270,9 +270,25 @@ create table if not exists public.ai_classification_rules (
   created_at     timestamptz default now()
 );
 
+-- Two regimes with different vocabularies live in this table: the EU AI Act
+-- tiers plus its GPAI track, and the SDAIA tiers. Constrain to the union rather
+-- than flattening one onto the other, which would misstate the citation.
 do $$ begin
   alter table public.ai_classification_rules add constraint ai_classification_rules_tier_check
-    check (risk_tier in ('prohibited', 'high', 'limited', 'minimal', 'gpai', 'gpai_systemic'));
+    check (
+      (regime = 'eu_ai_act' and risk_tier in (
+        'prohibited', 'high', 'limited', 'minimal', 'gpai', 'gpai_systemic'
+      ))
+      or (regime = 'sdaia' and risk_tier in (
+        'unacceptable', 'high', 'limited', 'low'
+      ))
+      or regime not in ('eu_ai_act', 'sdaia')
+    );
+exception when duplicate_object then null; end $$;
+
+do $$ begin
+  alter table public.ai_classification_rules add constraint ai_classification_rules_regime_check
+    check (regime in ('eu_ai_act', 'sdaia', 'difc', 'nist_ai_rmf', 'iso_42001'));
 exception when duplicate_object then null; end $$;
 
 -- -----------------------------------------------------------------------------

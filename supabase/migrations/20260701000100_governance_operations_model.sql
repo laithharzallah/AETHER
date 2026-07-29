@@ -413,7 +413,14 @@ create index if not exists obligations_status_idx on public.obligations (organiz
 -- Keeps a tenant from accumulating duplicate rows for the same recurring duty.
 create unique index if not exists obligations_unique_template_cycle
   on public.obligations (organization_id, template_id, due_date)
-  where template_id is not null;
+  where template_id is not null and due_date is not null;
+
+-- Event-driven and continuous obligations have no due date, and NULLs are
+-- distinct in a unique index — so they need their own constraint or re-running
+-- provisioning would duplicate every one of them.
+create unique index if not exists obligations_unique_template_undated
+  on public.obligations (organization_id, template_id)
+  where template_id is not null and due_date is null;
 
 -- -----------------------------------------------------------------------------
 -- tasks — the unit of work everything else funnels into
@@ -641,62 +648,79 @@ do $trg$ begin perform public.ensure_updated_at_trigger('public.ai_systems'); en
 -- history cannot be bypassed by writing straight to the table.
 -- -----------------------------------------------------------------------------
 
-create or replace function public.snapshot_policy_version()
+-- Two stages: the BEFORE trigger stamps the hash and bumps the version number,
+-- the AFTER trigger writes the snapshot. The snapshot cannot run BEFORE INSERT
+-- because policy_versions.policy_id references a row that does not exist yet.
+
+create or replace function public.stamp_policy_version()
 returns trigger
 language plpgsql
-security definer
 set search_path = ''
 as $$
-declare
-  new_hash text;
 begin
-  new_hash := public.sha256_hex(new.content_md);
-
   if tg_op = 'INSERT' then
-    new.content_hash := new_hash;
-    insert into public.policy_versions (
-      policy_id, organization_id, version, content_md, content_hash,
-      change_summary, status_at_snapshot, created_by
-    )
-    values (
-      new.id, new.organization_id, new.version, coalesce(new.content_md, ''),
-      new_hash, 'Initial version', new.status, new.created_by
-    )
-    on conflict (policy_id, version) do nothing;
+    new.content_hash := public.sha256_hex(new.content_md);
     return new;
   end if;
 
-  -- Content changed: bump the version and snapshot, unless the caller already
-  -- set an explicit new version number.
   if coalesce(old.content_md, '') <> coalesce(new.content_md, '') then
+    -- Respect an explicit version set by the caller; otherwise bump.
     if new.version = old.version then
       new.version := old.version + 1;
     end if;
-    new.content_hash := new_hash;
-
-    insert into public.policy_versions (
-      policy_id, organization_id, version, content_md, content_hash,
-      change_summary, status_at_snapshot, created_by
-    )
-    values (
-      new.id, new.organization_id, new.version, coalesce(new.content_md, ''),
-      new_hash, null, new.status, new.created_by
-    )
-    on conflict (policy_id, version) do nothing;
+    new.content_hash := public.sha256_hex(new.content_md);
   end if;
 
   return new;
 end;
 $$;
 
+create or replace function public.snapshot_policy_version()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if tg_op = 'UPDATE'
+     and coalesce(old.content_md, '') = coalesce(new.content_md, '') then
+    return null;
+  end if;
+
+  insert into public.policy_versions (
+    policy_id, organization_id, version, content_md, content_hash,
+    change_summary, status_at_snapshot, created_by
+  )
+  values (
+    new.id, new.organization_id, new.version, coalesce(new.content_md, ''),
+    new.content_hash,
+    case when tg_op = 'INSERT' then 'Initial version' else null end,
+    new.status, new.created_by
+  )
+  on conflict (policy_id, version) do nothing;
+
+  return null;
+end;
+$$;
+
+drop trigger if exists stamp_policy_version_ins on public.policies;
+create trigger stamp_policy_version_ins
+  before insert on public.policies
+  for each row execute function public.stamp_policy_version();
+
+drop trigger if exists stamp_policy_version_upd on public.policies;
+create trigger stamp_policy_version_upd
+  before update on public.policies
+  for each row execute function public.stamp_policy_version();
+
 drop trigger if exists snapshot_policy_version_ins on public.policies;
 create trigger snapshot_policy_version_ins
-  before insert on public.policies
+  after insert on public.policies
   for each row execute function public.snapshot_policy_version();
 
 drop trigger if exists snapshot_policy_version_upd on public.policies;
 create trigger snapshot_policy_version_upd
-  before update on public.policies
+  after update on public.policies
   for each row execute function public.snapshot_policy_version();
 
 -- -----------------------------------------------------------------------------
