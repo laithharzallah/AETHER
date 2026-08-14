@@ -1,406 +1,132 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import { Check, Copy, Loader2 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { Sparkles } from 'lucide-react'
+import { requireOrganization } from '@/lib/dashboard/get-dashboard-context'
+import { createClient } from '@/lib/supabase/server'
+import { hasAnthropicKey } from '@/lib/anthropic'
+import { PageHeader } from '@/components/dashboard/page-header'
+import { EmptyState } from '@/components/dashboard/empty-state'
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { FRAMEWORKS, POLICY_TYPES } from '@/lib/policy-generator/constants'
-import { cn } from '@/lib/utils'
+  PolicyGeneratorForm,
+  type FrameworkOption,
+  type TemplateOption,
+} from '@/components/policies/policy-generator-form'
 
-function cleanStreamChunk(raw: string): string {
-  return raw
-    .replace(/(?:<!-- stream-pad -->\n?)+/g, '')
-    .replace(/\u200B/g, '')
+export const dynamic = 'force-dynamic'
+
+function parseSections(value: unknown): TemplateOption['required_sections'] {
+  if (!Array.isArray(value)) return []
+  return value.flatMap((entry) => {
+    if (typeof entry !== 'object' || entry === null) return []
+    const record = entry as Record<string, unknown>
+    if (typeof record.heading !== 'string') return []
+    return [
+      {
+        heading: record.heading,
+        guidance: typeof record.guidance === 'string' ? record.guidance : undefined,
+      },
+    ]
+  })
 }
 
-export default function PolicyGeneratorPage() {
-  const [policyType, setPolicyType] = useState<string>('')
-  const [frameworks, setFrameworks] = useState<string[]>([])
-  const [orgContext, setOrgContext] = useState('')
-  const [markdown, setMarkdown] = useState('')
-  const [error, setError] = useState<string | null>(null)
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [isComplete, setIsComplete] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const [elapsedSeconds, setElapsedSeconds] = useState(0)
-  const [hasStreamContent, setHasStreamContent] = useState(false)
+export default async function PolicyGeneratorPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ template?: string }>
+}) {
+  const context = await requireOrganization()
+  const { template: initialTemplate } = await searchParams
 
-  const canGenerate =
-    Boolean(policyType) && frameworks.length > 0 && !isGenerating
-
-  useEffect(() => {
-    if (!isGenerating) return
-
-    const startedAt = Date.now()
-    const timer = window.setInterval(() => {
-      setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1000))
-    }, 1000)
-
-    return () => window.clearInterval(timer)
-  }, [isGenerating])
-
-  function toggleFramework(framework: string) {
-    setFrameworks((prev) =>
-      prev.includes(framework)
-        ? prev.filter((f) => f !== framework)
-        : [...prev, framework]
+  if (!context.canWrite) {
+    return (
+      <div className="mx-auto max-w-4xl">
+        <PageHeader title="Policy Generator" />
+        <EmptyState
+          className="mt-8"
+          icon={Sparkles}
+          title="Read-only access"
+          description="Your role can read the policy set but not draft new policies."
+          action={
+            <Link href="/dashboard/policies" className="text-sm underline underline-offset-4">
+              View existing policies
+            </Link>
+          }
+        />
+      </div>
     )
   }
 
-  async function handleGenerate() {
-    if (!canGenerate) return
+  const supabase = await createClient()
 
-    setError(null)
-    setMarkdown('')
-    setIsComplete(false)
-    setCopied(false)
-    setHasStreamContent(false)
-    setElapsedSeconds(0)
-    setIsGenerating(true)
+  const [templates, frameworks, heldFrameworks] = await Promise.all([
+    supabase
+      .from('policy_templates')
+      .select('code, title, description, framework_codes, required_sections')
+      .order('code'),
+    supabase
+      .from('frameworks')
+      .select('code, name, short_name, regulator, mandatory')
+      .order('code'),
+    supabase
+      .from('controls')
+      .select('framework_code')
+      .eq('organization_id', context.orgId)
+      .neq('applicability', 'not_applicable'),
+  ])
 
-    try {
-      const res = await fetch('/api/generate-policy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        redirect: 'manual',
-        body: JSON.stringify({
-          policyType,
-          frameworks,
-          orgContext: orgContext.trim() || undefined,
-        }),
-      })
+  const held = new Set((heldFrameworks.data ?? []).map((row) => row.framework_code))
 
-      if (res.status === 401 || res.status === 307 || res.status === 302) {
-        setError('Session expired. Please refresh the page and sign in again.')
-        return
-      }
+  const templateOptions: TemplateOption[] = (templates.data ?? []).map((row) => ({
+    code: row.code,
+    title: row.title,
+    description: row.description,
+    framework_codes: row.framework_codes ?? [],
+    required_sections: parseSections(row.required_sections),
+  }))
 
-      if (!res.ok) {
-        const data = (await res.json()) as { error?: string }
-        setError(data.error ?? 'Failed to generate policy.')
-        return
-      }
-
-      const contentType = res.headers.get('content-type') ?? ''
-      if (!contentType.includes('text/plain')) {
-        setError('Unexpected response from server. Please try again.')
-        return
-      }
-
-      if (!res.body) {
-        setError('No response stream received.')
-        return
-      }
-
-      const reader = res.body.getReader()
-      const decoder = new TextDecoder()
-      let accumulated = ''
-
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        accumulated += decoder.decode(value, { stream: true })
-        const cleaned = cleanStreamChunk(accumulated)
-        if (cleaned.trim().length > 0) {
-          setHasStreamContent(true)
-        }
-        setMarkdown(cleaned)
-      }
-
-      accumulated = cleanStreamChunk(accumulated)
-      if (!accumulated.trim()) {
-        setError('Generation finished with no content. Please try again.')
-        return
-      }
-
-      setIsComplete(true)
-    } catch {
-      setError('Network error while generating policy. Please try again.')
-    } finally {
-      setIsGenerating(false)
-    }
-  }
-
-  async function handleCopy() {
-    if (!markdown) return
-    try {
-      await navigator.clipboard.writeText(markdown)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch {
-      setError('Failed to copy to clipboard.')
-    }
-  }
+  // Frameworks the tenant holds come first: those are the ones whose controls can
+  // actually be cited.
+  const frameworkOptions: FrameworkOption[] = (frameworks.data ?? [])
+    .map((row) => ({
+      code: row.code,
+      name: row.name,
+      short_name: row.short_name,
+      regulator: row.regulator,
+      mandatory: row.mandatory,
+      held: held.has(row.code),
+    }))
+    .sort((a, b) => {
+      if (a.held !== b.held) return a.held ? -1 : 1
+      if (a.mandatory !== b.mandatory) return a.mandatory ? -1 : 1
+      return a.code.localeCompare(b.code)
+    })
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <h1
-        className="text-3xl tracking-tight md:text-4xl"
-        style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-      >
-        Policy Generator
-      </h1>
-      <p className="mt-3 text-muted-foreground">
-        Draft board-grade compliance policies aligned to GCC and international
-        frameworks.
-      </p>
+    <div className="mx-auto max-w-4xl space-y-6">
+      <PageHeader
+        title="Policy Generator"
+        description="Drafts a board-grade policy against the real control identifiers in the frameworks you hold, then scores the result against the template's required sections. Review it before saving — the draft is a starting point, not an approved document."
+      />
 
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Configuration</CardTitle>
-          <CardDescription>
-            Select a policy type and the frameworks it should align to.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="policy-type">Policy type</Label>
-            <Select
-              value={policyType}
-              onValueChange={(value) => setPolicyType(value ?? '')}
-            >
-              <SelectTrigger id="policy-type" className="w-full">
-                <SelectValue placeholder="Select a policy type" />
-              </SelectTrigger>
-              <SelectContent>
-                {POLICY_TYPES.map((type) => (
-                  <SelectItem key={type} value={type}>
-                    {type}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Frameworks</Label>
-            <div className="flex flex-wrap gap-2">
-              {FRAMEWORKS.map((framework) => {
-                const selected = frameworks.includes(framework)
-                return (
-                  <Button
-                    key={framework}
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    aria-pressed={selected}
-                    onClick={() => toggleFramework(framework)}
-                    className={cn(
-                      selected &&
-                        'border-foreground/30 bg-foreground/5 text-foreground'
-                    )}
-                  >
-                    {framework}
-                  </Button>
-                )
-              })}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              {frameworks.length === 0
-                ? 'Select at least one framework.'
-                : `${frameworks.length} framework${frameworks.length === 1 ? '' : 's'} selected.`}
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="org-context">
-              Organization context{' '}
-              <span className="font-normal text-muted-foreground">
-                (optional)
-              </span>
-            </Label>
-            <textarea
-              id="org-context"
-              value={orgContext}
-              onChange={(e) => setOrgContext(e.target.value)}
-              placeholder='e.g. "Saudi fintech, 200 employees, cloud-first"'
-              rows={3}
-              className="flex w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30"
-            />
-          </div>
-
-          <Button
-            type="button"
-            onClick={handleGenerate}
-            disabled={!canGenerate}
-          >
-            {isGenerating ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating…
-              </>
-            ) : (
-              'Generate Policy'
-            )}
-          </Button>
-        </CardContent>
-      </Card>
-
-      {error && (
+      {!hasAnthropicKey() && (
         <div
-          className="mt-6 rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive"
           role="alert"
+          className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 text-sm"
         >
-          {error}
+          <p className="font-medium">Generation is unavailable</p>
+          <p className="mt-1 text-muted-foreground">
+            No <code className="text-xs">ANTHROPIC_API_KEY</code> is configured, so the
+            model cannot be called. The templates below still show which sections each
+            policy needs and which controls it should cite, so one can be written
+            manually against them.
+          </p>
         </div>
       )}
 
-      <Card className="mt-6">
-        <CardHeader className="flex flex-row items-start justify-between gap-4 space-y-0">
-          <div>
-            <CardTitle>Generated policy</CardTitle>
-            <CardDescription>
-              {isGenerating
-                ? 'Streaming policy content…'
-                : isComplete
-                  ? 'Generation complete.'
-                  : 'Your policy will appear here.'}
-            </CardDescription>
-          </div>
-          {isComplete && markdown && (
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={handleCopy}
-            >
-              {copied ? (
-                <>
-                  <Check className="mr-1.5 h-4 w-4" />
-                  Copied
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-1.5 h-4 w-4" />
-                  Copy
-                </>
-              )}
-            </Button>
-          )}
-        </CardHeader>
-        <CardContent>
-          {isGenerating && (
-            <div className="mb-4 space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-                </span>
-                {hasStreamContent
-                  ? 'Streaming policy content…'
-                  : elapsedSeconds < 20
-                    ? 'Starting generation…'
-                    : elapsedSeconds < 90
-                      ? 'Drafting policy — first text usually appears within a few seconds; large policies can take 1–2 minutes on the free tier.'
-                      : 'Still generating — almost done. Full policies can take up to 2 minutes.'}
-              </div>
-              {!hasStreamContent && elapsedSeconds > 0 && (
-                <p className="text-xs tabular-nums">
-                  Elapsed: {elapsedSeconds}s
-                  {elapsedSeconds >= 10 &&
-                    ' — the model is drafting a full board-grade policy with framework control mappings.'}
-                </p>
-              )}
-            </div>
-          )}
-
-          {markdown ? (
-            <div
-              className={cn(
-                'prose-policy rounded-lg border border-border/60 bg-card p-6',
-                isGenerating && 'opacity-90'
-              )}
-            >
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  h1: ({ children }) => (
-                    <h1 className="mb-4 text-2xl font-semibold tracking-tight">
-                      {children}
-                    </h1>
-                  ),
-                  h2: ({ children }) => (
-                    <h2 className="mt-8 mb-3 text-xl font-semibold tracking-tight">
-                      {children}
-                    </h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className="mt-6 mb-2 text-lg font-medium">{children}</h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className="mb-3 leading-relaxed text-foreground/90">
-                      {children}
-                    </p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className="mb-4 list-disc space-y-1 pl-6">{children}</ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className="mb-4 list-decimal space-y-1 pl-6">{children}</ol>
-                  ),
-                  li: ({ children }) => (
-                    <li className="leading-relaxed">{children}</li>
-                  ),
-                  table: ({ children }) => (
-                    <div className="my-4 overflow-x-auto">
-                      <table className="w-full border-collapse text-sm">
-                        {children}
-                      </table>
-                    </div>
-                  ),
-                  thead: ({ children }) => (
-                    <thead className="bg-muted/50">{children}</thead>
-                  ),
-                  th: ({ children }) => (
-                    <th className="border border-border/60 px-3 py-2 text-left font-medium">
-                      {children}
-                    </th>
-                  ),
-                  td: ({ children }) => (
-                    <td className="border border-border/60 px-3 py-2 align-top">
-                      {children}
-                    </td>
-                  ),
-                  hr: () => <hr className="my-6 border-border/60" />,
-                  strong: ({ children }) => (
-                    <strong className="font-semibold">{children}</strong>
-                  ),
-                }}
-              >
-                {markdown}
-              </ReactMarkdown>
-            </div>
-          ) : (
-            isGenerating && (
-              <p className="text-sm text-muted-foreground">
-                Waiting for the first section of your policy…
-              </p>
-            )
-          )}
-
-          {!isGenerating && !markdown && (
-            <p className="text-sm text-muted-foreground">
-              Configure the form above and click Generate Policy to start.
-            </p>
-          )}
-        </CardContent>
-      </Card>
+      <PolicyGeneratorForm
+        templates={templateOptions}
+        frameworks={frameworkOptions}
+        initialTemplate={initialTemplate}
+      />
     </div>
   )
 }
