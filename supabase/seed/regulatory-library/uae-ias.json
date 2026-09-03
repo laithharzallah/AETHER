@@ -1,0 +1,91 @@
+{
+  "framework": {
+    "code": "UAE-IAS",
+    "short_name": "UAE IA Standards",
+    "name_en": "UAE Information Assurance Standards (NESA / Cybersecurity Council)",
+    "name_ar": "معايير ضمان المعلومات لدولة الإمارات (الهيئة الوطنية للأمن الإلكتروني / مجلس الأمن السيبراني)",
+    "regulator_en": "UAE Cybersecurity Council (formerly NESA / SIA); referenced by CBUAE for financial institutions",
+    "regulator_ar": "مجلس الأمن السيبراني لدولة الإمارات (سابقاً الهيئة الوطنية للأمن الإلكتروني)؛ يشير إليه مصرف الإمارات المركزي للمؤسسات المالية",
+    "jurisdiction": "AE",
+    "category": "information-security",
+    "version": "1.1",
+    "effective_date": "2014-03-01",
+    "source_url": "https://www.tdra.gov.ae/en/about-tdra/information-and-egovernment-sector/national-cybersecurity",
+    "description_en": "The UAE's national baseline for information assurance, mandatory for critical-infrastructure and government entities and referenced by the Central Bank of the UAE for banks and financial institutions. 188 controls across 6 management (M1–M6) and 9 technical (T1–T9) families, each tagged with a priority (P1–P4). Rows below are at control-family level with summarized requirements; verify against the licensed standard before formal use.",
+    "description_ar": "خط الأساس الوطني لضمان المعلومات في دولة الإمارات، إلزامي للجهات الحكومية والبنية التحتية الحرجة ويشير إليه مصرف الإمارات المركزي للبنوك والمؤسسات المالية. 188 ضابطاً موزعة على 6 عائلات إدارية (M1–M6) و9 عائلات تقنية (T1–T9)، لكل منها أولوية (P1–P4). الصفوف أدناه على مستوى عائلة الضوابط بمتطلبات ملخصة؛ يجب التحقق منها مقابل المعيار المرخص قبل الاستخدام الرسمي.",
+    "mandatory": true,
+    "sort_order": 40
+  },
+  "defaults": { "fidelity": "summarized" },
+  "domains": [
+    {
+      "en": "Management Controls",
+      "ar": "الضوابط الإدارية",
+      "subdomains": [
+        { "en": "M1 Strategy and Planning", "ar": "M1 الاستراتيجية والتخطيط", "controls": [
+          { "ref": "M1.1", "title_en": "Information security strategy and program", "title_ar": "استراتيجية وبرنامج أمن المعلومات", "requirement_en": "Establish an information security program with a documented strategy, management commitment, defined scope, resources and a roadmap aligned to the national IA framework and the entity's risk profile.", "requirement_ar": "إنشاء برنامج لأمن المعلومات باستراتيجية موثقة والتزام من الإدارة ونطاق محدد وموارد وخطة عمل متوافقة مع الإطار الوطني لضمان المعلومات وملف مخاطر الجهة.", "control_type": "governance", "criticality": "high" },
+          { "ref": "M1.2", "title_en": "Information security policy and organization", "title_ar": "سياسة وتنظيم أمن المعلومات", "requirement_en": "Approve and publish an information security policy, establish an information security function with a designated senior officer, and define governance committees and reporting lines.", "requirement_ar": "اعتماد ونشر سياسة أمن المعلومات، وإنشاء وظيفة لأمن المعلومات بمسؤول رفيع المستوى، وتحديد لجان الحوكمة وخطوط الإبلاغ.", "control_type": "governance", "criticality": "high" },
+          { "ref": "M1.3", "title_en": "Roles, responsibilities and segregation", "title_ar": "الأدوار والمسؤوليات وفصل المهام", "requirement_en": "Define and allocate information security roles and responsibilities across management, asset owners, custodians and users, applying segregation of duties.", "requirement_ar": "تحديد وتوزيع أدوار ومسؤوليات أمن المعلومات على الإدارة ومالكي الأصول والمشرفين عليها والمستخدمين مع تطبيق فصل المهام.", "control_type": "governance", "criticality": "medium" }
+        ] },
+        { "en": "M2 Information Security Risk Management", "ar": "M2 إدارة مخاطر أمن المعلومات", "controls": [
+          { "ref": "M2.1", "title_en": "Risk management methodology", "title_ar": "منهجية إدارة المخاطر", "requirement_en": "Adopt a documented risk assessment and treatment methodology consistent with the national IA risk management guidance, including criteria for risk acceptance.", "requirement_ar": "اعتماد منهجية موثقة لتقييم المخاطر ومعالجتها تتوافق مع التوجيهات الوطنية لإدارة مخاطر ضمان المعلومات، بما في ذلك معايير قبول المخاطر.", "control_type": "governance", "criticality": "high" },
+          { "ref": "M2.2", "title_en": "Risk assessment and treatment", "title_ar": "تقييم المخاطر ومعالجتها", "requirement_en": "Perform risk assessments on information assets at planned intervals and upon significant change, select and implement controls to treat risks, and maintain a risk register and statement of applicability.", "requirement_ar": "إجراء تقييمات المخاطر على الأصول المعلوماتية على فترات مخططة وعند التغييرات الجوهرية، واختيار وتنفيذ الضوابط لمعالجة المخاطر، والاحتفاظ بسجل المخاطر وبيان قابلية التطبيق.", "control_type": "governance", "criticality": "high" }
+        ] },
+        { "en": "M3 Awareness and Training", "ar": "M3 التوعية والتدريب", "controls": [
+          { "ref": "M3.1", "title_en": "Security awareness program", "title_ar": "برنامج التوعية الأمنية", "requirement_en": "Deliver an ongoing security awareness program to all personnel and contractors, with role-based training for privileged and security staff, and measure effectiveness.", "requirement_ar": "تقديم برنامج مستمر للتوعية الأمنية لجميع العاملين والمتعاقدين، مع تدريب حسب الدور للموظفين ذوي الصلاحيات وموظفي الأمن، وقياس الفاعلية.", "control_type": "preventive", "criticality": "medium" }
+        ] },
+        { "en": "M4 Human Resources Security", "ar": "M4 أمن الموارد البشرية", "controls": [
+          { "ref": "M4.1", "title_en": "Pre-employment screening and terms", "title_ar": "التحقق قبل التوظيف وشروط العمل", "requirement_en": "Screen candidates proportionate to the sensitivity of the role, and include information security responsibilities and confidentiality obligations in employment terms.", "requirement_ar": "التحقق من المرشحين بما يتناسب مع حساسية الدور، وتضمين مسؤوليات أمن المعلومات والتزامات السرية في شروط العمل.", "control_type": "preventive", "criticality": "medium" },
+          { "ref": "M4.2", "title_en": "During employment and termination", "title_ar": "أثناء العمل وعند الإنهاء", "requirement_en": "Enforce security responsibilities during employment through a disciplinary process, and on termination or change of role return assets and revoke access promptly.", "requirement_ar": "إنفاذ المسؤوليات الأمنية أثناء العمل من خلال إجراءات تأديبية، وعند الإنهاء أو تغيير الدور إعادة الأصول وإلغاء الصلاحيات فوراً.", "control_type": "preventive", "criticality": "medium" }
+        ] },
+        { "en": "M5 Compliance", "ar": "M5 الامتثال", "controls": [
+          { "ref": "M5.1", "title_en": "Legal and regulatory compliance", "title_ar": "الامتثال القانوني والتنظيمي", "requirement_en": "Identify applicable legal, regulatory and contractual requirements (including UAE federal laws on cybercrime and data protection) and demonstrate compliance through periodic reviews and independent audits.", "requirement_ar": "تحديد المتطلبات القانونية والتنظيمية والتعاقدية المعمول بها (بما في ذلك القوانين الاتحادية للجرائم الإلكترونية وحماية البيانات) وإثبات الامتثال من خلال المراجعات الدورية والتدقيق المستقل.", "control_type": "governance", "criticality": "high" },
+          { "ref": "M5.2", "title_en": "Compliance with the IA Standards", "title_ar": "الامتثال لمعايير ضمان المعلومات", "requirement_en": "Perform self-assessments against the IA Standards, report compliance status to the national authority as required, and remediate gaps according to priority (P1 first).", "requirement_ar": "إجراء تقييمات ذاتية مقابل معايير ضمان المعلومات، ورفع حالة الامتثال إلى الجهة الوطنية حسب المطلوب، ومعالجة الفجوات وفق الأولوية (P1 أولاً).", "control_type": "detective", "criticality": "high" }
+        ] },
+        { "en": "M6 Performance Evaluation and Improvement", "ar": "M6 تقييم الأداء والتحسين", "controls": [
+          { "ref": "M6.1", "title_en": "Monitoring, measurement and improvement", "title_ar": "المراقبة والقياس والتحسين", "requirement_en": "Define security metrics, monitor and measure control effectiveness, conduct management reviews and internal audits, and drive corrective and preventive actions.", "requirement_ar": "تحديد مقاييس الأمن، ومراقبة وقياس فاعلية الضوابط، وإجراء مراجعات الإدارة والتدقيق الداخلي، ودفع الإجراءات التصحيحية والوقائية.", "control_type": "detective", "criticality": "medium" }
+        ] }
+      ]
+    },
+    {
+      "en": "Technical Controls",
+      "ar": "الضوابط التقنية",
+      "subdomains": [
+        { "en": "T1 Asset Management", "ar": "T1 إدارة الأصول", "controls": [
+          { "ref": "T1.1", "title_en": "Asset inventory and ownership", "title_ar": "جرد الأصول وملكيتها", "requirement_en": "Maintain an inventory of information assets with assigned owners and acceptable use rules.", "requirement_ar": "الاحتفاظ بجرد للأصول المعلوماتية مع تحديد المالكين وقواعد الاستخدام المقبول.", "control_type": "preventive", "criticality": "high" },
+          { "ref": "T1.2", "title_en": "Information classification and handling", "title_ar": "تصنيف المعلومات والتعامل معها", "requirement_en": "Classify and label information according to the national classification scheme and define handling, storage, transfer and disposal procedures per classification.", "requirement_ar": "تصنيف المعلومات ووسمها وفق آلية التصنيف الوطنية وتحديد إجراءات التعامل والتخزين والنقل والتخلص لكل تصنيف.", "control_type": "preventive", "criticality": "high" }
+        ] },
+        { "en": "T2 Physical and Environmental Security", "ar": "T2 الأمن المادي والبيئي", "controls": [
+          { "ref": "T2.1", "title_en": "Secure areas and equipment protection", "title_ar": "المناطق الآمنة وحماية المعدات", "requirement_en": "Protect facilities and equipment with physical perimeters, entry controls, monitoring, environmental protection and secure disposal of equipment.", "requirement_ar": "حماية المرافق والمعدات بمحيطات مادية وضوابط دخول ومراقبة وحماية بيئية وتخلص آمن من المعدات.", "control_type": "preventive", "criticality": "medium" }
+        ] },
+        { "en": "T3 Operations Management", "ar": "T3 إدارة العمليات", "controls": [
+          { "ref": "T3.1", "title_en": "Operational procedures and change management", "title_ar": "إجراءات التشغيل وإدارة التغيير", "requirement_en": "Document operating procedures, control changes to systems, and separate development, test and production environments.", "requirement_ar": "توثيق إجراءات التشغيل، والتحكم في التغييرات على الأنظمة، وفصل بيئات التطوير والاختبار والإنتاج.", "control_type": "preventive", "criticality": "high" },
+          { "ref": "T3.2", "title_en": "Malware protection and patching", "title_ar": "الحماية من البرمجيات الضارة والتحديثات", "requirement_en": "Deploy and maintain anti-malware on all systems and apply security patches within defined timeframes based on criticality.", "requirement_ar": "نشر وصيانة الحماية من البرمجيات الضارة على جميع الأنظمة وتطبيق التحديثات الأمنية ضمن مدد محددة حسب الأهمية.", "control_type": "preventive", "criticality": "high" },
+          { "ref": "T3.3", "title_en": "Backup", "title_ar": "النسخ الاحتياطي", "requirement_en": "Back up information and software regularly, protect backups and test restoration periodically.", "requirement_ar": "النسخ الاحتياطي للمعلومات والبرمجيات بانتظام، وحماية النسخ، واختبار الاستعادة دورياً.", "control_type": "corrective", "criticality": "high" },
+          { "ref": "T3.4", "title_en": "Logging and monitoring", "title_ar": "التسجيل والمراقبة", "requirement_en": "Log security-relevant events, protect logs, synchronize clocks, and monitor logs and system use to detect unauthorized activity.", "requirement_ar": "تسجيل الأحداث الأمنية، وحماية السجلات، ومزامنة الساعات، ومراقبة السجلات واستخدام الأنظمة لاكتشاف الأنشطة غير المصرح بها.", "control_type": "detective", "criticality": "high" },
+          { "ref": "T3.5", "title_en": "Technical vulnerability management", "title_ar": "إدارة الثغرات التقنية", "requirement_en": "Identify technical vulnerabilities through scanning and penetration testing and remediate according to risk.", "requirement_ar": "تحديد الثغرات التقنية من خلال الفحص واختبار الاختراق ومعالجتها وفق المخاطر.", "control_type": "detective", "criticality": "high" }
+        ] },
+        { "en": "T4 Communications", "ar": "T4 الاتصالات", "controls": [
+          { "ref": "T4.1", "title_en": "Network security management", "title_ar": "إدارة أمن الشبكات", "requirement_en": "Secure networks through segregation, perimeter controls, secure wireless, and controlled network services and connections.", "requirement_ar": "تأمين الشبكات من خلال الفصل والضوابط المحيطية والشبكات اللاسلكية الآمنة والتحكم في خدمات الشبكة والاتصالات.", "control_type": "preventive", "criticality": "high" },
+          { "ref": "T4.2", "title_en": "Information exchange and cryptography", "title_ar": "تبادل المعلومات والتشفير", "requirement_en": "Protect information in transit with approved cryptography, exchange agreements and secure messaging, and manage cryptographic keys securely.", "requirement_ar": "حماية المعلومات أثناء النقل بالتشفير المعتمد واتفاقيات التبادل والمراسلة الآمنة، وإدارة مفاتيح التشفير بشكل آمن.", "control_type": "preventive", "criticality": "high" }
+        ] },
+        { "en": "T5 Access Control", "ar": "T5 التحكم في الوصول", "controls": [
+          { "ref": "T5.1", "title_en": "Access control policy and user access management", "title_ar": "سياسة التحكم في الوصول وإدارة وصول المستخدمين", "requirement_en": "Control access based on business need through a documented policy, formal user registration and de-registration, privilege management, password management and periodic access reviews.", "requirement_ar": "التحكم في الوصول بناءً على الحاجة العملية من خلال سياسة موثقة وتسجيل وإلغاء تسجيل رسمي للمستخدمين وإدارة الصلاحيات وإدارة كلمات المرور ومراجعات دورية للصلاحيات.", "control_type": "preventive", "criticality": "high" },
+          { "ref": "T5.2", "title_en": "Network, OS, application and mobile access control", "title_ar": "التحكم في الوصول للشبكات وأنظمة التشغيل والتطبيقات والأجهزة المحمولة", "requirement_en": "Apply authentication and session controls at network, operating system and application layers, and secure remote and mobile access with strong authentication.", "requirement_ar": "تطبيق ضوابط المصادقة والجلسات على مستوى الشبكة ونظام التشغيل والتطبيقات، وتأمين الوصول عن بُعد والأجهزة المحمولة بمصادقة قوية.", "control_type": "preventive", "criticality": "high" }
+        ] },
+        { "en": "T6 Third-Party Security", "ar": "T6 أمن الأطراف الخارجية", "controls": [
+          { "ref": "T6.1", "title_en": "Third-party and outsourcing security", "title_ar": "أمن الأطراف الخارجية والإسناد", "requirement_en": "Identify risks from third-party access, address security in agreements, and monitor and review third-party service delivery.", "requirement_ar": "تحديد المخاطر الناشئة عن وصول الأطراف الخارجية، ومعالجة الأمن في الاتفاقيات، ومراقبة ومراجعة تقديم خدمات الأطراف الخارجية.", "control_type": "governance", "criticality": "high" }
+        ] },
+        { "en": "T7 Information Systems Acquisition, Development and Maintenance", "ar": "T7 اقتناء أنظمة المعلومات وتطويرها وصيانتها", "controls": [
+          { "ref": "T7.1", "title_en": "Security requirements and secure development", "title_ar": "المتطلبات الأمنية والتطوير الآمن", "requirement_en": "Specify security requirements for new and changed systems, apply secure development practices, validate input/output, and test security before acceptance.", "requirement_ar": "تحديد المتطلبات الأمنية للأنظمة الجديدة والمعدلة، وتطبيق ممارسات التطوير الآمن، والتحقق من المدخلات والمخرجات، واختبار الأمن قبل القبول.", "control_type": "preventive", "criticality": "high" }
+        ] },
+        { "en": "T8 Information Security Incident Management", "ar": "T8 إدارة حوادث أمن المعلومات", "controls": [
+          { "ref": "T8.1", "title_en": "Incident reporting and management", "title_ar": "الإبلاغ عن الحوادث وإدارتها", "requirement_en": "Establish incident reporting channels, response procedures, evidence collection and lessons learned, and report significant incidents to the national CERT (aeCERT) and sector regulator as required.", "requirement_ar": "إنشاء قنوات للإبلاغ عن الحوادث وإجراءات الاستجابة وجمع الأدلة والدروس المستفادة، والإبلاغ عن الحوادث الجسيمة إلى فريق الاستجابة الوطني (aeCERT) والجهة التنظيمية القطاعية حسب المطلوب.", "control_type": "corrective", "criticality": "high" }
+        ] },
+        { "en": "T9 Information Security Continuity Management", "ar": "T9 إدارة استمرارية أمن المعلومات", "controls": [
+          { "ref": "T9.1", "title_en": "Continuity planning and testing", "title_ar": "التخطيط للاستمرارية واختبارها", "requirement_en": "Include information security in business continuity management, develop and test continuity and disaster recovery plans, and maintain them.", "requirement_ar": "تضمين أمن المعلومات في إدارة استمرارية الأعمال، ووضع خطط الاستمرارية والتعافي من الكوارث واختبارها، والمحافظة عليها.", "control_type": "corrective", "criticality": "high" }
+        ] }
+      ]
+    }
+  ]
+}

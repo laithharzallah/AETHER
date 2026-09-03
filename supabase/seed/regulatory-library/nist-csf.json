@@ -1,0 +1,296 @@
+{
+  "framework": {
+    "code": "NIST-CSF",
+    "short_name": "NIST CSF 2.0",
+    "name_en": "NIST Cybersecurity Framework 2.0",
+    "name_ar": "إطار الأمن السيبراني للمعهد الوطني الأمريكي للمعايير والتقنية (NIST CSF 2.0)",
+    "regulator_en": "U.S. National Institute of Standards and Technology (NIST)",
+    "regulator_ar": "المعهد الوطني للمعايير والتقنية (الولايات المتحدة)",
+    "jurisdiction": "INTL",
+    "category": "cybersecurity",
+    "version": "2.0",
+    "effective_date": "2024-02-26",
+    "source_url": "https://www.nist.gov/cyberframework",
+    "description_en": "A voluntary, outcome-based framework for managing cybersecurity risk, organized into six Functions — Govern, Identify, Protect, Detect, Respond, Recover — 22 Categories and 106 Subcategories. Widely used in the GCC as a reference architecture for cybersecurity programs and as a crosswalk target for SAMA CSF and NCA ECC.",
+    "description_ar": "إطار طوعي قائم على النتائج لإدارة مخاطر الأمن السيبراني، منظم في ست وظائف — الحوكمة، التحديد، الحماية، الاكتشاف، الاستجابة، التعافي — و22 فئة و106 فئات فرعية. يُستخدم على نطاق واسع في دول الخليج كمرجع لبرامج الأمن السيبراني وكهدف للمواءمة مع SAMA CSF وNCA ECC.",
+    "mandatory": false,
+    "sort_order": 80
+  },
+  "defaults": { "fidelity": "structural" },
+  "domains": [
+    {
+      "en": "Govern (GV)",
+      "ar": "الحوكمة (GV)",
+      "subdomains": [
+        {
+          "en": "Organizational Context (GV.OC)",
+          "ar": "السياق التنظيمي (GV.OC)",
+          "controls": [
+            { "ref": "GV.OC-01", "title_en": "Mission understood and informs risk management", "title_ar": "فهم رسالة المنظمة وتوجيهها لإدارة المخاطر", "requirement_en": "The organizational mission is understood and informs cybersecurity risk management.", "requirement_ar": "يتم فهم رسالة المنظمة واستخدامها لتوجيه إدارة مخاطر الأمن السيبراني.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.OC-02", "title_en": "Stakeholder expectations understood", "title_ar": "فهم توقعات أصحاب المصلحة", "requirement_en": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered.", "requirement_ar": "يتم فهم أصحاب المصلحة الداخليين والخارجيين، وفهم احتياجاتهم وتوقعاتهم بشأن إدارة مخاطر الأمن السيبراني ومراعاتها.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.OC-03", "title_en": "Legal, regulatory and contractual requirements managed", "title_ar": "إدارة المتطلبات القانونية والتنظيمية والتعاقدية", "requirement_en": "Legal, regulatory, and contractual requirements regarding cybersecurity — including privacy and civil liberties obligations — are understood and managed.", "requirement_ar": "يتم فهم وإدارة المتطلبات القانونية والتنظيمية والتعاقدية المتعلقة بالأمن السيبراني، بما في ذلك التزامات الخصوصية والحريات المدنية.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.OC-04", "title_en": "Critical objectives and services communicated", "title_ar": "إبلاغ الأهداف والخدمات الحرجة", "requirement_en": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated.", "requirement_ar": "يتم فهم وإبلاغ الأهداف والقدرات والخدمات الحرجة التي يعتمد عليها أو يتوقعها أصحاب المصلحة الخارجيون من المنظمة.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.OC-05", "title_en": "Dependencies on external resources understood", "title_ar": "فهم الاعتماد على الموارد الخارجية", "requirement_en": "Outcomes, capabilities, and services that the organization depends on are understood and communicated.", "requirement_ar": "يتم فهم وإبلاغ النتائج والقدرات والخدمات التي تعتمد عليها المنظمة.", "control_type": "governance", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Risk Management Strategy (GV.RM)",
+          "ar": "استراتيجية إدارة المخاطر (GV.RM)",
+          "controls": [
+            { "ref": "GV.RM-01", "title_en": "Risk management objectives established", "title_ar": "وضع أهداف إدارة المخاطر", "requirement_en": "Risk management objectives are established and agreed to by organizational stakeholders.", "requirement_ar": "يتم وضع أهداف إدارة المخاطر والاتفاق عليها من قبل أصحاب المصلحة في المنظمة.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.RM-02", "title_en": "Risk appetite and tolerance established", "title_ar": "تحديد شهية المخاطر ومستويات التحمل", "requirement_en": "Risk appetite and risk tolerance statements are established, communicated, and maintained.", "requirement_ar": "يتم وضع بيانات شهية المخاطر ومستويات تحمّلها وإبلاغها والمحافظة عليها.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.RM-03", "title_en": "Cybersecurity risk in enterprise risk management", "title_ar": "دمج مخاطر الأمن السيبراني في إدارة المخاطر المؤسسية", "requirement_en": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes.", "requirement_ar": "يتم تضمين أنشطة ونتائج إدارة مخاطر الأمن السيبراني ضمن عمليات إدارة المخاطر المؤسسية.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.RM-04", "title_en": "Strategic direction for risk response", "title_ar": "التوجيه الاستراتيجي للاستجابة للمخاطر", "requirement_en": "Strategic direction that describes appropriate risk response options is established and communicated.", "requirement_ar": "يتم وضع وإبلاغ التوجيه الاستراتيجي الذي يصف خيارات الاستجابة المناسبة للمخاطر.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.RM-05", "title_en": "Lines of communication for cybersecurity risk", "title_ar": "خطوط التواصل بشأن مخاطر الأمن السيبراني", "requirement_en": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties.", "requirement_ar": "يتم إنشاء خطوط تواصل عبر المنظمة بشأن مخاطر الأمن السيبراني، بما في ذلك المخاطر الناشئة عن الموردين والأطراف الخارجية.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.RM-06", "title_en": "Standardized risk calculation and prioritization", "title_ar": "توحيد حساب المخاطر وترتيب أولوياتها", "requirement_en": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated.", "requirement_ar": "يتم وضع وإبلاغ منهجية موحدة لحساب مخاطر الأمن السيبراني وتوثيقها وتصنيفها وترتيب أولوياتها.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.RM-07", "title_en": "Positive risks (opportunities) considered", "title_ar": "مراعاة المخاطر الإيجابية (الفرص)", "requirement_en": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions.", "requirement_ar": "يتم توصيف الفرص الاستراتيجية (المخاطر الإيجابية) وتضمينها في مناقشات مخاطر الأمن السيبراني في المنظمة.", "control_type": "governance", "criticality": "low" }
+          ]
+        },
+        {
+          "en": "Roles, Responsibilities and Authorities (GV.RR)",
+          "ar": "الأدوار والمسؤوليات والصلاحيات (GV.RR)",
+          "controls": [
+            { "ref": "GV.RR-01", "title_en": "Leadership accountability and risk-aware culture", "title_ar": "مساءلة القيادة وثقافة الوعي بالمخاطر", "requirement_en": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving.", "requirement_ar": "تتحمل قيادة المنظمة المسؤولية والمساءلة عن مخاطر الأمن السيبراني وتعزز ثقافة واعية بالمخاطر وأخلاقية ودائمة التحسين.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.RR-02", "title_en": "Roles and authorities established", "title_ar": "تحديد الأدوار والصلاحيات", "requirement_en": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced.", "requirement_ar": "يتم تحديد الأدوار والمسؤوليات والصلاحيات المتعلقة بإدارة مخاطر الأمن السيبراني وإبلاغها وفهمها وإنفاذها.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.RR-03", "title_en": "Adequate resources allocated", "title_ar": "تخصيص الموارد الكافية", "requirement_en": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies.", "requirement_ar": "يتم تخصيص موارد كافية تتناسب مع استراتيجية مخاطر الأمن السيبراني والأدوار والمسؤوليات والسياسات.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.RR-04", "title_en": "Cybersecurity in human resources practices", "title_ar": "تضمين الأمن السيبراني في ممارسات الموارد البشرية", "requirement_en": "Cybersecurity is included in human resources practices.", "requirement_ar": "يتم تضمين الأمن السيبراني في ممارسات الموارد البشرية.", "control_type": "governance", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Policy (GV.PO)",
+          "ar": "السياسات (GV.PO)",
+          "controls": [
+            { "ref": "GV.PO-01", "title_en": "Cybersecurity policy established and enforced", "title_ar": "وضع سياسة الأمن السيبراني وإنفاذها", "requirement_en": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities, and is communicated and enforced.", "requirement_ar": "يتم وضع سياسة لإدارة مخاطر الأمن السيبراني استناداً إلى سياق المنظمة واستراتيجيتها وأولوياتها، ويتم إبلاغها وإنفاذها.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.PO-02", "title_en": "Policy reviewed and updated", "title_ar": "مراجعة السياسة وتحديثها", "requirement_en": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission.", "requirement_ar": "تتم مراجعة سياسة إدارة مخاطر الأمن السيبراني وتحديثها وإبلاغها وإنفاذها بما يعكس التغيرات في المتطلبات والتهديدات والتقنية ورسالة المنظمة.", "control_type": "governance", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Oversight (GV.OV)",
+          "ar": "الإشراف (GV.OV)",
+          "controls": [
+            { "ref": "GV.OV-01", "title_en": "Strategy outcomes reviewed", "title_ar": "مراجعة نتائج الاستراتيجية", "requirement_en": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction.", "requirement_ar": "تتم مراجعة نتائج استراتيجية إدارة مخاطر الأمن السيبراني لتوجيه الاستراتيجية وتعديلها.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.OV-02", "title_en": "Strategy reviewed for coverage", "title_ar": "مراجعة الاستراتيجية للتأكد من شمولها", "requirement_en": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks.", "requirement_ar": "تتم مراجعة استراتيجية إدارة مخاطر الأمن السيبراني وتعديلها لضمان تغطية متطلبات المنظمة ومخاطرها.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.OV-03", "title_en": "Performance evaluated and reviewed", "title_ar": "تقييم الأداء ومراجعته", "requirement_en": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed.", "requirement_ar": "يتم تقييم أداء إدارة مخاطر الأمن السيبراني في المنظمة ومراجعته لتحديد التعديلات اللازمة.", "control_type": "governance", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Cybersecurity Supply Chain Risk Management (GV.SC)",
+          "ar": "إدارة مخاطر سلسلة الإمداد السيبرانية (GV.SC)",
+          "controls": [
+            { "ref": "GV.SC-01", "title_en": "Supply chain risk management program established", "title_ar": "إنشاء برنامج إدارة مخاطر سلسلة الإمداد", "requirement_en": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders.", "requirement_ar": "يتم إنشاء برنامج واستراتيجية وأهداف وسياسات وعمليات لإدارة مخاطر سلسلة الإمداد السيبرانية والاتفاق عليها من قبل أصحاب المصلحة.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.SC-02", "title_en": "Supplier roles and responsibilities", "title_ar": "أدوار ومسؤوليات الموردين", "requirement_en": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally.", "requirement_ar": "يتم تحديد أدوار ومسؤوليات الأمن السيبراني للموردين والعملاء والشركاء وإبلاغها وتنسيقها داخلياً وخارجياً.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.SC-03", "title_en": "Supply chain risk integrated with ERM", "title_ar": "دمج مخاطر سلسلة الإمداد مع إدارة المخاطر المؤسسية", "requirement_en": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes.", "requirement_ar": "يتم دمج إدارة مخاطر سلسلة الإمداد السيبرانية في عمليات إدارة المخاطر السيبرانية والمؤسسية وتقييم المخاطر والتحسين.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.SC-04", "title_en": "Suppliers known and prioritized", "title_ar": "معرفة الموردين وترتيب أولوياتهم", "requirement_en": "Suppliers are known and prioritized by criticality.", "requirement_ar": "يتم تحديد الموردين وترتيب أولوياتهم حسب أهميتهم.", "control_type": "governance", "criticality": "high" },
+            { "ref": "GV.SC-05", "title_en": "Requirements integrated into contracts", "title_ar": "تضمين المتطلبات في العقود", "requirement_en": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties.", "requirement_ar": "يتم وضع متطلبات معالجة مخاطر الأمن السيبراني في سلاسل الإمداد وترتيب أولوياتها وتضمينها في العقود والاتفاقيات مع الموردين والأطراف الخارجية.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "GV.SC-06", "title_en": "Due diligence before supplier relationships", "title_ar": "العناية الواجبة قبل التعاقد مع الموردين", "requirement_en": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships.", "requirement_ar": "يتم التخطيط وبذل العناية الواجبة للحد من المخاطر قبل الدخول في علاقات رسمية مع الموردين أو الأطراف الخارجية.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "GV.SC-07", "title_en": "Supplier risks monitored throughout the relationship", "title_ar": "مراقبة مخاطر الموردين طوال العلاقة", "requirement_en": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship.", "requirement_ar": "يتم فهم المخاطر الناشئة عن المورد ومنتجاته وخدماته والأطراف الخارجية وتسجيلها وترتيب أولوياتها وتقييمها والاستجابة لها ومراقبتها طوال فترة العلاقة.", "control_type": "detective", "criticality": "high" },
+            { "ref": "GV.SC-08", "title_en": "Suppliers included in incident planning", "title_ar": "إشراك الموردين في التخطيط للحوادث", "requirement_en": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities.", "requirement_ar": "يتم إشراك الموردين والأطراف الخارجية ذات العلاقة في أنشطة التخطيط للحوادث والاستجابة لها والتعافي منها.", "control_type": "corrective", "criticality": "medium" },
+            { "ref": "GV.SC-09", "title_en": "Supply chain security integrated across lifecycle", "title_ar": "دمج أمن سلسلة الإمداد عبر دورة الحياة", "requirement_en": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle.", "requirement_ar": "يتم دمج ممارسات أمن سلسلة الإمداد في برامج إدارة المخاطر السيبرانية والمؤسسية، ومراقبة أدائها طوال دورة حياة المنتجات والخدمات التقنية.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "GV.SC-10", "title_en": "Post-relationship supply chain planning", "title_ar": "التخطيط لما بعد انتهاء العلاقة مع الموردين", "requirement_en": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement.", "requirement_ar": "تتضمن خطط إدارة مخاطر سلسلة الإمداد السيبرانية أحكاماً للأنشطة التي تتم بعد انتهاء الشراكة أو اتفاقية الخدمة.", "control_type": "governance", "criticality": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Identify (ID)",
+      "ar": "التحديد (ID)",
+      "subdomains": [
+        {
+          "en": "Asset Management (ID.AM)",
+          "ar": "إدارة الأصول (ID.AM)",
+          "controls": [
+            { "ref": "ID.AM-01", "title_en": "Hardware inventory maintained", "title_ar": "الاحتفاظ بجرد الأجهزة", "requirement_en": "Inventories of hardware managed by the organization are maintained.", "requirement_ar": "يتم الاحتفاظ بجرد للأجهزة التي تديرها المنظمة.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "ID.AM-02", "title_en": "Software and services inventory maintained", "title_ar": "الاحتفاظ بجرد البرمجيات والخدمات", "requirement_en": "Inventories of software, services, and systems managed by the organization are maintained.", "requirement_ar": "يتم الاحتفاظ بجرد للبرمجيات والخدمات والأنظمة التي تديرها المنظمة.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "ID.AM-03", "title_en": "Network communication and data flows represented", "title_ar": "توثيق اتصالات الشبكة وتدفقات البيانات", "requirement_en": "Representations of the organization's authorized network communication and internal and external network data flows are maintained.", "requirement_ar": "يتم الاحتفاظ بتوثيق لاتصالات الشبكة المصرح بها وتدفقات البيانات الداخلية والخارجية للمنظمة.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "ID.AM-04", "title_en": "Supplier-provided services inventoried", "title_ar": "جرد الخدمات المقدمة من الموردين", "requirement_en": "Inventories of services provided by suppliers are maintained.", "requirement_ar": "يتم الاحتفاظ بجرد للخدمات التي يقدمها الموردون.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "ID.AM-05", "title_en": "Assets prioritized", "title_ar": "ترتيب أولويات الأصول", "requirement_en": "Assets are prioritized based on classification, criticality, resources, and impact on the mission.", "requirement_ar": "يتم ترتيب أولويات الأصول بناءً على التصنيف والأهمية والموارد والتأثير على رسالة المنظمة.", "control_type": "governance", "criticality": "high" },
+            { "ref": "ID.AM-07", "title_en": "Data inventories maintained", "title_ar": "الاحتفاظ بجرد البيانات", "requirement_en": "Inventories of data and corresponding metadata for designated data types are maintained.", "requirement_ar": "يتم الاحتفاظ بجرد للبيانات والبيانات الوصفية المقابلة لأنواع البيانات المحددة.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "ID.AM-08", "title_en": "Assets managed throughout lifecycle", "title_ar": "إدارة الأصول طوال دورة حياتها", "requirement_en": "Systems, hardware, software, services, and data are managed throughout their life cycles.", "requirement_ar": "تتم إدارة الأنظمة والأجهزة والبرمجيات والخدمات والبيانات طوال دورة حياتها.", "control_type": "preventive", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Risk Assessment (ID.RA)",
+          "ar": "تقييم المخاطر (ID.RA)",
+          "controls": [
+            { "ref": "ID.RA-01", "title_en": "Vulnerabilities identified and recorded", "title_ar": "تحديد الثغرات وتسجيلها", "requirement_en": "Vulnerabilities in assets are identified, validated, and recorded.", "requirement_ar": "يتم تحديد الثغرات في الأصول والتحقق منها وتسجيلها.", "control_type": "detective", "criticality": "high" },
+            { "ref": "ID.RA-02", "title_en": "Threat intelligence received", "title_ar": "تلقي معلومات التهديدات", "requirement_en": "Cyber threat intelligence is received from information sharing forums and sources.", "requirement_ar": "يتم تلقي معلومات التهديدات السيبرانية من منتديات ومصادر تبادل المعلومات.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "ID.RA-03", "title_en": "Threats identified and recorded", "title_ar": "تحديد التهديدات وتسجيلها", "requirement_en": "Internal and external threats to the organization are identified and recorded.", "requirement_ar": "يتم تحديد التهديدات الداخلية والخارجية للمنظمة وتسجيلها.", "control_type": "detective", "criticality": "high" },
+            { "ref": "ID.RA-04", "title_en": "Impacts and likelihoods identified", "title_ar": "تحديد التأثيرات والاحتمالات", "requirement_en": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded.", "requirement_ar": "يتم تحديد وتسجيل التأثيرات المحتملة واحتمالات استغلال التهديدات للثغرات.", "control_type": "governance", "criticality": "high" },
+            { "ref": "ID.RA-05", "title_en": "Risk prioritization", "title_ar": "ترتيب أولويات المخاطر", "requirement_en": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization.", "requirement_ar": "تُستخدم التهديدات والثغرات والاحتمالات والتأثيرات لفهم المخاطر الكامنة وتوجيه ترتيب أولويات الاستجابة للمخاطر.", "control_type": "governance", "criticality": "high" },
+            { "ref": "ID.RA-06", "title_en": "Risk responses chosen and tracked", "title_ar": "اختيار الاستجابات للمخاطر وتتبعها", "requirement_en": "Risk responses are chosen, prioritized, planned, tracked, and communicated.", "requirement_ar": "يتم اختيار الاستجابات للمخاطر وترتيب أولوياتها والتخطيط لها وتتبعها وإبلاغها.", "control_type": "governance", "criticality": "high" },
+            { "ref": "ID.RA-07", "title_en": "Changes and exceptions risk-managed", "title_ar": "إدارة مخاطر التغييرات والاستثناءات", "requirement_en": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked.", "requirement_ar": "تتم إدارة التغييرات والاستثناءات وتقييم أثرها على المخاطر وتسجيلها وتتبعها.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "ID.RA-08", "title_en": "Vulnerability disclosure processes", "title_ar": "عمليات الإفصاح عن الثغرات", "requirement_en": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established.", "requirement_ar": "يتم إنشاء عمليات لتلقي الإفصاحات عن الثغرات وتحليلها والاستجابة لها.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "ID.RA-09", "title_en": "Hardware and software authenticity assessed", "title_ar": "تقييم أصالة الأجهزة والبرمجيات", "requirement_en": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use.", "requirement_ar": "يتم تقييم أصالة وسلامة الأجهزة والبرمجيات قبل اقتنائها واستخدامها.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "ID.RA-10", "title_en": "Critical suppliers assessed", "title_ar": "تقييم الموردين الحرجين", "requirement_en": "Critical suppliers are assessed prior to acquisition.", "requirement_ar": "يتم تقييم الموردين الحرجين قبل الاقتناء.", "control_type": "preventive", "criticality": "high" }
+          ]
+        },
+        {
+          "en": "Improvement (ID.IM)",
+          "ar": "التحسين (ID.IM)",
+          "controls": [
+            { "ref": "ID.IM-01", "title_en": "Improvements from evaluations", "title_ar": "التحسينات المستمدة من التقييمات", "requirement_en": "Improvements are identified from evaluations.", "requirement_ar": "يتم تحديد التحسينات من خلال التقييمات.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "ID.IM-02", "title_en": "Improvements from tests and exercises", "title_ar": "التحسينات المستمدة من الاختبارات والتمارين", "requirement_en": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties.", "requirement_ar": "يتم تحديد التحسينات من الاختبارات والتمارين الأمنية، بما في ذلك تلك المنفذة بالتنسيق مع الموردين والأطراف الخارجية.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "ID.IM-03", "title_en": "Improvements from operational execution", "title_ar": "التحسينات المستمدة من التنفيذ التشغيلي", "requirement_en": "Improvements are identified from execution of operational processes, procedures, and activities.", "requirement_ar": "يتم تحديد التحسينات من تنفيذ العمليات والإجراءات والأنشطة التشغيلية.", "control_type": "governance", "criticality": "medium" },
+            { "ref": "ID.IM-04", "title_en": "Response and recovery plans maintained", "title_ar": "صيانة خطط الاستجابة والتعافي", "requirement_en": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved.", "requirement_ar": "يتم وضع خطط الاستجابة للحوادث وخطط الأمن السيبراني الأخرى المؤثرة على العمليات وإبلاغها وصيانتها وتحسينها.", "control_type": "corrective", "criticality": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Protect (PR)",
+      "ar": "الحماية (PR)",
+      "subdomains": [
+        {
+          "en": "Identity Management, Authentication and Access Control (PR.AA)",
+          "ar": "إدارة الهوية والمصادقة والتحكم بالوصول (PR.AA)",
+          "controls": [
+            { "ref": "PR.AA-01", "title_en": "Identities and credentials managed", "title_ar": "إدارة الهويات وبيانات الاعتماد", "requirement_en": "Identities and credentials for authorized users, services, and hardware are managed by the organization.", "requirement_ar": "تدير المنظمة الهويات وبيانات الاعتماد للمستخدمين والخدمات والأجهزة المصرح لها.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.AA-02", "title_en": "Identities proofed and bound", "title_ar": "إثبات الهويات وربطها", "requirement_en": "Identities are proofed and bound to credentials based on the context of interactions.", "requirement_ar": "يتم إثبات الهويات وربطها ببيانات الاعتماد بناءً على سياق التفاعلات.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "PR.AA-03", "title_en": "Users, services and hardware authenticated", "title_ar": "مصادقة المستخدمين والخدمات والأجهزة", "requirement_en": "Users, services, and hardware are authenticated.", "requirement_ar": "تتم مصادقة المستخدمين والخدمات والأجهزة.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.AA-04", "title_en": "Identity assertions protected", "title_ar": "حماية تأكيدات الهوية", "requirement_en": "Identity assertions are protected, conveyed, and verified.", "requirement_ar": "يتم حماية تأكيدات الهوية ونقلها والتحقق منها.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "PR.AA-05", "title_en": "Least privilege and separation of duties", "title_ar": "الحد الأدنى من الصلاحيات وفصل المهام", "requirement_en": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties.", "requirement_ar": "يتم تعريف صلاحيات الوصول والاستحقاقات والتفويضات في سياسة وإدارتها وإنفاذها ومراجعتها، مع تطبيق مبدأي الحد الأدنى من الصلاحيات وفصل المهام.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.AA-06", "title_en": "Physical access managed", "title_ar": "إدارة الوصول المادي", "requirement_en": "Physical access to assets is managed, monitored, and enforced commensurate with risk.", "requirement_ar": "تتم إدارة الوصول المادي إلى الأصول ومراقبته وإنفاذه بما يتناسب مع المخاطر.", "control_type": "preventive", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Awareness and Training (PR.AT)",
+          "ar": "التوعية والتدريب (PR.AT)",
+          "controls": [
+            { "ref": "PR.AT-01", "title_en": "Personnel awareness and training", "title_ar": "توعية وتدريب العاملين", "requirement_en": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind.", "requirement_ar": "يتم تزويد العاملين بالتوعية والتدريب ليمتلكوا المعرفة والمهارات لأداء مهامهم العامة مع مراعاة مخاطر الأمن السيبراني.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "PR.AT-02", "title_en": "Specialized role training", "title_ar": "التدريب المتخصص حسب الدور", "requirement_en": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind.", "requirement_ar": "يتم تزويد الأفراد في الأدوار المتخصصة بالتوعية والتدريب ليمتلكوا المعرفة والمهارات لأداء مهامهم مع مراعاة مخاطر الأمن السيبراني.", "control_type": "preventive", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Data Security (PR.DS)",
+          "ar": "أمن البيانات (PR.DS)",
+          "controls": [
+            { "ref": "PR.DS-01", "title_en": "Data-at-rest protected", "title_ar": "حماية البيانات المخزنة", "requirement_en": "The confidentiality, integrity, and availability of data-at-rest are protected.", "requirement_ar": "تتم حماية سرية وسلامة وتوافر البيانات المخزنة.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.DS-02", "title_en": "Data-in-transit protected", "title_ar": "حماية البيانات أثناء النقل", "requirement_en": "The confidentiality, integrity, and availability of data-in-transit are protected.", "requirement_ar": "تتم حماية سرية وسلامة وتوافر البيانات أثناء النقل.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.DS-10", "title_en": "Data-in-use protected", "title_ar": "حماية البيانات قيد الاستخدام", "requirement_en": "The confidentiality, integrity, and availability of data-in-use are protected.", "requirement_ar": "تتم حماية سرية وسلامة وتوافر البيانات قيد الاستخدام.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "PR.DS-11", "title_en": "Backups created and tested", "title_ar": "إنشاء النسخ الاحتياطية واختبارها", "requirement_en": "Backups of data are created, protected, maintained, and tested.", "requirement_ar": "يتم إنشاء النسخ الاحتياطية للبيانات وحمايتها وصيانتها واختبارها.", "control_type": "corrective", "criticality": "high" }
+          ]
+        },
+        {
+          "en": "Platform Security (PR.PS)",
+          "ar": "أمن المنصات (PR.PS)",
+          "controls": [
+            { "ref": "PR.PS-01", "title_en": "Configuration management practices", "title_ar": "ممارسات إدارة الإعدادات", "requirement_en": "Configuration management practices are established and applied.", "requirement_ar": "يتم وضع ممارسات إدارة الإعدادات وتطبيقها.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.PS-02", "title_en": "Software maintained and removed", "title_ar": "صيانة البرمجيات وإزالتها", "requirement_en": "Software is maintained, replaced, and removed commensurate with risk.", "requirement_ar": "تتم صيانة البرمجيات واستبدالها وإزالتها بما يتناسب مع المخاطر.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.PS-03", "title_en": "Hardware maintained and removed", "title_ar": "صيانة الأجهزة وإزالتها", "requirement_en": "Hardware is maintained, replaced, and removed commensurate with risk.", "requirement_ar": "تتم صيانة الأجهزة واستبدالها وإزالتها بما يتناسب مع المخاطر.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "PR.PS-04", "title_en": "Log records generated", "title_ar": "إنشاء سجلات الأحداث", "requirement_en": "Log records are generated and made available for continuous monitoring.", "requirement_ar": "يتم إنشاء سجلات الأحداث وإتاحتها للمراقبة المستمرة.", "control_type": "detective", "criticality": "high" },
+            { "ref": "PR.PS-05", "title_en": "Unauthorized software prevented", "title_ar": "منع البرمجيات غير المصرح بها", "requirement_en": "Installation and execution of unauthorized software are prevented.", "requirement_ar": "يتم منع تثبيت وتشغيل البرمجيات غير المصرح بها.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.PS-06", "title_en": "Secure software development practices", "title_ar": "ممارسات التطوير الآمن للبرمجيات", "requirement_en": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle.", "requirement_ar": "يتم دمج ممارسات التطوير الآمن للبرمجيات ومراقبة أدائها طوال دورة حياة تطوير البرمجيات.", "control_type": "preventive", "criticality": "high" }
+          ]
+        },
+        {
+          "en": "Technology Infrastructure Resilience (PR.IR)",
+          "ar": "صمود البنية التحتية التقنية (PR.IR)",
+          "controls": [
+            { "ref": "PR.IR-01", "title_en": "Networks protected from unauthorized access", "title_ar": "حماية الشبكات من الوصول غير المصرح به", "requirement_en": "Networks and environments are protected from unauthorized logical access and usage.", "requirement_ar": "تتم حماية الشبكات والبيئات من الوصول والاستخدام المنطقي غير المصرح به.", "control_type": "preventive", "criticality": "high" },
+            { "ref": "PR.IR-02", "title_en": "Protection from environmental threats", "title_ar": "الحماية من التهديدات البيئية", "requirement_en": "The organization's technology assets are protected from environmental threats.", "requirement_ar": "تتم حماية الأصول التقنية للمنظمة من التهديدات البيئية.", "control_type": "preventive", "criticality": "medium" },
+            { "ref": "PR.IR-03", "title_en": "Resilience requirements implemented", "title_ar": "تنفيذ متطلبات الصمود", "requirement_en": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations.", "requirement_ar": "يتم تنفيذ آليات لتحقيق متطلبات الصمود في الظروف العادية والصعبة.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "PR.IR-04", "title_en": "Adequate resource capacity maintained", "title_ar": "الحفاظ على سعة الموارد الكافية", "requirement_en": "Adequate resource capacity to ensure availability is maintained.", "requirement_ar": "يتم الحفاظ على سعة موارد كافية لضمان التوافر.", "control_type": "preventive", "criticality": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Detect (DE)",
+      "ar": "الاكتشاف (DE)",
+      "subdomains": [
+        {
+          "en": "Continuous Monitoring (DE.CM)",
+          "ar": "المراقبة المستمرة (DE.CM)",
+          "controls": [
+            { "ref": "DE.CM-01", "title_en": "Networks monitored", "title_ar": "مراقبة الشبكات", "requirement_en": "Networks and network services are monitored to find potentially adverse events.", "requirement_ar": "تتم مراقبة الشبكات وخدماتها لاكتشاف الأحداث الضارة المحتملة.", "control_type": "detective", "criticality": "high" },
+            { "ref": "DE.CM-02", "title_en": "Physical environment monitored", "title_ar": "مراقبة البيئة المادية", "requirement_en": "The physical environment is monitored to find potentially adverse events.", "requirement_ar": "تتم مراقبة البيئة المادية لاكتشاف الأحداث الضارة المحتملة.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "DE.CM-03", "title_en": "Personnel activity and technology usage monitored", "title_ar": "مراقبة نشاط العاملين واستخدام التقنية", "requirement_en": "Personnel activity and technology usage are monitored to find potentially adverse events.", "requirement_ar": "تتم مراقبة نشاط العاملين واستخدام التقنية لاكتشاف الأحداث الضارة المحتملة.", "control_type": "detective", "criticality": "high" },
+            { "ref": "DE.CM-06", "title_en": "External service provider activities monitored", "title_ar": "مراقبة أنشطة مقدمي الخدمات الخارجيين", "requirement_en": "External service provider activities and services are monitored to find potentially adverse events.", "requirement_ar": "تتم مراقبة أنشطة وخدمات مقدمي الخدمات الخارجيين لاكتشاف الأحداث الضارة المحتملة.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "DE.CM-09", "title_en": "Computing hardware and software monitored", "title_ar": "مراقبة الأجهزة والبرمجيات", "requirement_en": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events.", "requirement_ar": "تتم مراقبة الأجهزة والبرمجيات وبيئات التشغيل وبياناتها لاكتشاف الأحداث الضارة المحتملة.", "control_type": "detective", "criticality": "high" }
+          ]
+        },
+        {
+          "en": "Adverse Event Analysis (DE.AE)",
+          "ar": "تحليل الأحداث الضارة (DE.AE)",
+          "controls": [
+            { "ref": "DE.AE-02", "title_en": "Adverse events analyzed", "title_ar": "تحليل الأحداث الضارة", "requirement_en": "Potentially adverse events are analyzed to better understand associated activities.", "requirement_ar": "يتم تحليل الأحداث الضارة المحتملة لفهم الأنشطة المرتبطة بها بشكل أفضل.", "control_type": "detective", "criticality": "high" },
+            { "ref": "DE.AE-03", "title_en": "Information correlated from multiple sources", "title_ar": "ربط المعلومات من مصادر متعددة", "requirement_en": "Information is correlated from multiple sources.", "requirement_ar": "يتم ربط المعلومات من مصادر متعددة.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "DE.AE-04", "title_en": "Estimated impact and scope understood", "title_ar": "فهم التأثير والنطاق المقدر", "requirement_en": "The estimated impact and scope of adverse events are understood.", "requirement_ar": "يتم فهم التأثير والنطاق المقدر للأحداث الضارة.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "DE.AE-06", "title_en": "Information provided to authorized staff and tools", "title_ar": "توفير المعلومات للموظفين والأدوات المخولة", "requirement_en": "Information on adverse events is provided to authorized staff and tools.", "requirement_ar": "يتم توفير المعلومات عن الأحداث الضارة للموظفين والأدوات المخولة.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "DE.AE-07", "title_en": "Threat intelligence integrated into analysis", "title_ar": "دمج معلومات التهديدات في التحليل", "requirement_en": "Cyber threat intelligence and other contextual information are integrated into the analysis.", "requirement_ar": "يتم دمج معلومات التهديدات السيبرانية والمعلومات السياقية الأخرى في التحليل.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "DE.AE-08", "title_en": "Incidents declared", "title_ar": "الإعلان عن الحوادث", "requirement_en": "Incidents are declared when adverse events meet the defined incident criteria.", "requirement_ar": "يتم الإعلان عن الحوادث عندما تستوفي الأحداث الضارة معايير الحادث المحددة.", "control_type": "detective", "criticality": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Respond (RS)",
+      "ar": "الاستجابة (RS)",
+      "subdomains": [
+        {
+          "en": "Incident Management (RS.MA)",
+          "ar": "إدارة الحوادث (RS.MA)",
+          "controls": [
+            { "ref": "RS.MA-01", "title_en": "Response plan executed", "title_ar": "تنفيذ خطة الاستجابة", "requirement_en": "The incident response plan is executed in coordination with relevant third parties once an incident is declared.", "requirement_ar": "يتم تنفيذ خطة الاستجابة للحوادث بالتنسيق مع الأطراف الخارجية ذات العلاقة بمجرد الإعلان عن الحادث.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RS.MA-02", "title_en": "Incident reports triaged and validated", "title_ar": "فرز تقارير الحوادث والتحقق منها", "requirement_en": "Incident reports are triaged and validated.", "requirement_ar": "يتم فرز تقارير الحوادث والتحقق منها.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RS.MA-03", "title_en": "Incidents categorized and prioritized", "title_ar": "تصنيف الحوادث وترتيب أولوياتها", "requirement_en": "Incidents are categorized and prioritized.", "requirement_ar": "يتم تصنيف الحوادث وترتيب أولوياتها.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RS.MA-04", "title_en": "Incidents escalated", "title_ar": "تصعيد الحوادث", "requirement_en": "Incidents are escalated or elevated as needed.", "requirement_ar": "يتم تصعيد الحوادث عند الحاجة.", "control_type": "corrective", "criticality": "medium" },
+            { "ref": "RS.MA-05", "title_en": "Recovery initiation criteria applied", "title_ar": "تطبيق معايير بدء التعافي", "requirement_en": "The criteria for initiating incident recovery are applied.", "requirement_ar": "يتم تطبيق معايير بدء التعافي من الحوادث.", "control_type": "corrective", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Incident Analysis (RS.AN)",
+          "ar": "تحليل الحوادث (RS.AN)",
+          "controls": [
+            { "ref": "RS.AN-03", "title_en": "Analysis to establish what happened", "title_ar": "التحليل لتحديد ما حدث", "requirement_en": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident.", "requirement_ar": "يتم إجراء التحليل لتحديد ما حدث أثناء الحادث والسبب الجذري له.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RS.AN-06", "title_en": "Investigation actions recorded", "title_ar": "تسجيل إجراءات التحقيق", "requirement_en": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved.", "requirement_ar": "يتم تسجيل الإجراءات المنفذة أثناء التحقيق والحفاظ على سلامة السجلات ومصدرها.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "RS.AN-07", "title_en": "Incident data and metadata preserved", "title_ar": "حفظ بيانات الحادث والبيانات الوصفية", "requirement_en": "Incident data and metadata are collected, and their integrity and provenance are preserved.", "requirement_ar": "يتم جمع بيانات الحادث والبيانات الوصفية والحفاظ على سلامتها ومصدرها.", "control_type": "detective", "criticality": "medium" },
+            { "ref": "RS.AN-08", "title_en": "Incident magnitude estimated", "title_ar": "تقدير حجم الحادث", "requirement_en": "An incident's magnitude is estimated and validated.", "requirement_ar": "يتم تقدير حجم الحادث والتحقق منه.", "control_type": "corrective", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Incident Response Reporting and Communication (RS.CO)",
+          "ar": "الإبلاغ والتواصل بشأن الاستجابة للحوادث (RS.CO)",
+          "controls": [
+            { "ref": "RS.CO-02", "title_en": "Internal and external stakeholders notified", "title_ar": "إخطار أصحاب المصلحة الداخليين والخارجيين", "requirement_en": "Internal and external stakeholders are notified of incidents.", "requirement_ar": "يتم إخطار أصحاب المصلحة الداخليين والخارجيين بالحوادث.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RS.CO-03", "title_en": "Information shared with designated parties", "title_ar": "مشاركة المعلومات مع الأطراف المحددة", "requirement_en": "Information is shared with designated internal and external stakeholders.", "requirement_ar": "تتم مشاركة المعلومات مع أصحاب المصلحة الداخليين والخارجيين المحددين.", "control_type": "corrective", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Incident Mitigation (RS.MI)",
+          "ar": "الحد من الحوادث (RS.MI)",
+          "controls": [
+            { "ref": "RS.MI-01", "title_en": "Incidents contained", "title_ar": "احتواء الحوادث", "requirement_en": "Incidents are contained.", "requirement_ar": "يتم احتواء الحوادث.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RS.MI-02", "title_en": "Incidents eradicated", "title_ar": "استئصال الحوادث", "requirement_en": "Incidents are eradicated.", "requirement_ar": "يتم استئصال الحوادث.", "control_type": "corrective", "criticality": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Recover (RC)",
+      "ar": "التعافي (RC)",
+      "subdomains": [
+        {
+          "en": "Incident Recovery Plan Execution (RC.RP)",
+          "ar": "تنفيذ خطة التعافي من الحوادث (RC.RP)",
+          "controls": [
+            { "ref": "RC.RP-01", "title_en": "Recovery plan executed", "title_ar": "تنفيذ خطة التعافي", "requirement_en": "The recovery portion of the incident response plan is executed once initiated from the incident response process.", "requirement_ar": "يتم تنفيذ الجزء الخاص بالتعافي من خطة الاستجابة للحوادث بمجرد بدئه من عملية الاستجابة.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RC.RP-02", "title_en": "Recovery actions selected and prioritized", "title_ar": "اختيار إجراءات التعافي وترتيب أولوياتها", "requirement_en": "Recovery actions are selected, scoped, prioritized, and performed.", "requirement_ar": "يتم اختيار إجراءات التعافي وتحديد نطاقها وترتيب أولوياتها وتنفيذها.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RC.RP-03", "title_en": "Backup integrity verified before restoration", "title_ar": "التحقق من سلامة النسخ الاحتياطية قبل الاستعادة", "requirement_en": "The integrity of backups and other restoration assets is verified before using them for restoration.", "requirement_ar": "يتم التحقق من سلامة النسخ الاحتياطية وأصول الاستعادة الأخرى قبل استخدامها للاستعادة.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RC.RP-04", "title_en": "Critical functions considered post-incident", "title_ar": "مراعاة الوظائف الحرجة بعد الحادث", "requirement_en": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms.", "requirement_ar": "يتم مراعاة الوظائف الحرجة للرسالة وإدارة مخاطر الأمن السيبراني لتحديد معايير التشغيل بعد الحادث.", "control_type": "corrective", "criticality": "medium" },
+            { "ref": "RC.RP-05", "title_en": "Restored assets verified", "title_ar": "التحقق من الأصول المستعادة", "requirement_en": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed.", "requirement_ar": "يتم التحقق من سلامة الأصول المستعادة، واستعادة الأنظمة والخدمات، وتأكيد حالة التشغيل الطبيعية.", "control_type": "corrective", "criticality": "high" },
+            { "ref": "RC.RP-06", "title_en": "End of recovery declared", "title_ar": "الإعلان عن انتهاء التعافي", "requirement_en": "The end of incident recovery is declared based on criteria, and incident-related documentation is completed.", "requirement_ar": "يتم الإعلان عن انتهاء التعافي من الحادث بناءً على معايير محددة، واستكمال الوثائق المتعلقة بالحادث.", "control_type": "corrective", "criticality": "medium" }
+          ]
+        },
+        {
+          "en": "Incident Recovery Communication (RC.CO)",
+          "ar": "التواصل بشأن التعافي من الحوادث (RC.CO)",
+          "controls": [
+            { "ref": "RC.CO-03", "title_en": "Recovery progress communicated", "title_ar": "إبلاغ تقدم التعافي", "requirement_en": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders.", "requirement_ar": "يتم إبلاغ أنشطة التعافي والتقدم في استعادة القدرات التشغيلية لأصحاب المصلحة الداخليين والخارجيين المحددين.", "control_type": "corrective", "criticality": "medium" },
+            { "ref": "RC.CO-04", "title_en": "Public updates shared", "title_ar": "مشاركة التحديثات العامة", "requirement_en": "Public updates on incident recovery are shared using approved methods and messaging.", "requirement_ar": "تتم مشاركة التحديثات العامة بشأن التعافي من الحوادث باستخدام الأساليب والرسائل المعتمدة.", "control_type": "corrective", "criticality": "low" }
+          ]
+        }
+      ]
+    }
+  ]
+}

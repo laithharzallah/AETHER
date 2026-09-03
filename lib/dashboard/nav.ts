@@ -1,5 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import {
+  BookOpen,
+  Sparkles,
   ClipboardList,
   FileText,
   LayoutDashboard,
@@ -27,6 +29,16 @@ export const dashboardNavItems: DashboardNavItem[] = [
     comingSoon: true,
   },
   {
+    label: 'Ask AETHER',
+    href: '/dashboard/assistant',
+    icon: Sparkles,
+  },
+  {
+    label: 'Regulatory Library',
+    href: '/dashboard/regulations',
+    icon: BookOpen,
+  },
+  {
     label: 'Policy Generator',
     href: '/dashboard/policy-generator',
     icon: FileText,
@@ -35,7 +47,6 @@ export const dashboardNavItems: DashboardNavItem[] = [
     label: 'Policies',
     href: '/dashboard/policies',
     icon: ScrollText,
-    comingSoon: true,
   },
   {
     label: 'Audit Trail',
