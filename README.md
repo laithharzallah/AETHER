@@ -20,6 +20,9 @@ Open [http://localhost:3000](http://localhost:3000). If port 3000 is already in 
 | Module | Route | Status |
 |---|---|---|
 | Ask AETHER (GRC assistant) | `/dashboard/assistant` | Live — streaming chat with tool access to the library and your policies, EN/AR, cited answers, saved conversations |
+| Compliance Programs | `/dashboard/programs` | Live — adopt a framework, per-control status/owner/due/evidence, readiness %, AI readiness review |
+| Evidence | `/dashboard/evidence` | Live — private storage bucket, validity/expiry, review workflow, linked to controls |
+| ICFR | `/dashboard/icfr` | Live — COSO risk-control matrices, 7 cycle templates (52 risks / 84 controls), design & operating tests, deficiency log, AI RCM + test procedures |
 | Regulatory Library | `/dashboard/regulations` | Live — 10 frameworks, 511 controls, EN/AR |
 | Policy Generator | `/dashboard/policy-generator` | Live — grounded in the library, cites real control IDs |
 | Policies | `/dashboard/policies` | Live — saved policies with control mappings, status workflow |
@@ -61,6 +64,24 @@ The seed is idempotent (`on conflict ... do update`), so editing a row's text an
 
 `/api/assistant` runs a Claude tool-use loop (max 6 rounds) with seven read-only tools: `list_frameworks`, `get_framework`, `search_controls`, `get_control`, `list_domain_controls`, `list_policies`, `get_policy`. All tools query through the user's Supabase session, so RLS applies. The response streams as NDJSON events (`text`, `tool`, `citations`, `done`); citations are resolved by matching control IDs in the final answer against the controls the tools actually returned, so the assistant cannot cite something it did not read. Conversations and messages persist per organization (`conversations`, `messages`).
 
+## Compliance Programs + Evidence
+
+- **Programs** (`/dashboard/programs`) — adopt a framework from the Regulatory Library as a program. `create_program()` seeds one `control_implementations` row per library control; the `program_summary` view rolls up readiness (`implemented / (total - not_applicable)`). The program page is a control matrix grouped by domain: per-control status, owner, due date, notes, N/A justification, linked evidence, bulk status updates, and a streamed AI readiness review (`POST /api/programs/[id]/review`, Claude Sonnet) with executive summary, readiness by domain, top gaps, 30/60/90-day actions and evidence weaknesses.
+- **Evidence** (`/dashboard/evidence`) — tenant evidence vault. Files upload directly from the browser to the private `evidence` storage bucket under `<organization_id>/…` (25 MB max; pdf/docx/xlsx/png/jpg/csv/txt/zip), or record a link / note. Evidence has validity dates (expired / expiring-soon badges), owner/admin accept/reject review, and can be linked to any control implementation. Downloads use short-lived signed URLs.
+- Schema: `supabase/migrations/20260903140000_compliance_programs.sql` (`programs`, `control_implementations`, `evidence`, `evidence_links`, `program_summary`, `create_program`, storage bucket + object policies). All tables are RLS tenant-scoped via `current_user_org_id()`; deletes require owner/admin.
+- Code: `lib/programs/queries.ts`, `lib/actions/programs.ts`, `lib/actions/evidence.ts`, `components/programs/*`, `components/evidence/*`.
+
+## ICFR (Internal Control over Financial Reporting)
+
+`/dashboard/icfr` — COSO 2013 / SOX 404-style control program for CMA-listed and Aramco-affiliate style entities.
+
+- **Risk & control matrices by cycle** — import Big-Four-quality templates (P2P, O2C, R2R, PAY, FA, TRS, ITGC; 52 risks / 84 controls) or generate an RCM with Claude (`POST /api/icfr/generate-rcm`, validated JSON → `importGeneratedRcm`).
+- **Process workspace** (`/dashboard/icfr/[processId]`) — matrix view (risks × controls, click to link), controls table with type / nature / frequency / key / COSO / owner / latest design & operating results, risks table with assertions and likelihood × impact.
+- **Control drawer** — description, evidence, risk links, design/operating tests (period, sample, exceptions, result, tester, workpaper ref), AI-drafted test procedure (`POST /api/icfr/test-procedure`, streaming Markdown with frequency-based sample sizes), and deficiency logging.
+- **Deficiency log** (`/dashboard/icfr/deficiencies`) — deficiency / significant deficiency / material weakness with remediation owner, due date (overdue highlighting) and inline status updates.
+
+Schema: `supabase/migrations/20260903150000_icfr.sql` (tables `icfr_processes`, `icfr_risks`, `icfr_controls`, `icfr_risk_controls`, `icfr_tests`, `icfr_deficiencies`, global `icfr_templates` / `icfr_template_items`, view `icfr_process_summary`, function `import_icfr_template`). Template seed is generated from `supabase/seed/icfr-templates/*.json` by `node scripts/build-icfr-templates.mjs`.
+
 ## Project layout
 
 - `app/` — routes and layouts
@@ -69,6 +90,8 @@ The seed is idempotent (`on conflict ... do update`), so editing a row's text an
 - `components/regulations/` — bilingual control explorer
 - `components/policy-generator/` — generator client with save-to-library
 - `lib/regulatory-library/` — queries, citation extraction, prompt index builder
+- `lib/programs/`, `lib/evidence/`, `components/programs/`, `components/evidence/` — compliance programs and evidence vault
+- `lib/icfr/`, `components/icfr/`, `supabase/seed/icfr-templates/`, `scripts/build-icfr-templates.mjs` — ICFR module and template generator
 - `lib/assistant/` — assistant system prompt, tool definitions and executors, conversation queries
 - `components/assistant/` — chat client (sidebar, streaming thread, citation chips)
 - `lib/actions/` — server actions (auth, policies)
@@ -80,6 +103,6 @@ The seed is idempotent (`on conflict ... do update`), so editing a row's text an
 
 ## Database
 
-Tables: `organizations`, `profiles`, `client_workspaces`, `modules`, `organization_modules`, `intelligence_sources`, `intelligence_items`, `risk_signals`, `briefs`, `frameworks`, `controls`, `policies`, `policy_control_mappings`, `conversations`, `messages`. View: `framework_summary`.
+Tables: `organizations`, `profiles`, `client_workspaces`, `modules`, `organization_modules`, `intelligence_sources`, `intelligence_items`, `risk_signals`, `briefs`, `frameworks`, `controls`, `policies`, `policy_control_mappings`, `conversations`, `messages`, `programs`, `control_implementations`, `evidence`, `evidence_links`, `icfr_processes`, `icfr_risks`, `icfr_controls`, `icfr_risk_controls`, `icfr_tests`, `icfr_deficiencies`, `icfr_templates`, `icfr_template_items`. Views: `framework_summary`, `program_summary`, `icfr_process_summary`. Functions: `create_program`, `import_icfr_template`. Storage bucket: `evidence` (private, org-scoped paths).
 
 Regenerate types after schema changes: `npm run db:types`.
