@@ -5,6 +5,7 @@ import {
   ClipboardCheck,
   FileText,
   FolderLock,
+  Radar,
   Scale,
   ScrollText,
   Sparkles,
@@ -13,6 +14,8 @@ import { getDashboardContext } from '@/lib/dashboard/get-dashboard-context'
 import { getLibraryStats } from '@/lib/regulatory-library/queries'
 import { listPrograms } from '@/lib/programs/queries'
 import { getIcfrDashboard } from '@/lib/icfr/queries'
+import { getAuditDashboard } from '@/lib/audit/queries'
+import { getBoardAggregate } from '@/lib/erm/queries'
 import { createClient } from '@/lib/supabase/server'
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
@@ -29,12 +32,14 @@ export const dynamic = 'force-dynamic'
 
 export default async function DashboardOverviewPage() {
   const supabase = await createClient()
-  const [{ orgName, fullName }, stats, programs, icfr, policyCountRes, evidenceCountRes] =
+  const [{ orgName, fullName }, stats, programs, icfr, audit, erm, policyCountRes, evidenceCountRes] =
     await Promise.all([
       getDashboardContext(),
       getLibraryStats(),
       listPrograms(),
       getIcfrDashboard(),
+      getAuditDashboard(),
+      getBoardAggregate(),
       supabase.from('policies').select('id', { count: 'exact', head: true }),
       supabase.from('evidence').select('id', { count: 'exact', head: true }),
     ])
@@ -60,7 +65,7 @@ export default async function DashboardOverviewPage() {
       </p>
 
       {/* Posture strip */}
-      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Stat
           label="Compliance readiness"
           value={avgReadiness === null ? '—' : `${avgReadiness}%`}
@@ -99,6 +104,28 @@ export default async function DashboardOverviewPage() {
           value={evidenceCount.toString()}
           hint={`${policyCount} polic${policyCount === 1 ? 'y' : 'ies'} in library`}
           href="/dashboard/evidence"
+        />
+        <Stat
+          label="Audit plan delivered"
+          value={audit.currentPlan ? `${audit.planCompletionPct}%` : '—'}
+          hint={
+            audit.currentPlan
+              ? `${audit.engagementsActive} engagement${audit.engagementsActive === 1 ? '' : 's'} in progress · ${audit.observationsOpen} open observation${audit.observationsOpen === 1 ? '' : 's'}`
+              : 'No approved audit plan yet'
+          }
+          href="/dashboard/audit"
+          tone={audit.actionsOverdue > 0 ? 'warn' : 'default'}
+        />
+        <Stat
+          label="Risks outside appetite"
+          value={erm.totals.risks === 0 ? '—' : erm.totals.outsideAppetite.toString()}
+          hint={
+            erm.totals.risks === 0
+              ? 'No risks on the register yet'
+              : `${erm.byBand.extreme + erm.byBand.high} extreme/high residual · ${erm.totals.krisInBreach} KRI${erm.totals.krisInBreach === 1 ? '' : 's'} in breach`
+          }
+          href="/dashboard/erm"
+          tone={erm.totals.outsideAppetite > 0 ? 'danger' : erm.totals.krisInBreach > 0 ? 'warn' : 'default'}
         />
       </div>
 
@@ -181,6 +208,28 @@ export default async function DashboardOverviewPage() {
             }
             href="/dashboard/icfr"
             cta="Open ICFR"
+          />
+          <ModuleCard
+            icon={ClipboardCheck}
+            title="Internal Audit"
+            description={
+              audit.universeTotal > 0
+                ? `${audit.universeTotal} auditable entities, ${audit.coveragePct}% covered, ${audit.actionsOverdue} overdue action${audit.actionsOverdue === 1 ? '' : 's'}.`
+                : 'Risk-scored audit universe, annual plan, engagements with work programs, workpapers, observations and a follow-up register — to IIA 2024 Standards.'
+            }
+            href="/dashboard/audit"
+            cta="Open internal audit"
+          />
+          <ModuleCard
+            icon={Radar}
+            title="Enterprise Risk"
+            description={
+              erm.totals.risks > 0
+                ? `${erm.totals.open} open risks, ${erm.totals.outsideAppetite} outside appetite, ${erm.totals.krisInBreach} KRIs in breach.`
+                : 'Board-set appetite, bilingual taxonomy, 5×5 heat map, treatments and KRIs — COSO ERM and ISO 31000 aligned.'
+            }
+            href="/dashboard/erm"
+            cta="Open risk register"
           />
           <ModuleCard
             icon={BookOpen}

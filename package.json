@@ -41,7 +41,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "shadcn": "^4.8.0",
-    "supabase": "^2.105.0",
+    "supabase": "^2.116.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

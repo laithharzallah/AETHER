@@ -105,6 +105,43 @@ export const ASSISTANT_TOOLS: Anthropic.Tool[] = [
       additionalProperties: false,
     },
   },
+  {
+    name: 'list_programs',
+    description:
+      "List the organization's compliance programs (framework adopted, readiness %, implemented / in progress / not started / N/A counts, target date). Use when the user asks how ready they are, where gaps are, or about a specific program.",
+    input_schema: { type: 'object', properties: {}, additionalProperties: false },
+  },
+  {
+    name: 'get_audit_overview',
+    description:
+      "The organization's internal audit position: engagements with status, rating and progress; open observations by rating (with title, condition, cause and recommendation); management actions that are overdue or awaiting verification. Use for questions about audits, findings, audit reports, follow-up, or what the audit committee should see.",
+    input_schema: {
+      type: 'object',
+      properties: {
+        engagement_id: { type: 'string', description: 'Optional: restrict to one engagement id' },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: 'list_erm_risks',
+    description:
+      "The organization's enterprise risk register: each risk with category, owner, inherent / residual / target scores (1–25), trend, appetite level and whether it breaches appetite, open and overdue treatments, KRI status. Also returns KRIs currently red or amber. Use for questions about top risks, appetite, heat map, KRIs, or board risk reporting.",
+    input_schema: {
+      type: 'object',
+      properties: {
+        status: { type: 'string', description: 'Optional risk status filter, e.g. "open", "monitoring", "closed"' },
+        min_residual_score: { type: 'number', description: 'Optional: only risks with residual score at or above this value' },
+      },
+      additionalProperties: false,
+    },
+  },
+  {
+    name: 'get_icfr_overview',
+    description:
+      "The organization's ICFR position: processes with control counts, key controls tested and effective, and the open deficiency log with severity (deficiency / significant_deficiency / material_weakness), remediation plan and due date. Use for SOX-style, COSO, financial-reporting control or deficiency questions.",
+    input_schema: { type: 'object', properties: {}, additionalProperties: false },
+  },
 ]
 
 export type ToolContext = {
@@ -369,6 +406,103 @@ export async function executeTool(
           content_markdown: content,
         },
         summary: `Loaded policy "${p.title}"`,
+      }
+    }
+
+    case 'list_programs': {
+      const { data, error } = await supabase
+        .from('program_summary')
+        .select('id, name, status, framework_code, framework_short_name, framework_jurisdiction, readiness_pct, total_controls, implemented, in_progress, not_started, not_applicable, target_date, updated_at')
+        .order('updated_at', { ascending: false })
+      if (error) return { result: { error: error.message }, summary: 'Failed to list programs' }
+      return { result: { programs: data ?? [] }, summary: `Listed ${data?.length ?? 0} program${data?.length === 1 ? '' : 's'}` }
+    }
+
+    case 'get_audit_overview': {
+      const engagementId = input.engagement_id ? String(input.engagement_id) : null
+      let engQ = supabase
+        .from('audit_engagement_summary')
+        .select('id, code, title, type, status, universe_name, overall_rating, opinion, start_date, fieldwork_start, fieldwork_end, report_target_date, report_issued_at, procedures_total, procedures_complete, workpapers_total, workpapers_reviewed, observations_total, observations_critical, observations_high, observations_medium, observations_low, open_actions, overdue_actions, executive_summary')
+        .order('start_date', { ascending: false })
+        .limit(40)
+      if (engagementId) engQ = engQ.eq('id', engagementId)
+      const { data: engagements, error: e1 } = await engQ
+      if (e1) return { result: { error: e1.message }, summary: 'Failed to load engagements' }
+
+      let obsQ = supabase
+        .from('audit_observations')
+        .select('id, engagement_id, ref, title, rating, category, status, repeat_finding, agreed, condition, criteria, cause, effect, recommendation, management_response, issued_at')
+        .neq('status', 'closed')
+        .order('rating')
+        .limit(60)
+      if (engagementId) obsQ = obsQ.eq('engagement_id', engagementId)
+      const { data: observations } = await obsQ
+
+      let actQ = supabase
+        .from('audit_action_register')
+        .select('id, engagement_code, observation_ref, observation_rating, description, status, effective_due_date, is_overdue, days_past_due, extension_count')
+        .in('status', ['open', 'in_progress', 'implemented', 'overdue'])
+        .order('is_overdue', { ascending: false })
+        .limit(60)
+      if (engagementId) actQ = actQ.eq('engagement_id', engagementId)
+      const { data: actions } = await actQ
+
+      const overdue = (actions ?? []).filter((a) => a.is_overdue).length
+      const critical = (observations ?? []).filter((o) => o.rating === 'critical').length
+      return {
+        result: {
+          engagements: engagements ?? [],
+          open_observations: observations ?? [],
+          management_actions: actions ?? [],
+          totals: { engagements: engagements?.length ?? 0, open_observations: observations?.length ?? 0, critical_observations: critical, overdue_actions: overdue },
+        },
+        summary: `Loaded ${engagements?.length ?? 0} engagement${engagements?.length === 1 ? '' : 's'}, ${observations?.length ?? 0} open observation${observations?.length === 1 ? '' : 's'}, ${overdue} overdue action${overdue === 1 ? '' : 's'}`,
+      }
+    }
+
+    case 'list_erm_risks': {
+      let q = supabase
+        .from('erm_risk_summary')
+        .select('id, code, title, description, category_code, category_name_en, parent_category_name_en, owner_name, status, emerging, inherent_score, residual_score, target_score, residual_likelihood, residual_impact, velocity, trend, appetite_level, tolerance_threshold, appetite_breach, control_count, open_treatments, overdue_treatments, kri_count, kri_status, last_assessed_at, next_review_at')
+        .order('residual_score', { ascending: false, nullsFirst: false })
+        .limit(80)
+      if (input.status) q = q.eq('status', String(input.status))
+      if (typeof input.min_residual_score === 'number') q = q.gte('residual_score', input.min_residual_score)
+      const { data: risks, error } = await q
+      if (error) return { result: { error: error.message }, summary: 'Failed to load risk register' }
+      const { data: kris } = await supabase
+        .from('erm_kri_status')
+        .select('id, risk_id, name, unit, direction, latest_period, latest_value, green_threshold, amber_threshold, red_threshold, status')
+        .in('status', ['red', 'amber'])
+        .limit(40)
+      const breaches = (risks ?? []).filter((r) => r.appetite_breach).length
+      return {
+        result: {
+          risks: risks ?? [],
+          kris_red_or_amber: kris ?? [],
+          totals: { risks: risks?.length ?? 0, outside_appetite: breaches, kris_alerting: kris?.length ?? 0 },
+          scoring_note: 'Scores are likelihood × impact on 1–5 scales (1–25). Bands: low 1–4, moderate 5–9, high 10–15, extreme 16–25.',
+        },
+        summary: `Loaded ${risks?.length ?? 0} risk${risks?.length === 1 ? '' : 's'}, ${breaches} outside appetite`,
+      }
+    }
+
+    case 'get_icfr_overview': {
+      const { data: processes, error } = await supabase
+        .from('icfr_process_summary')
+        .select('id, code, name, cycle, status, risk_count, control_count, key_control_count, tested_key_controls, effective_key_controls, open_deficiencies, material_weaknesses')
+        .order('code')
+      if (error) return { result: { error: error.message }, summary: 'Failed to load ICFR processes' }
+      const { data: deficiencies } = await supabase
+        .from('icfr_deficiencies')
+        .select('id, control_id, severity, status, description, root_cause, remediation_plan, due_date, identified_at, retest_result, icfr_controls ( ref, title, process_id )')
+        .neq('status', 'closed')
+        .order('severity')
+        .limit(60)
+      const mw = (deficiencies ?? []).filter((d) => d.severity === 'material_weakness').length
+      return {
+        result: { processes: processes ?? [], open_deficiencies: deficiencies ?? [], totals: { processes: processes?.length ?? 0, open_deficiencies: deficiencies?.length ?? 0, material_weaknesses: mw } },
+        summary: `Loaded ${processes?.length ?? 0} ICFR process${processes?.length === 1 ? '' : 'es'}, ${deficiencies?.length ?? 0} open deficienc${deficiencies?.length === 1 ? 'y' : 'ies'}`,
       }
     }
 

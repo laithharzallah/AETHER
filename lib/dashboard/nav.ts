@@ -1,11 +1,17 @@
 import type { LucideIcon } from 'lucide-react'
 import {
+  Activity,
+  AlertTriangle,
   BookOpen,
   ClipboardCheck,
-  ClipboardList,
   FileText,
   FolderLock,
+  Gauge,
   LayoutDashboard,
+  ListChecks,
+  ListTree,
+  Network,
+  Radar,
   Scale,
   ScrollText,
   ShieldAlert,
@@ -31,7 +37,16 @@ export const dashboardNavItems: DashboardNavItem[] = [
 
   { label: 'ICFR', href: '/dashboard/icfr', icon: Scale, section: 'Financial controls' },
 
+  { label: 'Internal Audit', href: '/dashboard/audit', icon: ClipboardCheck, section: 'Assurance' },
+  { label: 'Audit Universe', href: '/dashboard/audit/universe', icon: Network, section: 'Assurance' },
+  { label: 'Observations', href: '/dashboard/audit/observations', icon: AlertTriangle, section: 'Assurance' },
+  { label: 'Actions', href: '/dashboard/audit/actions', icon: ListChecks, section: 'Assurance' },
+
+  { label: 'Enterprise Risk', href: '/dashboard/erm', icon: Radar, section: 'Risk' },
+  { label: 'Risk Register', href: '/dashboard/erm/risks', icon: ListTree, section: 'Risk' },
+  { label: 'Appetite', href: '/dashboard/erm/appetite', icon: Gauge, section: 'Risk' },
+  { label: 'KRIs', href: '/dashboard/erm/kris', icon: Activity, section: 'Risk' },
+
   { label: 'Regulatory Library', href: '/dashboard/regulations', icon: BookOpen, section: 'Intelligence' },
   { label: 'Risk Horizon', href: '/dashboard/risk-horizon', icon: ShieldAlert, section: 'Intelligence', comingSoon: true },
-  { label: 'Audit Trail', href: '/dashboard/audit', icon: ClipboardList, section: 'Intelligence', comingSoon: true },
 ]

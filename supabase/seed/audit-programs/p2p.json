@@ -1,0 +1,140 @@
+{
+  "template": {
+    "code": "P2P",
+    "name": "Procure-to-Pay",
+    "area": "Finance & Procurement",
+    "description": "Assurance over purchasing, receiving, supplier invoice processing, accounts payable and disbursements. Covers vendor master data integrity, delegation of authority, competitive sourcing, three-way match, duplicate payment prevention, payment release and AP reconciliations. Designed for GCC entities subject to VAT, ZATCA e-invoicing and local content requirements.",
+    "frameworks": [],
+    "sort_order": 10
+  },
+  "steps": [
+    {
+      "ref": "P-01",
+      "area": "Planning & walkthrough",
+      "objective": "Confirm understanding of the end-to-end procure-to-pay process, systems and key control points before testing.",
+      "procedure": "Obtain the current procurement and accounts payable policies, the delegation of authority (DoA) matrix and process narratives. Perform a walkthrough of one purchase transaction from requisition to payment with the Procurement Manager and AP Supervisor, tracing the transaction through the ERP (purchase requisition, purchase order, goods receipt, invoice, payment). Document the process flow, system configuration (release strategies, tolerances) and identify key controls and segregation-of-duties points. Confirm the walkthrough corroborates the documented process and note any undocumented practices.",
+      "evidence": "Signed process narrative / flowchart, DoA matrix, ERP configuration screenshots (release strategy, match tolerances), walkthrough memo.",
+      "control_hint": "ICFR P2P C1–C12 (RCM); COSO Control Activities"
+    },
+    {
+      "ref": "P-02",
+      "area": "Vendor master data",
+      "objective": "Determine whether vendor onboarding and changes to sensitive vendor master fields are authorized, independently verified and monitored.",
+      "procedure": "Extract the vendor master change log for the audit period. Select a sample of 25 new vendors and 25 changes to bank account, name or payment terms. For each, verify: (a) a completed vendor request form approved per DoA; (b) supporting documents (commercial registration, VAT certificate, bank letter or IBAN confirmation); (c) evidence of independent call-back verification of bank details to a known contact; (d) segregation between the requester, approver and the user who executed the ERP change. Test that the monthly vendor master change report was generated and reviewed with sign-off.",
+      "evidence": "Vendor master change log (system extract with date/user stamps), vendor request forms, CR/VAT certificates, call-back logs, monthly change report with reviewer sign-off.",
+      "control_hint": "ICFR P2P C1 (vendor master approval); ZATCA VAT registration validation"
+    },
+    {
+      "ref": "P-03",
+      "area": "Vendor master data",
+      "objective": "Identify duplicate, dormant or potentially fictitious vendors and conflicts of interest.",
+      "procedure": "Run data analytics over the full vendor master: (a) duplicate vendors by normalized name, tax registration number, IBAN or address; (b) vendors sharing bank accounts or addresses with employees (match against HR master); (c) vendors with no activity in 18 months that remain active; (d) vendors created and paid within a short window. Investigate each exception with Procurement and conclude whether the vendor is genuine and appropriately approved.",
+      "evidence": "Analytics workbook with match criteria and exception listing, HR master extract, management explanations for exceptions.",
+      "control_hint": "ICFR P2P C1; fraud risk indicators (IIA Standard 13.3)"
+    },
+    {
+      "ref": "P-04",
+      "area": "Sourcing & contracting",
+      "objective": "Assess whether purchases above threshold were competitively sourced and awarded in line with policy.",
+      "procedure": "Select 20 purchase orders above the competitive-bidding threshold. Verify that the required number of quotations or a formal tender was obtained, a bid evaluation was documented with technical and commercial scoring, the award was approved by the tender committee or DoA holder, and any single-source justification was approved at the required level. Confirm contracts are signed by authorized signatories and registered in the contract repository with expiry dates.",
+      "evidence": "RFQ/tender documentation, bid tabulation and evaluation memos, tender committee minutes, signed contracts, single-source justification forms.",
+      "control_hint": "Procurement policy; DoA matrix; local content / ICV requirements where applicable"
+    },
+    {
+      "ref": "P-05",
+      "area": "Purchase authorization",
+      "objective": "Verify that purchase requisitions and purchase orders are approved within delegated authority before commitment.",
+      "procedure": "Extract all POs raised in the period. Using ERP release-strategy configuration, reperform the approval path for a sample of 30 POs across value bands and confirm the approvers held the required authority per the DoA in force at the date of approval. Test for split purchasing: identify sequences of POs to the same vendor within 30 days whose aggregate exceeds the next approval threshold. Confirm no PO was created after the invoice date (retrospective POs) without documented exception approval.",
+      "evidence": "PO listing with approval history, DoA matrix versions, release-strategy configuration, split-PO analytics.",
+      "control_hint": "ICFR P2P C2 (PO approval); DoA matrix"
+    },
+    {
+      "ref": "P-06",
+      "area": "Receiving",
+      "objective": "Confirm that goods and services are received, inspected and recorded independently of ordering and invoice processing.",
+      "procedure": "For a sample of 25 goods receipts and 15 service entry sheets, verify that receipt was recorded by a user independent of the PO creator and AP, that quantities and specifications agree to the PO and delivery note, and that quality inspection was evidenced where required. For services, verify that the service acceptance was signed by the business owner with reference to the contract milestone or timesheet.",
+      "evidence": "Goods receipt notes, delivery notes, service entry sheets with acceptance signatures, ERP user roles for receiving.",
+      "control_hint": "ICFR P2P C3 (receipt); segregation of duties"
+    },
+    {
+      "ref": "P-07",
+      "area": "Invoice processing",
+      "objective": "Test the operation of the three-way match and the handling of matching exceptions.",
+      "procedure": "Select 40 invoices processed during the period. Reperform the three-way match between invoice, PO and goods receipt for quantity and price, confirm variances are within configured tolerances, and for any blocked invoices verify the exception was investigated and released by an authorized approver with documented reason. Review the tolerance configuration for reasonableness and test whether tolerances were changed during the period and by whom.",
+      "evidence": "Invoice images, PO and GRN references, ERP match status and block-release log, tolerance configuration and change history.",
+      "control_hint": "ICFR P2P C4 (three-way match)"
+    },
+    {
+      "ref": "P-08",
+      "area": "Invoice processing",
+      "objective": "Verify that non-PO invoices are approved by an appropriate budget holder before recording.",
+      "procedure": "Identify all non-PO invoices posted in the period and calculate their share of AP spend. Select 20 and confirm each was approved by the budget holder per DoA, coded to the correct GL account and cost centre, and supported by a contract, agreement or evidence of service. Assess whether the volume of non-PO spend indicates circumvention of procurement controls.",
+      "evidence": "Non-PO invoice listing, approval workflow history, supporting agreements.",
+      "control_hint": "ICFR P2P C5 (non-PO invoice approval); Budget holder DoA"
+    },
+    {
+      "ref": "P-09",
+      "area": "Invoice processing",
+      "objective": "Assess compliance with VAT and e-invoicing requirements on supplier invoices.",
+      "procedure": "For the invoice sample in P-07 and P-08, verify that supplier invoices are valid tax invoices (supplier VAT number, invoice date, VAT amount and rate, e-invoice QR code where the ZATCA integration phase applies), that input VAT was recovered only where recoverable, and that reverse-charge VAT was applied on imported services. Reconcile input VAT claimed on the VAT return to the AP sub-ledger for one quarter.",
+      "evidence": "Tax invoice images, VAT return working papers, AP VAT report, reverse-charge postings.",
+      "control_hint": "ZATCA VAT Law & Implementing Regulations; e-invoicing (Fatoora) Phase 2 requirements"
+    },
+    {
+      "ref": "P-10",
+      "area": "Duplicate payments",
+      "objective": "Detect duplicate or erroneous invoice postings and payments.",
+      "procedure": "Perform analytics over all invoices posted in the period: exact and fuzzy duplicates on vendor + amount + invoice number (normalized for leading zeros, prefixes and special characters), same amount to same vendor within 7 days, and credit notes not offset. Review the ERP duplicate-invoice check configuration. Investigate each potential duplicate to payment, quantify amounts overpaid and recovered, and assess root cause.",
+      "evidence": "Duplicate-payment analytics with method notes, ERP duplicate check configuration, recovery correspondence.",
+      "control_hint": "ICFR P2P C6 (duplicate invoice check)"
+    },
+    {
+      "ref": "P-11",
+      "area": "Payment release",
+      "objective": "Verify that payment runs are approved, released by authorized signatories and executed only to verified bank accounts.",
+      "procedure": "Select 5 payment runs and 15 manual or urgent payments. For payment runs, verify the proposal report was reviewed, exceptions removed with reason, and release approved by two authorized signatories within bank mandate limits. For urgent payments, confirm the exception approval and post-facto matching. Inspect bank portal user access and confirm makers and checkers are segregated and mandate limits agree to the board-approved bank mandate. Confirm payee bank details on the bank file agree to the vendor master and were not manually edited.",
+      "evidence": "Payment proposal reports, bank release logs with dual authorization, bank mandate, bank portal user listing, payment file hash / comparison.",
+      "control_hint": "ICFR P2P C7 (payment authorization); bank mandate; SoD"
+    },
+    {
+      "ref": "P-12",
+      "area": "Period-end",
+      "objective": "Assess completeness of recorded liabilities and accuracy of accruals at period end.",
+      "procedure": "Obtain the GR/IR clearing account analysis and the accrual schedule at the last period end. Select 20 invoices posted in the 30 days after period end and 15 payments after period end above the threshold; determine whether the liability related to the prior period and was accrued. Assess ageing of uncleared GR/IR items and whether aged items were investigated and cleared with approval.",
+      "evidence": "GR/IR ageing, accrual workings, post-period invoice and payment listings, journal approvals.",
+      "control_hint": "ICFR P2P C8 (accruals / cut-off)"
+    },
+    {
+      "ref": "P-13",
+      "area": "Reconciliations",
+      "objective": "Confirm that the AP sub-ledger is reconciled to the general ledger and supplier statements are reconciled for key vendors.",
+      "procedure": "Obtain the AP sub-ledger to GL reconciliations for three month-ends. Verify preparation and independent review sign-off within the close timetable, that reconciling items are explained and aged, and that items older than 60 days were escalated. For the top 10 vendors by spend, obtain supplier statement reconciliations and test the resolution of differences.",
+      "evidence": "Month-end AP reconciliations with preparer/reviewer sign-off, supplier statements and reconciliations.",
+      "control_hint": "ICFR P2P C9 (AP reconciliation)"
+    },
+    {
+      "ref": "P-14",
+      "area": "Access & segregation of duties",
+      "objective": "Evaluate ERP access to procure-to-pay functions for conflicts and unauthorized users.",
+      "procedure": "Extract users with access to vendor master maintenance, PO creation, PO approval, goods receipt, invoice posting and payment release. Run an SoD conflict analysis against the defined ruleset (e.g. vendor create + invoice post; invoice post + payment release). For each conflict, determine whether a compensating control exists and operates. Verify the last user access review for P2P roles was completed and remediation actions were actioned.",
+      "evidence": "ERP role and user extracts, SoD ruleset and conflict report, access review evidence.",
+      "control_hint": "ICFR P2P C10 (SoD); ITGC access management"
+    },
+    {
+      "ref": "P-15",
+      "area": "Performance & efficiency",
+      "objective": "Evaluate process efficiency indicators and the effectiveness of supplier management.",
+      "procedure": "Compute and benchmark: PO-to-invoice cycle time, share of invoices paid on time vs. contractual terms, early-payment discounts lost, share of spend under contract, and maverick spend. Review the supplier performance evaluation process for strategic suppliers and confirm that evaluations informed renewal decisions.",
+      "evidence": "Analytics workbook, supplier scorecards, contract renewal decisions.",
+      "control_hint": "Procurement KPIs; advisory observation category 'efficiency'"
+    },
+    {
+      "ref": "P-16",
+      "area": "Reporting",
+      "objective": "Conclude on the design and operating effectiveness of procure-to-pay controls and agree observations with management.",
+      "procedure": "Summarize test results by control, rate each observation using the approved rating criteria (impact and likelihood), draft observations in condition/criteria/cause/effect format with practical recommendations, and hold a closing meeting with the Procurement Director and Finance Director to agree facts, management responses, owners and target dates.",
+      "evidence": "Closing meeting minutes, draft observations with management responses.",
+      "control_hint": "IIA Standards 14.1–14.5, 15.1"
+    }
+  ]
+}

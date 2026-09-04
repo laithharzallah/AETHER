@@ -1,0 +1,174 @@
+{
+  "taxonomy": {
+    "code": "GCC-DEFAULT",
+    "name": "GCC enterprise risk taxonomy",
+    "description": "Two-level risk taxonomy aligned to ISO 31000:2018 / COSO ERM 2017, with GCC-specific regulatory and strategic sub-categories."
+  },
+  "domains": [
+    {
+      "code": "STR",
+      "name_en": "Strategic",
+      "name_ar": "المخاطر الاستراتيجية",
+      "description_en": "Risks to the achievement of strategic objectives arising from market dynamics, geopolitical developments, national programme dependencies and strategic choices.",
+      "description_ar": "المخاطر التي تهدد تحقيق الأهداف الاستراتيجية الناشئة عن ديناميكيات السوق والتطورات الجيوسياسية والاعتماد على البرامج الوطنية والخيارات الاستراتيجية.",
+      "children": [
+        { "code": "STR-01", "name_en": "Market & competition", "name_ar": "السوق والمنافسة", "description_en": "Demand shifts, new entrants, pricing pressure, disruptive business models and loss of market share." },
+        { "code": "STR-02", "name_en": "Geopolitical & macroeconomic", "name_ar": "المخاطر الجيوسياسية والاقتصاد الكلي", "description_en": "Regional instability, sanctions, oil price volatility, inflation and interest-rate cycles affecting the business plan." },
+        { "code": "STR-03", "name_en": "National programme dependency (Vision 2030 / national agendas)", "name_ar": "الاعتماد على البرامج الوطنية (رؤية 2030 / الأجندات الوطنية)", "description_en": "Reliance on giga-projects, government spending, PIF-linked programmes, localisation (In-Kingdom Total Value Add) and Emiratisation / Saudization targets." },
+        { "code": "STR-04", "name_en": "Strategic planning & execution", "name_ar": "التخطيط الاستراتيجي والتنفيذ", "description_en": "Flawed strategy, failure to execute transformation programmes, M&A integration and portfolio decisions." },
+        { "code": "STR-05", "name_en": "Business model & innovation", "name_ar": "نموذج الأعمال والابتكار", "description_en": "Obsolescence of products or services, failure to adopt digital and AI-enabled models." }
+      ]
+    },
+    {
+      "code": "FIN",
+      "name_en": "Financial",
+      "name_ar": "المخاطر المالية",
+      "description_en": "Risks to financial position, liquidity, capital adequacy and financial reporting integrity.",
+      "description_ar": "المخاطر التي تؤثر على المركز المالي والسيولة وكفاية رأس المال وسلامة التقارير المالية.",
+      "children": [
+        { "code": "FIN-01", "name_en": "Credit & counterparty", "name_ar": "مخاطر الائتمان والأطراف المقابلة", "description_en": "Default or deterioration of customers, borrowers, counterparties and government receivables." },
+        { "code": "FIN-02", "name_en": "Liquidity & funding", "name_ar": "مخاطر السيولة والتمويل", "description_en": "Inability to meet obligations as they fall due; refinancing, covenant and working-capital stress." },
+        { "code": "FIN-03", "name_en": "Market, FX & interest rate", "name_ar": "مخاطر السوق وأسعار الصرف والفائدة", "description_en": "Adverse movements in FX (non-USD-pegged exposures), SAIBOR/EIBOR, commodities and equity prices." },
+        { "code": "FIN-04", "name_en": "Capital adequacy & solvency", "name_ar": "كفاية رأس المال والملاءة", "description_en": "Erosion of capital buffers; breach of SAMA / CBUAE / QCB prudential ratios." },
+        { "code": "FIN-05", "name_en": "Financial reporting & tax", "name_ar": "التقارير المالية والضرائب", "description_en": "Material misstatement, IFRS application, ZATCA e-invoicing / VAT / zakat / corporate tax exposure, transfer pricing." },
+        { "code": "FIN-06", "name_en": "Budget & cost management", "name_ar": "الميزانية وإدارة التكاليف", "description_en": "Cost overruns, margin compression and unrealised synergy assumptions." }
+      ]
+    },
+    {
+      "code": "OPS",
+      "name_en": "Operational",
+      "name_ar": "المخاطر التشغيلية",
+      "description_en": "Risk of loss from inadequate or failed internal processes, people, systems, third parties or external events.",
+      "description_ar": "مخاطر الخسارة الناتجة عن عدم كفاية أو فشل العمليات الداخلية أو الأفراد أو الأنظمة أو الأطراف الخارجية أو الأحداث الخارجية.",
+      "children": [
+        { "code": "OPS-01", "name_en": "Process failure & execution", "name_ar": "فشل العمليات والتنفيذ", "description_en": "Manual errors, process breakdowns, capacity constraints and inadequate procedures." },
+        { "code": "OPS-02", "name_en": "Third-party & outsourcing", "name_ar": "الأطراف الخارجية والتعهيد", "description_en": "Vendor failure, concentration, sub-contractor performance and outsourcing arrangements subject to SAMA / CBUAE outsourcing rules." },
+        { "code": "OPS-03", "name_en": "Supply chain & logistics", "name_ar": "سلسلة الإمداد والخدمات اللوجستية", "description_en": "Disruption of critical supplies, single-source dependencies, customs and localisation constraints." },
+        { "code": "OPS-04", "name_en": "Project & programme delivery", "name_ar": "تنفيذ المشاريع والبرامج", "description_en": "Schedule slippage, scope creep, contractor performance and benefits not realised on capital and transformation programmes." },
+        { "code": "OPS-05", "name_en": "Business continuity & crisis", "name_ar": "استمرارية الأعمال وإدارة الأزمات", "description_en": "Inability to maintain critical operations through disruption (facilities, utilities, pandemic, extreme weather)." },
+        { "code": "OPS-06", "name_en": "Asset & infrastructure", "name_ar": "الأصول والبنية التحتية", "description_en": "Plant, equipment and facility failure, maintenance backlogs and asset integrity." }
+      ]
+    },
+    {
+      "code": "TEC",
+      "name_en": "Technology & Cyber",
+      "name_ar": "التقنية والأمن السيبراني",
+      "description_en": "Risks arising from information technology, cyber threats, data and emerging technology adoption.",
+      "description_ar": "المخاطر الناشئة عن تقنية المعلومات والتهديدات السيبرانية والبيانات واعتماد التقنيات الناشئة.",
+      "children": [
+        { "code": "TEC-01", "name_en": "Cyber attack & data breach", "name_ar": "الهجمات السيبرانية وتسرب البيانات", "description_en": "Ransomware, intrusion, credential compromise and exfiltration; NCA ECC / SAMA CSF control gaps." },
+        { "code": "TEC-02", "name_en": "IT resilience & availability", "name_ar": "مرونة وتوافر تقنية المعلومات", "description_en": "Outages of core systems, disaster recovery gaps, capacity and obsolescence." },
+        { "code": "TEC-03", "name_en": "Cloud & data residency", "name_ar": "الحوسبة السحابية وإقامة البيانات", "description_en": "Cloud concentration, in-Kingdom hosting requirements, CST / NCA cloud controls and cross-border transfer restrictions." },
+        { "code": "TEC-04", "name_en": "Change, development & legacy", "name_ar": "التغيير والتطوير والأنظمة القديمة", "description_en": "Failed changes, uncontrolled development, technical debt and ERP transformation." },
+        { "code": "TEC-05", "name_en": "AI & emerging technology", "name_ar": "الذكاء الاصطناعي والتقنيات الناشئة", "description_en": "Model risk, bias, unreliable outputs and SDAIA AI ethics / EU AI Act obligations." },
+        { "code": "TEC-06", "name_en": "Identity & access", "name_ar": "الهوية وإدارة الصلاحيات", "description_en": "Excessive privileges, orphan accounts and segregation-of-duties conflicts." }
+      ]
+    },
+    {
+      "code": "DAT",
+      "name_en": "Data & Privacy",
+      "name_ar": "البيانات والخصوصية",
+      "description_en": "Risks to personal and business data — protection, quality, governance and lawful processing under GCC data protection laws.",
+      "description_ar": "المخاطر المتعلقة بالبيانات الشخصية والتجارية من حيث الحماية والجودة والحوكمة والمعالجة المشروعة وفق قوانين حماية البيانات الخليجية.",
+      "children": [
+        { "code": "DAT-01", "name_en": "Personal data protection (PDPL / UAE PDPL / QA PDPPL)", "name_ar": "حماية البيانات الشخصية (نظام حماية البيانات الشخصية)", "description_en": "Unlawful processing, consent, breach notification and data-subject rights failures." },
+        { "code": "DAT-02", "name_en": "Data governance & quality", "name_ar": "حوكمة البيانات وجودتها", "description_en": "Inaccurate, incomplete or duplicated master data driving wrong decisions and regulatory returns." },
+        { "code": "DAT-03", "name_en": "Data classification & leakage", "name_ar": "تصنيف البيانات وتسربها", "description_en": "Mishandling of classified or confidential information; NDMO classification requirements." },
+        { "code": "DAT-04", "name_en": "Records retention & disposal", "name_ar": "حفظ السجلات وإتلافها", "description_en": "Failure to retain evidence for statutory periods or to dispose of data securely." }
+      ]
+    },
+    {
+      "code": "CMP",
+      "name_en": "Compliance & Regulatory",
+      "name_ar": "الامتثال والمتطلبات التنظيمية",
+      "description_en": "Risk of regulatory sanction, licence conditions and enforcement from GCC regulators and international regimes.",
+      "description_ar": "مخاطر العقوبات التنظيمية وشروط الترخيص والإجراءات الرقابية من الجهات التنظيمية الخليجية والأنظمة الدولية.",
+      "children": [
+        { "code": "CMP-01", "name_en": "Financial sector regulation (SAMA / CBUAE / QCB / CBB)", "name_ar": "تنظيم القطاع المالي (ساما / المصرف المركزي الإماراتي / مصرف قطر المركزي)", "description_en": "Breach of prudential, conduct, outsourcing or cyber requirements of the central bank." },
+        { "code": "CMP-02", "name_en": "Cybersecurity regulation (NCA / NCSA / UAE IAS)", "name_ar": "تنظيم الأمن السيبراني (الهيئة الوطنية للأمن السيبراني)", "description_en": "Non-compliance with national cybersecurity controls and critical-infrastructure obligations." },
+        { "code": "CMP-03", "name_en": "Capital markets & listing (CMA / SCA / QFMA)", "name_ar": "سوق المال والإدراج (هيئة السوق المالية)", "description_en": "Disclosure, corporate governance regulation, insider dealing and related-party transaction rules." },
+        { "code": "CMP-04", "name_en": "Tax & e-invoicing (ZATCA / FTA)", "name_ar": "الضرائب والفوترة الإلكترونية (هيئة الزكاة والضريبة والجمارك)", "description_en": "VAT, zakat, corporate tax, e-invoicing phase obligations and customs compliance." },
+        { "code": "CMP-05", "name_en": "AML / CTF & sanctions", "name_ar": "مكافحة غسل الأموال وتمويل الإرهاب والعقوبات", "description_en": "Customer due diligence, transaction monitoring, SAR reporting and sanctions screening failures." },
+        { "code": "CMP-06", "name_en": "Licensing, localisation & labour regulation", "name_ar": "التراخيص والتوطين وأنظمة العمل", "description_en": "Commercial licensing, Saudization / Emiratisation quotas, Nitaqat, wage protection and labour law." }
+      ]
+    },
+    {
+      "code": "LGL",
+      "name_en": "Legal",
+      "name_ar": "المخاطر القانونية",
+      "description_en": "Exposure from contracts, litigation, intellectual property and legal uncertainty.",
+      "description_ar": "التعرض الناشئ عن العقود والتقاضي والملكية الفكرية وعدم اليقين القانوني.",
+      "children": [
+        { "code": "LGL-01", "name_en": "Contractual & commercial", "name_ar": "المخاطر التعاقدية والتجارية", "description_en": "Unfavourable terms, unenforceable clauses, government contract and concession disputes." },
+        { "code": "LGL-02", "name_en": "Litigation & disputes", "name_ar": "التقاضي والمنازعات", "description_en": "Claims, arbitration and regulatory proceedings and their financial impact." },
+        { "code": "LGL-03", "name_en": "Intellectual property", "name_ar": "الملكية الفكرية", "description_en": "Infringement, loss of trade secrets and inadequate IP protection." },
+        { "code": "LGL-04", "name_en": "Corporate structure & governance law", "name_ar": "الهيكل المؤسسي وقانون الحوكمة", "description_en": "Companies-law obligations, board duties, foreign ownership and entity structuring." }
+      ]
+    },
+    {
+      "code": "ESG",
+      "name_en": "ESG & Climate",
+      "name_ar": "البيئة والمجتمع والحوكمة والمناخ",
+      "description_en": "Environmental, social, governance and climate-related risks including transition and physical risk and sustainability disclosure.",
+      "description_ar": "المخاطر البيئية والاجتماعية والحوكمية والمتعلقة بالمناخ بما في ذلك مخاطر التحول والمخاطر المادية والإفصاح عن الاستدامة.",
+      "children": [
+        { "code": "ESG-01", "name_en": "Climate physical risk", "name_ar": "المخاطر المناخية المادية", "description_en": "Extreme heat, flooding, water scarcity and their effect on operations and assets." },
+        { "code": "ESG-02", "name_en": "Climate transition & decarbonisation", "name_ar": "التحول المناخي وإزالة الكربون", "description_en": "Carbon pricing, net-zero commitments (Saudi Green Initiative, UAE Net Zero 2050) and stranded assets." },
+        { "code": "ESG-03", "name_en": "Environmental compliance", "name_ar": "الامتثال البيئي", "description_en": "Emissions, waste, water and permit breaches (NCEC, EAD, MoE)." },
+        { "code": "ESG-04", "name_en": "Social & community", "name_ar": "المخاطر الاجتماعية والمجتمعية", "description_en": "Labour practices in the supply chain, worker welfare, community impact and human rights." },
+        { "code": "ESG-05", "name_en": "Sustainability reporting & greenwashing", "name_ar": "تقارير الاستدامة والغسيل الأخضر", "description_en": "Inaccurate ESG disclosure under Tadawul / ADX / DFM guidance and ISSB standards." }
+      ]
+    },
+    {
+      "code": "REP",
+      "name_en": "Reputational",
+      "name_ar": "مخاطر السمعة",
+      "description_en": "Loss of trust among customers, regulators, shareholders, government and the public.",
+      "description_ar": "فقدان الثقة لدى العملاء والجهات الرقابية والمساهمين والحكومة والجمهور.",
+      "children": [
+        { "code": "REP-01", "name_en": "Brand & media", "name_ar": "العلامة التجارية والإعلام", "description_en": "Negative media and social-media coverage, viral incidents and public sentiment." },
+        { "code": "REP-02", "name_en": "Customer trust & service failure", "name_ar": "ثقة العملاء وفشل الخدمة", "description_en": "Service outages, mis-selling and complaint handling failures." },
+        { "code": "REP-03", "name_en": "Regulator & government relationship", "name_ar": "العلاقة مع الجهات التنظيمية والحكومية", "description_en": "Loss of regulator confidence, public enforcement and exclusion from government programmes." }
+      ]
+    },
+    {
+      "code": "HSE",
+      "name_en": "Health, Safety & Environment",
+      "name_ar": "الصحة والسلامة والبيئة",
+      "description_en": "Risks to the health and safety of employees, contractors, customers and the public.",
+      "description_ar": "المخاطر التي تهدد صحة وسلامة الموظفين والمقاولين والعملاء والجمهور.",
+      "children": [
+        { "code": "HSE-01", "name_en": "Workplace injury & fatality", "name_ar": "الإصابات والوفيات في مكان العمل", "description_en": "Serious injuries, fatalities and lost-time incidents at operational sites." },
+        { "code": "HSE-02", "name_en": "Process safety & major hazards", "name_ar": "سلامة العمليات والمخاطر الكبرى", "description_en": "Fire, explosion, toxic release and structural failure." },
+        { "code": "HSE-03", "name_en": "Heat stress & occupational health", "name_ar": "الإجهاد الحراري والصحة المهنية", "description_en": "Midday work ban compliance, heat-related illness and long-term occupational health." },
+        { "code": "HSE-04", "name_en": "Contractor & site safety management", "name_ar": "إدارة سلامة المقاولين والمواقع", "description_en": "Inadequate control of contractor safety performance and permit-to-work systems." }
+      ]
+    },
+    {
+      "code": "FRD",
+      "name_en": "Fraud & Conduct",
+      "name_ar": "الاحتيال والسلوك",
+      "description_en": "Internal and external fraud, bribery and corruption, and misconduct.",
+      "description_ar": "الاحتيال الداخلي والخارجي والرشوة والفساد وسوء السلوك.",
+      "children": [
+        { "code": "FRD-01", "name_en": "Internal fraud & misappropriation", "name_ar": "الاحتيال الداخلي والاختلاس", "description_en": "Asset misappropriation, financial statement fraud and collusion by employees." },
+        { "code": "FRD-02", "name_en": "External fraud & social engineering", "name_ar": "الاحتيال الخارجي والهندسة الاجتماعية", "description_en": "Business email compromise, payment diversion, identity fraud and vendor impersonation." },
+        { "code": "FRD-03", "name_en": "Bribery & corruption (Nazaha / anti-corruption law)", "name_ar": "الرشوة والفساد (نزاهة / نظام مكافحة الفساد)", "description_en": "Improper payments, gifts and hospitality, and conflicts of interest with public officials." },
+        { "code": "FRD-04", "name_en": "Conduct, ethics & whistleblowing", "name_ar": "السلوك والأخلاقيات والإبلاغ عن المخالفات", "description_en": "Breach of code of conduct, market conduct, harassment and ineffective speak-up channels." }
+      ]
+    },
+    {
+      "code": "PPL",
+      "name_en": "People & Culture",
+      "name_ar": "الموارد البشرية والثقافة",
+      "description_en": "Talent, capability, key-person dependency and culture risks.",
+      "description_ar": "مخاطر المواهب والقدرات والاعتماد على الأشخاص الرئيسيين والثقافة المؤسسية.",
+      "children": [
+        { "code": "PPL-01", "name_en": "Talent attraction & retention", "name_ar": "استقطاب المواهب والاحتفاظ بها", "description_en": "Inability to attract or retain scarce skills; competition from giga-projects and government entities." },
+        { "code": "PPL-02", "name_en": "Key-person & succession", "name_ar": "الاعتماد على الأشخاص الرئيسيين والتعاقب الوظيفي", "description_en": "Concentration of knowledge in individuals and weak succession plans." },
+        { "code": "PPL-03", "name_en": "Capability & localisation of skills", "name_ar": "القدرات وتوطين المهارات", "description_en": "Skills gaps during nationalisation of the workforce and technology transformation." },
+        { "code": "PPL-04", "name_en": "Culture, engagement & wellbeing", "name_ar": "الثقافة والمشاركة والرفاهية", "description_en": "Low engagement, risk-averse or non-compliant culture and wellbeing issues." }
+      ]
+    }
+  ]
+}

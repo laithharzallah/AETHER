@@ -815,6 +815,1278 @@ export type Database = {
           },
         ]
       }
+      erm_appetite: {
+        Row: {
+          id: string
+          organization_id: string
+          category_id: string | null
+          statement_en: string
+          statement_ar: string | null
+          appetite_level: string
+          tolerance_threshold: number
+          approved_by: string | null
+          approved_at: string | null
+          review_date: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          category_id?: string | null
+          statement_en: string
+          statement_ar?: string | null
+          appetite_level?: string
+          tolerance_threshold?: number
+          approved_by?: string | null
+          approved_at?: string | null
+          review_date?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          category_id?: string | null
+          statement_en?: string
+          statement_ar?: string | null
+          appetite_level?: string
+          tolerance_threshold?: number
+          approved_by?: string | null
+          approved_at?: string | null
+          review_date?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_appetite_approved_by_fkey"
+            columns: ["approved_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_appetite_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "erm_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_appetite_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_assessments: {
+        Row: {
+          id: string
+          organization_id: string
+          risk_id: string
+          assessed_at: string
+          assessed_by: string | null
+          inherent_l: number | null
+          inherent_i: number | null
+          residual_l: number | null
+          residual_i: number | null
+          rationale: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          risk_id: string
+          assessed_at?: string
+          assessed_by?: string | null
+          inherent_l?: number | null
+          inherent_i?: number | null
+          residual_l?: number | null
+          residual_i?: number | null
+          rationale?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          risk_id?: string
+          assessed_at?: string
+          assessed_by?: string | null
+          inherent_l?: number | null
+          inherent_i?: number | null
+          residual_l?: number | null
+          residual_i?: number | null
+          rationale?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_assessments_assessed_by_fkey"
+            columns: ["assessed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_assessments_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_assessments_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_categories: {
+        Row: {
+          id: string
+          organization_id: string
+          code: string
+          name_en: string
+          name_ar: string | null
+          parent_id: string | null
+          level: number
+          description: string | null
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          code: string
+          name_en: string
+          name_ar?: string | null
+          parent_id?: string | null
+          level?: number
+          description?: string | null
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          code?: string
+          name_en?: string
+          name_ar?: string | null
+          parent_id?: string | null
+          level?: number
+          description?: string | null
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_categories_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_categories_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "erm_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_kri_readings: {
+        Row: {
+          id: string
+          organization_id: string
+          kri_id: string
+          period_date: string
+          value: number
+          note: string | null
+          recorded_by: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          kri_id: string
+          period_date: string
+          value: number
+          note?: string | null
+          recorded_by?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          kri_id?: string
+          period_date?: string
+          value?: number
+          note?: string | null
+          recorded_by?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_kri_readings_kri_id_fkey"
+            columns: ["kri_id"]
+            isOneToOne: false
+            referencedRelation: "erm_kri_status"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_kri_readings_kri_id_fkey"
+            columns: ["kri_id"]
+            isOneToOne: false
+            referencedRelation: "erm_kris"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_kri_readings_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_kri_readings_recorded_by_fkey"
+            columns: ["recorded_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_kris: {
+        Row: {
+          id: string
+          organization_id: string
+          risk_id: string
+          name: string
+          description: string | null
+          unit: string | null
+          direction: string
+          green_threshold: number | null
+          amber_threshold: number
+          red_threshold: number
+          frequency: string
+          owner_id: string | null
+          data_source: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          risk_id: string
+          name: string
+          description?: string | null
+          unit?: string | null
+          direction?: string
+          green_threshold?: number | null
+          amber_threshold: number
+          red_threshold: number
+          frequency?: string
+          owner_id?: string | null
+          data_source?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          risk_id?: string
+          name?: string
+          description?: string | null
+          unit?: string | null
+          direction?: string
+          green_threshold?: number | null
+          amber_threshold?: number
+          red_threshold?: number
+          frequency?: string
+          owner_id?: string | null
+          data_source?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_kris_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_kris_owner_id_fkey"
+            columns: ["owner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_kris_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_links: {
+        Row: {
+          id: string
+          organization_id: string
+          risk_id: string
+          kind: string
+          target_id: string
+          label: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          risk_id: string
+          kind: string
+          target_id: string
+          label?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          risk_id?: string
+          kind?: string
+          target_id?: string
+          label?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_links_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_links_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_risk_controls: {
+        Row: {
+          id: string
+          organization_id: string
+          risk_id: string
+          control_id: string | null
+          icfr_control_id: string | null
+          name: string | null
+          description: string | null
+          control_type: string | null
+          effectiveness: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          risk_id: string
+          control_id?: string | null
+          icfr_control_id?: string | null
+          name?: string | null
+          description?: string | null
+          control_type?: string | null
+          effectiveness?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          risk_id?: string
+          control_id?: string | null
+          icfr_control_id?: string | null
+          name?: string | null
+          description?: string | null
+          control_type?: string | null
+          effectiveness?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_risk_controls_control_id_fkey"
+            columns: ["control_id"]
+            isOneToOne: false
+            referencedRelation: "controls"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risk_controls_icfr_control_id_fkey"
+            columns: ["icfr_control_id"]
+            isOneToOne: false
+            referencedRelation: "icfr_controls"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risk_controls_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risk_controls_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_risks: {
+        Row: {
+          id: string
+          organization_id: string
+          client_workspace_id: string | null
+          code: string
+          title: string
+          description: string | null
+          category_id: string | null
+          owner_id: string | null
+          sponsor_id: string | null
+          source: string
+          status: string
+          inherent_likelihood: number | null
+          inherent_impact: number | null
+          residual_likelihood: number | null
+          residual_impact: number | null
+          target_likelihood: number | null
+          target_impact: number | null
+          velocity: number | null
+          trend: string
+          impact_dimensions: Json
+          causes: string | null
+          consequences: string | null
+          emerging: boolean
+          last_assessed_at: string | null
+          next_review_at: string | null
+          created_by: string | null
+          created_at: string
+          updated_at: string
+          inherent_score: number | null
+          residual_score: number | null
+          target_score: number | null
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          client_workspace_id?: string | null
+          code?: string
+          title: string
+          description?: string | null
+          category_id?: string | null
+          owner_id?: string | null
+          sponsor_id?: string | null
+          source?: string
+          status?: string
+          inherent_likelihood?: number | null
+          inherent_impact?: number | null
+          residual_likelihood?: number | null
+          residual_impact?: number | null
+          target_likelihood?: number | null
+          target_impact?: number | null
+          velocity?: number | null
+          trend?: string
+          impact_dimensions?: Json
+          causes?: string | null
+          consequences?: string | null
+          emerging?: boolean
+          last_assessed_at?: string | null
+          next_review_at?: string | null
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          client_workspace_id?: string | null
+          code?: string
+          title?: string
+          description?: string | null
+          category_id?: string | null
+          owner_id?: string | null
+          sponsor_id?: string | null
+          source?: string
+          status?: string
+          inherent_likelihood?: number | null
+          inherent_impact?: number | null
+          residual_likelihood?: number | null
+          residual_impact?: number | null
+          target_likelihood?: number | null
+          target_impact?: number | null
+          velocity?: number | null
+          trend?: string
+          impact_dimensions?: Json
+          causes?: string | null
+          consequences?: string | null
+          emerging?: boolean
+          last_assessed_at?: string | null
+          next_review_at?: string | null
+          created_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_risks_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "erm_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risks_client_workspace_id_fkey"
+            columns: ["client_workspace_id"]
+            isOneToOne: false
+            referencedRelation: "client_workspaces"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risks_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risks_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risks_owner_id_fkey"
+            columns: ["owner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_risks_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_taxonomy_templates: {
+        Row: {
+          id: string
+          code: string
+          parent_code: string | null
+          name_en: string
+          name_ar: string
+          description_en: string | null
+          description_ar: string | null
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          code: string
+          parent_code?: string | null
+          name_en: string
+          name_ar: string
+          description_en?: string | null
+          description_ar?: string | null
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          code?: string
+          parent_code?: string | null
+          name_en?: string
+          name_ar?: string
+          description_en?: string | null
+          description_ar?: string | null
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_taxonomy_templates_parent_code_fkey"
+            columns: ["parent_code"]
+            isOneToOne: false
+            referencedRelation: "erm_taxonomy_templates"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      erm_treatments: {
+        Row: {
+          id: string
+          organization_id: string
+          risk_id: string
+          strategy: string
+          title: string
+          description: string | null
+          owner_id: string | null
+          due_date: string | null
+          status: string
+          cost_estimate: number | null
+          expected_residual_likelihood: number | null
+          expected_residual_impact: number | null
+          completed_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          organization_id: string
+          risk_id: string
+          strategy?: string
+          title: string
+          description?: string | null
+          owner_id?: string | null
+          due_date?: string | null
+          status?: string
+          cost_estimate?: number | null
+          expected_residual_likelihood?: number | null
+          expected_residual_impact?: number | null
+          completed_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          organization_id?: string
+          risk_id?: string
+          strategy?: string
+          title?: string
+          description?: string | null
+          owner_id?: string | null
+          due_date?: string | null
+          status?: string
+          cost_estimate?: number | null
+          expected_residual_likelihood?: number | null
+          expected_residual_impact?: number | null
+          completed_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_treatments_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_treatments_owner_id_fkey"
+            columns: ["owner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "erm_treatments_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_actions: {
+        Row: {
+          created_at: string
+          description: string
+          due_date: string | null
+          evidence_id: string | null
+          extension_count: number
+          id: string
+          implemented_at: string | null
+          observation_id: string
+          organization_id: string
+          owner_id: string | null
+          revised_due_date: string | null
+          status: string
+          updated_at: string
+          verification_notes: string | null
+          verified_at: string | null
+          verified_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          due_date?: string | null
+          evidence_id?: string | null
+          extension_count?: number
+          id?: string
+          implemented_at?: string | null
+          observation_id: string
+          organization_id: string
+          owner_id?: string | null
+          revised_due_date?: string | null
+          status?: string
+          updated_at?: string
+          verification_notes?: string | null
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          due_date?: string | null
+          evidence_id?: string | null
+          extension_count?: number
+          id?: string
+          implemented_at?: string | null
+          observation_id?: string
+          organization_id?: string
+          owner_id?: string | null
+          revised_due_date?: string | null
+          status?: string
+          updated_at?: string
+          verification_notes?: string | null
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Relationships: []
+      }
+      audit_engagements: {
+        Row: {
+          actual_days: number | null
+          auditee_owner_id: string | null
+          budget_days: number | null
+          closed_at: string | null
+          code: string
+          created_at: string
+          criteria: string | null
+          executive_summary: string | null
+          fieldwork_end: string | null
+          fieldwork_start: string | null
+          id: string
+          lead_auditor_id: string | null
+          objective: string | null
+          opinion: string | null
+          organization_id: string
+          out_of_scope: string | null
+          overall_rating: string | null
+          plan_item_id: string | null
+          report_issued_at: string | null
+          report_target_date: string | null
+          scope: string | null
+          start_date: string | null
+          status: string
+          team: Json
+          title: string
+          type: string
+          universe_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          actual_days?: number | null
+          auditee_owner_id?: string | null
+          budget_days?: number | null
+          closed_at?: string | null
+          code: string
+          created_at?: string
+          criteria?: string | null
+          executive_summary?: string | null
+          fieldwork_end?: string | null
+          fieldwork_start?: string | null
+          id?: string
+          lead_auditor_id?: string | null
+          objective?: string | null
+          opinion?: string | null
+          organization_id: string
+          out_of_scope?: string | null
+          overall_rating?: string | null
+          plan_item_id?: string | null
+          report_issued_at?: string | null
+          report_target_date?: string | null
+          scope?: string | null
+          start_date?: string | null
+          status?: string
+          team?: Json
+          title: string
+          type?: string
+          universe_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          actual_days?: number | null
+          auditee_owner_id?: string | null
+          budget_days?: number | null
+          closed_at?: string | null
+          code?: string
+          created_at?: string
+          criteria?: string | null
+          executive_summary?: string | null
+          fieldwork_end?: string | null
+          fieldwork_start?: string | null
+          id?: string
+          lead_auditor_id?: string | null
+          objective?: string | null
+          opinion?: string | null
+          organization_id?: string
+          out_of_scope?: string | null
+          overall_rating?: string | null
+          plan_item_id?: string | null
+          report_issued_at?: string | null
+          report_target_date?: string | null
+          scope?: string | null
+          start_date?: string | null
+          status?: string
+          team?: Json
+          title?: string
+          type?: string
+          universe_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_observations: {
+        Row: {
+          agreed: boolean | null
+          category: string
+          cause: string | null
+          closed_at: string | null
+          condition: string | null
+          created_at: string
+          criteria: string | null
+          effect: string | null
+          engagement_id: string
+          icfr_control_id: string | null
+          id: string
+          issued_at: string | null
+          library_control_id: string | null
+          management_response: string | null
+          organization_id: string
+          rating: string
+          recommendation: string | null
+          ref: string
+          repeat_finding: boolean
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          agreed?: boolean | null
+          category?: string
+          cause?: string | null
+          closed_at?: string | null
+          condition?: string | null
+          created_at?: string
+          criteria?: string | null
+          effect?: string | null
+          engagement_id: string
+          icfr_control_id?: string | null
+          id?: string
+          issued_at?: string | null
+          library_control_id?: string | null
+          management_response?: string | null
+          organization_id: string
+          rating?: string
+          recommendation?: string | null
+          ref: string
+          repeat_finding?: boolean
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          agreed?: boolean | null
+          category?: string
+          cause?: string | null
+          closed_at?: string | null
+          condition?: string | null
+          created_at?: string
+          criteria?: string | null
+          effect?: string | null
+          engagement_id?: string
+          icfr_control_id?: string | null
+          id?: string
+          issued_at?: string | null
+          library_control_id?: string | null
+          management_response?: string | null
+          organization_id?: string
+          rating?: string
+          recommendation?: string | null
+          ref?: string
+          repeat_finding?: boolean
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_plan_items: {
+        Row: {
+          created_at: string
+          engagement_id: string | null
+          id: string
+          organization_id: string
+          plan_id: string
+          planned_days: number
+          priority: string
+          quarter: string
+          rationale: string | null
+          sort_order: number
+          status: string
+          title: string | null
+          universe_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          engagement_id?: string | null
+          id?: string
+          organization_id: string
+          plan_id: string
+          planned_days?: number
+          priority?: string
+          quarter?: string
+          rationale?: string | null
+          sort_order?: number
+          status?: string
+          title?: string | null
+          universe_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          engagement_id?: string | null
+          id?: string
+          organization_id?: string
+          plan_id?: string
+          planned_days?: number
+          priority?: string
+          quarter?: string
+          rationale?: string | null
+          sort_order?: number
+          status?: string
+          title?: string | null
+          universe_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_plans: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          organization_id: string
+          period: string
+          status: string
+          total_capacity_days: number
+          updated_at: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          organization_id: string
+          period: string
+          status?: string
+          total_capacity_days?: number
+          updated_at?: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          organization_id?: string
+          period?: string
+          status?: string
+          total_capacity_days?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_procedures: {
+        Row: {
+          area: string | null
+          assigned_to: string | null
+          conclusion: string | null
+          control_ref: string | null
+          created_at: string
+          engagement_id: string
+          hours: number | null
+          id: string
+          objective: string | null
+          organization_id: string
+          procedure: string
+          ref: string
+          sort_order: number
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          area?: string | null
+          assigned_to?: string | null
+          conclusion?: string | null
+          control_ref?: string | null
+          created_at?: string
+          engagement_id: string
+          hours?: number | null
+          id?: string
+          objective?: string | null
+          organization_id: string
+          procedure: string
+          ref: string
+          sort_order?: number
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          area?: string | null
+          assigned_to?: string | null
+          conclusion?: string | null
+          control_ref?: string | null
+          created_at?: string
+          engagement_id?: string
+          hours?: number | null
+          id?: string
+          objective?: string | null
+          organization_id?: string
+          procedure?: string
+          ref?: string
+          sort_order?: number
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_program_template_steps: {
+        Row: {
+          area: string | null
+          control_hint: string | null
+          evidence: string | null
+          id: string
+          objective: string
+          procedure: string
+          ref: string
+          sort_order: number
+          template_id: string
+        }
+        Insert: {
+          area?: string | null
+          control_hint?: string | null
+          evidence?: string | null
+          id?: string
+          objective: string
+          procedure: string
+          ref: string
+          sort_order?: number
+          template_id: string
+        }
+        Update: {
+          area?: string | null
+          control_hint?: string | null
+          evidence?: string | null
+          id?: string
+          objective?: string
+          procedure?: string
+          ref?: string
+          sort_order?: number
+          template_id?: string
+        }
+        Relationships: []
+      }
+      audit_program_templates: {
+        Row: {
+          area: string
+          code: string
+          created_at: string
+          description: string | null
+          frameworks: string[]
+          id: string
+          name: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          area: string
+          code: string
+          created_at?: string
+          description?: string | null
+          frameworks?: string[]
+          id?: string
+          name: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          area?: string
+          code?: string
+          created_at?: string
+          description?: string | null
+          frameworks?: string[]
+          id?: string
+          name?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_universe: {
+        Row: {
+          audit_frequency_months: number
+          change_velocity: number
+          code: string
+          control_environment: number
+          created_at: string
+          description: string | null
+          financial_materiality: number
+          id: string
+          inherent_risk: number
+          last_audited_at: string | null
+          name: string
+          organization_id: string
+          owner_id: string | null
+          parent_id: string | null
+          prior_findings: number
+          regulatory_exposure: number
+          risk_score: number | null
+          status: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          audit_frequency_months?: number
+          change_velocity?: number
+          code: string
+          control_environment?: number
+          created_at?: string
+          description?: string | null
+          financial_materiality?: number
+          id?: string
+          inherent_risk?: number
+          last_audited_at?: string | null
+          name: string
+          organization_id: string
+          owner_id?: string | null
+          parent_id?: string | null
+          prior_findings?: number
+          regulatory_exposure?: number
+          status?: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          audit_frequency_months?: number
+          change_velocity?: number
+          code?: string
+          control_environment?: number
+          created_at?: string
+          description?: string | null
+          financial_materiality?: number
+          id?: string
+          inherent_risk?: number
+          last_audited_at?: string | null
+          name?: string
+          organization_id?: string
+          owner_id?: string | null
+          parent_id?: string | null
+          prior_findings?: number
+          regulatory_exposure?: number
+          status?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_workpapers: {
+        Row: {
+          created_at: string
+          description: string | null
+          engagement_id: string
+          evidence_id: string | null
+          id: string
+          kind: string
+          organization_id: string
+          prepared_at: string | null
+          prepared_by: string | null
+          procedure_id: string | null
+          ref: string
+          review_notes: string | null
+          review_status: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          engagement_id: string
+          evidence_id?: string | null
+          id?: string
+          kind?: string
+          organization_id: string
+          prepared_at?: string | null
+          prepared_by?: string | null
+          procedure_id?: string | null
+          ref: string
+          review_notes?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          engagement_id?: string
+          evidence_id?: string | null
+          id?: string
+          kind?: string
+          organization_id?: string
+          prepared_at?: string | null
+          prepared_by?: string | null
+          procedure_id?: string | null
+          ref?: string
+          review_notes?: string | null
+          review_status?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       intelligence_items: {
         Row: {
           content: string | null
@@ -1592,6 +2864,240 @@ export type Database = {
         }
         Relationships: []
       }
+      erm_heatmap: {
+        Row: {
+          organization_id: string | null
+          basis: string | null
+          likelihood: number | null
+          impact: number | null
+          risk_count: number | null
+        }
+        Relationships: []
+      }
+      erm_kri_status: {
+        Row: {
+          id: string | null
+          organization_id: string | null
+          risk_id: string | null
+          name: string | null
+          unit: string | null
+          direction: string | null
+          green_threshold: number | null
+          amber_threshold: number | null
+          red_threshold: number | null
+          frequency: string | null
+          owner_id: string | null
+          data_source: string | null
+          latest_period: string | null
+          latest_value: number | null
+          status: string | null
+          reading_count: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_kris_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      erm_risk_summary: {
+        Row: {
+          id: string | null
+          organization_id: string | null
+          client_workspace_id: string | null
+          code: string | null
+          title: string | null
+          description: string | null
+          category_id: string | null
+          category_code: string | null
+          category_name_en: string | null
+          category_name_ar: string | null
+          parent_category_id: string | null
+          parent_category_code: string | null
+          parent_category_name_en: string | null
+          owner_id: string | null
+          owner_name: string | null
+          sponsor_id: string | null
+          sponsor_name: string | null
+          source: string | null
+          status: string | null
+          inherent_likelihood: number | null
+          inherent_impact: number | null
+          inherent_score: number | null
+          residual_likelihood: number | null
+          residual_impact: number | null
+          residual_score: number | null
+          target_likelihood: number | null
+          target_impact: number | null
+          target_score: number | null
+          velocity: number | null
+          trend: string | null
+          impact_dimensions: Json | null
+          emerging: boolean | null
+          last_assessed_at: string | null
+          next_review_at: string | null
+          created_at: string | null
+          updated_at: string | null
+          tolerance_threshold: number | null
+          appetite_level: string | null
+          appetite_breach: boolean | null
+          control_count: number | null
+          open_treatments: number | null
+          overdue_treatments: number | null
+          kri_count: number | null
+          kri_status: string | null
+        }
+        Relationships: []
+      }
+      erm_treatment_summary: {
+        Row: {
+          id: string | null
+          organization_id: string | null
+          risk_id: string | null
+          risk_code: string | null
+          risk_title: string | null
+          risk_residual_score: number | null
+          strategy: string | null
+          title: string | null
+          description: string | null
+          owner_id: string | null
+          owner_name: string | null
+          due_date: string | null
+          status: string | null
+          cost_estimate: number | null
+          expected_residual_likelihood: number | null
+          expected_residual_impact: number | null
+          expected_residual_score: number | null
+          completed_at: string | null
+          created_at: string | null
+          updated_at: string | null
+          is_overdue: boolean | null
+          days_to_due: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "erm_treatments_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "erm_risks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_action_register: {
+        Row: {
+          age_days: number | null
+          created_at: string | null
+          days_past_due: number | null
+          description: string | null
+          due_date: string | null
+          effective_due_date: string | null
+          engagement_code: string | null
+          engagement_id: string | null
+          engagement_status: string | null
+          engagement_title: string | null
+          evidence_id: string | null
+          extension_count: number | null
+          id: string | null
+          implemented_at: string | null
+          is_overdue: boolean | null
+          observation_id: string | null
+          observation_rating: string | null
+          observation_ref: string | null
+          observation_repeat: boolean | null
+          observation_status: string | null
+          observation_title: string | null
+          organization_id: string | null
+          owner_id: string | null
+          revised_due_date: string | null
+          status: string | null
+          updated_at: string | null
+          verification_notes: string | null
+          verified_at: string | null
+          verified_by: string | null
+        }
+        Relationships: []
+      }
+      audit_engagement_summary: {
+        Row: {
+          actual_days: number | null
+          auditee_owner_id: string | null
+          budget_days: number | null
+          closed_at: string | null
+          code: string | null
+          created_at: string | null
+          criteria: string | null
+          executive_summary: string | null
+          fieldwork_end: string | null
+          fieldwork_start: string | null
+          id: string | null
+          lead_auditor_id: string | null
+          objective: string | null
+          observations_critical: number | null
+          observations_draft: number | null
+          observations_high: number | null
+          observations_low: number | null
+          observations_medium: number | null
+          observations_total: number | null
+          open_actions: number | null
+          opinion: string | null
+          organization_id: string | null
+          out_of_scope: string | null
+          overall_rating: string | null
+          overdue_actions: number | null
+          plan_item_id: string | null
+          procedures_complete: number | null
+          procedures_total: number | null
+          report_issued_at: string | null
+          report_target_date: string | null
+          scope: string | null
+          start_date: string | null
+          status: string | null
+          team: Json | null
+          title: string | null
+          type: string | null
+          universe_code: string | null
+          universe_id: string | null
+          universe_name: string | null
+          updated_at: string | null
+          workpapers_reviewed: number | null
+          workpapers_total: number | null
+        }
+        Relationships: []
+      }
+      audit_universe_scored: {
+        Row: {
+          audit_frequency_months: number | null
+          change_velocity: number | null
+          code: string | null
+          control_environment: number | null
+          created_at: string | null
+          description: string | null
+          effective_frequency_months: number | null
+          engagement_count: number | null
+          financial_materiality: number | null
+          id: string | null
+          inherent_risk: number | null
+          is_due: boolean | null
+          last_audited_at: string | null
+          months_since_last_audit: number | null
+          name: string | null
+          open_observations: number | null
+          organization_id: string | null
+          owner_id: string | null
+          parent_id: string | null
+          prior_findings: number | null
+          regulatory_exposure: number | null
+          risk_score: number | null
+          status: string | null
+          type: string | null
+          updated_at: string | null
+        }
+        Relationships: []
+      }
       program_summary: {
         Row: {
           client_workspace_id: string | null
@@ -1665,6 +3171,51 @@ export type Database = {
           p_description?: string | null
         }
         Returns: string
+      }
+      erm_assess_risk: {
+        Args: {
+          p_risk_id: string
+          p_inherent_l: number | null
+          p_inherent_i: number | null
+          p_residual_l: number | null
+          p_residual_i: number | null
+          p_rationale?: string | null
+          p_velocity?: number | null
+          p_trend?: string | null
+          p_target_l?: number | null
+          p_target_i?: number | null
+          p_impact_dimensions?: Json | null
+        }
+        Returns: string
+      }
+      erm_kri_rag: {
+        Args: {
+          p_direction: string
+          p_value: number | null
+          p_amber: number
+          p_red: number
+        }
+        Returns: string
+      }
+      erm_mark_overdue_treatments: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      import_erm_taxonomy: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      next_risk_code: {
+        Args: { p_org: string }
+        Returns: string
+      }
+      create_audit_plan_from_universe: {
+        Args: { p_period: string; p_capacity_days: number }
+        Returns: string
+      }
+      create_engagement_from_template: {
+        Args: { p_engagement_id: string; p_template_code: string }
+        Returns: number
       }
       current_user_org_id: {
         Args: Record<PropertyKey, never>
