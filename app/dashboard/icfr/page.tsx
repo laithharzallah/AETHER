@@ -37,11 +37,11 @@ function Stat({
   const toneClass = {
     default: '',
     good: 'text-emerald-600 dark:text-emerald-400',
-    warn: 'text-amber-600 dark:text-amber-400',
-    bad: 'text-red-600 dark:text-red-400',
+    warn: 'text-warning-foreground',
+    bad: 'text-danger',
   }[tone]
   return (
-    <div className="rounded-lg border border-border/60 bg-card p-4">
+    <div className="surface p-4">
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className={cn('mt-1 text-2xl font-medium tabular-nums', toneClass)}>{value}</p>
       {hint && <p className="mt-0.5 text-[11px] text-muted-foreground">{hint}</p>}
@@ -61,10 +61,7 @@ export default async function IcfrPage() {
     <div className="mx-auto max-w-6xl">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1
-            className="text-3xl tracking-tight md:text-4xl"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          >
+          <h1 className="page-title">
             Internal Control over Financial Reporting
           </h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -122,7 +119,7 @@ export default async function IcfrPage() {
       {processes.length === 0 ? (
         <Card className="mt-10">
           <CardHeader>
-            <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+            <div className="mb-2 icon-tile">
               <Scale className="h-5 w-5" />
             </div>
             <CardTitle>No processes in scope yet</CardTitle>
@@ -151,7 +148,7 @@ export default async function IcfrPage() {
               <Link
                 key={p.id}
                 href={`/dashboard/icfr/${p.id}`}
-                className="group rounded-xl border border-border/60 bg-card p-4 transition-colors hover:border-foreground/30"
+                className="group surface p-4 transition-colors hover:border-foreground/30"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
@@ -191,8 +188,8 @@ export default async function IcfrPage() {
                     <p
                       className={cn(
                         'font-medium tabular-nums',
-                        mw > 0 && 'text-red-600 dark:text-red-400',
-                        mw === 0 && openDefs > 0 && 'text-amber-600 dark:text-amber-400'
+                        mw > 0 && 'text-danger',
+                        mw === 0 && openDefs > 0 && 'text-warning-foreground'
                       )}
                     >
                       {openDefs}

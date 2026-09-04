@@ -11,7 +11,7 @@ export function PolicyMarkdown({ markdown, className }: PolicyMarkdownProps) {
   return (
     <div
       className={cn(
-        'prose-policy rounded-lg border border-border/60 bg-card p-6',
+        'prose-policy surface p-6',
         className
       )}
     >
@@ -50,16 +50,16 @@ export function PolicyMarkdown({ markdown, className }: PolicyMarkdownProps) {
             <thead className="bg-muted/50">{children}</thead>
           ),
           th: ({ children }) => (
-            <th className="border border-border/60 px-3 py-2 text-left font-medium">
+            <th className="border border-border px-3 py-2 text-left font-medium">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="border border-border/60 px-3 py-2 align-top">
+            <td className="border border-border px-3 py-2 align-top">
               {children}
             </td>
           ),
-          hr: () => <hr className="my-6 border-border/60" />,
+          hr: () => <hr className="my-6 border-border" />,
           strong: ({ children }) => (
             <strong className="font-semibold">{children}</strong>
           ),

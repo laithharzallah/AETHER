@@ -56,7 +56,7 @@ export function RcmMatrix({
 
   if (risks.length === 0 && controls.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
+      <p className="rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
         Add risks and controls to build the matrix.
       </p>
     )
@@ -68,13 +68,13 @@ export function RcmMatrix({
         <div className="text-xs text-muted-foreground">
           {risks.length} risks × {controls.length} controls · {links.length} links
           {uncovered.length > 0 && (
-            <span className="ml-2 inline-flex items-center gap-1 text-amber-600 dark:text-amber-400">
+            <span className="ml-2 inline-flex items-center gap-1 text-warning-foreground">
               <ShieldAlert className="h-3 w-3" />
               {uncovered.length} risk{uncovered.length === 1 ? '' : 's'} without a control
             </span>
           )}
         </div>
-        <div className="inline-flex rounded-lg border border-border/60 p-0.5">
+        <div className="inline-flex rounded-lg border border-border p-0.5">
           <Button
             type="button"
             size="sm"
@@ -99,7 +99,7 @@ export function RcmMatrix({
       </div>
 
       {view === 'matrix' ? (
-        <div className="mt-3 overflow-x-auto rounded-lg border border-border/60">
+        <div className="mt-3 overflow-x-auto rounded-lg border border-border">
           <table className="w-full border-collapse text-xs">
             <thead>
               <tr className="bg-muted/40">
@@ -136,7 +136,7 @@ export function RcmMatrix({
               {risks.map((r) => {
                 const covered = links.some((l) => l.riskId === r.id)
                 return (
-                  <tr key={r.id} className="border-t border-border/60 hover:bg-foreground/[0.02]">
+                  <tr key={r.id} className="border-t border-border hover:bg-primary/[0.03]">
                     <td className="sticky left-0 z-10 bg-card px-3 py-2 align-top">
                       <div className="flex items-start gap-2">
                         <code className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-[10px]">
@@ -170,7 +170,7 @@ export function RcmMatrix({
                                 ? c.is_key
                                   ? 'border-emerald-600 bg-emerald-500 text-white'
                                   : 'border-emerald-500/60 bg-emerald-500/30 text-emerald-900 dark:text-emerald-100'
-                                : 'border-border/60 hover:border-foreground/40'
+                                : 'border-border hover:border-foreground/40'
                             )}
                           >
                             {linked ? '●' : ''}
@@ -189,7 +189,7 @@ export function RcmMatrix({
           {risks.map((r) => {
             const linkedControls = controls.filter((c) => isLinked(r.id, c.id))
             return (
-              <div key={r.id} className="rounded-lg border border-border/60 bg-card p-3">
+              <div key={r.id} className="surface p-3">
                 <div className="flex flex-wrap items-start gap-2">
                   <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">
                     {r.ref}
@@ -200,9 +200,9 @@ export function RcmMatrix({
                 <div className="mt-2 flex flex-wrap items-center gap-2">
                   <AssertionChips assertions={r.assertions} />
                 </div>
-                <div className="mt-3 border-t border-border/60 pt-2">
+                <div className="mt-3 border-t border-border pt-2">
                   {linkedControls.length === 0 ? (
-                    <p className="text-xs text-amber-600 dark:text-amber-400">
+                    <p className="text-xs text-warning-foreground">
                       No control addresses this risk.
                     </p>
                   ) : (

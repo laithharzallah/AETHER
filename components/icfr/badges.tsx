@@ -62,7 +62,7 @@ export function ControlAttrBadges({
         {CONTROL_TYPE_LABEL[controlType as ControlType] ?? controlType}
       </Badge>
       <Badge variant="outline">{NATURE_LABEL[nature as Nature] ?? nature}</Badge>
-      <Badge variant="ghost" className="border-border/60">
+      <Badge variant="ghost" className="border-border">
         {FREQUENCY_LABEL[frequency as Frequency] ?? frequency}
       </Badge>
     </div>

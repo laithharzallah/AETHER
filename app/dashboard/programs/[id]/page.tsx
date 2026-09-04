@@ -86,10 +86,7 @@ export default async function ProgramDetailPage({
               </span>
             )}
           </div>
-          <h1
-            className="mt-3 text-3xl tracking-tight md:text-4xl"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          >
+          <h1 className="page-title mt-3">
             {program.name}
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
@@ -105,7 +102,7 @@ export default async function ProgramDetailPage({
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-[1.4fr_1fr]">
-        <div className="rounded-lg border border-border/60 bg-card p-4">
+        <div className="surface p-4">
           <div className="flex items-end justify-between gap-3">
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase">
@@ -173,14 +170,14 @@ function Stat({
 }) {
   const toneClass =
     tone === 'good'
-      ? 'text-green-600 dark:text-green-500'
+      ? 'text-success'
       : tone === 'warn'
-        ? 'text-amber-600 dark:text-amber-400'
+        ? 'text-warning-foreground'
         : tone === 'bad'
-          ? 'text-red-600 dark:text-red-400'
+          ? 'text-danger'
           : ''
   return (
-    <div className="rounded-lg border border-border/60 bg-card p-3">
+    <div className="surface p-3">
       <p className={`text-2xl font-semibold tabular-nums tracking-tight ${toneClass}`}>
         {value}
       </p>

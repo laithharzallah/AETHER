@@ -84,13 +84,13 @@ export function DeficiencyLog({ rows }: { rows: DeficiencyRow[] }) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="mt-6 rounded-lg border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
+        <p className="mt-6 rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
           No deficiencies match the current filters.
         </p>
       ) : (
-        <div className="mt-4 overflow-x-auto rounded-lg border border-border/60">
+        <div className="mt-4 overflow-x-auto rounded-lg border border-border">
           <table className="w-full text-sm">
-            <thead className="bg-muted/40 text-left text-xs text-muted-foreground uppercase">
+            <thead className="bg-surface text-left text-[11px] tracking-wider text-muted-foreground uppercase">
               <tr>
                 <th className="px-3 py-2.5 font-medium">Deficiency</th>
                 <th className="px-3 py-2.5 font-medium">Severity</th>
@@ -105,7 +105,7 @@ export function DeficiencyLog({ rows }: { rows: DeficiencyRow[] }) {
                 const active = d.status === 'open' || d.status === 'in_remediation'
                 const overdue = active && d.due_date !== null && d.due_date < today
                 return (
-                  <tr key={d.id} className={cn('border-t border-border/60', overdue && 'bg-red-500/[0.04]')}>
+                  <tr key={d.id} className={cn('border-t border-border', overdue && 'bg-red-500/[0.04]')}>
                     <td className="max-w-md px-3 py-2.5">
                       <p className="line-clamp-2">{d.description}</p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
@@ -130,7 +130,7 @@ export function DeficiencyLog({ rows }: { rows: DeficiencyRow[] }) {
                       )}
                     </td>
                     <td className="hidden px-3 py-2.5 text-xs lg:table-cell">{d.owner?.name ?? '—'}</td>
-                    <td className={cn('px-3 py-2.5 text-xs whitespace-nowrap', overdue && 'font-medium text-red-600 dark:text-red-400')}>
+                    <td className={cn('px-3 py-2.5 text-xs whitespace-nowrap', overdue && 'font-medium text-danger')}>
                       {formatDate(d.due_date)}
                       {overdue && <span className="ml-1">(overdue)</span>}
                     </td>

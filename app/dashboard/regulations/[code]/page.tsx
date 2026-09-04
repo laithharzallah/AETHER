@@ -60,10 +60,7 @@ export default async function FrameworkPage({
         )}
       </div>
 
-      <h1
-        className="mt-3 text-3xl tracking-tight md:text-4xl"
-        style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-      >
+      <h1 className="page-title mt-3">
         {framework.name_en}
       </h1>
       {framework.name_ar && (

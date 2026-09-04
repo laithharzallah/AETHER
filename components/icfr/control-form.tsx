@@ -146,7 +146,7 @@ export function ControlForm({
         {risks.length === 0 ? (
           <p className="mt-1 text-xs text-muted-foreground">No risks defined yet.</p>
         ) : (
-          <div className="mt-1.5 max-h-40 space-y-1 overflow-y-auto rounded-lg border border-border/60 p-2">
+          <div className="mt-1.5 max-h-40 space-y-1 overflow-y-auto rounded-lg border border-border p-2">
             {risks.map((r) => (
               <Checkbox
                 key={r.id}

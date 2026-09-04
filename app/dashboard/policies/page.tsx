@@ -58,10 +58,7 @@ export default async function PoliciesPage() {
     <div className="mx-auto max-w-5xl">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1
-            className="text-3xl tracking-tight md:text-4xl"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          >
+          <h1 className="page-title">
             Policies
           </h1>
           <p className="mt-3 text-muted-foreground">
@@ -81,7 +78,7 @@ export default async function PoliciesPage() {
       {rows.length === 0 ? (
         <Card className="mt-10">
           <CardHeader>
-            <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+            <div className="mb-2 icon-tile">
               <FileText className="h-5 w-5" />
             </div>
             <CardTitle>No policies yet</CardTitle>
@@ -102,9 +99,9 @@ export default async function PoliciesPage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="mt-8 overflow-hidden rounded-lg border border-border/60">
+        <div className="mt-8 surface overflow-hidden">
           <table className="w-full text-sm">
-            <thead className="bg-muted/40 text-left text-xs text-muted-foreground uppercase">
+            <thead className="bg-surface text-left text-[11px] tracking-wider text-muted-foreground uppercase">
               <tr>
                 <th className="px-4 py-2.5 font-medium">Policy</th>
                 <th className="hidden px-4 py-2.5 font-medium md:table-cell">
@@ -127,7 +124,7 @@ export default async function PoliciesPage() {
                 return (
                   <tr
                     key={p.id}
-                    className="border-t border-border/60 transition-colors hover:bg-foreground/[0.03]"
+                    className="border-t border-border transition-colors hover:bg-primary/[0.03]"
                   >
                     <td className="px-4 py-3">
                       <Link

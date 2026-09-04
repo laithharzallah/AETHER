@@ -154,7 +154,7 @@ export function GenerateRcmDialog() {
         </Field>
 
         {preview && (
-          <div className="rounded-lg border border-border/60 bg-muted/30 p-3 text-sm">
+          <div className="rounded-lg border border-border bg-muted/30 p-3 text-sm">
             <p className="font-medium">
               {preview.risks.length} risks · {preview.controls.length} controls ({keyCount} key)
             </p>

@@ -224,10 +224,7 @@ export function PolicyGeneratorClient({
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1
-        className="text-3xl tracking-tight md:text-4xl"
-        style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-      >
+      <h1 className="page-title">
         Policy Generator
       </h1>
       <p className="mt-3 text-muted-foreground">
@@ -413,7 +410,7 @@ export function PolicyGeneratorClient({
           )}
 
           {isComplete && markdown && (
-            <div className="mb-5 flex flex-col gap-3 rounded-lg border border-border/60 bg-muted/20 p-4 sm:flex-row sm:items-end">
+            <div className="mb-5 flex flex-col gap-3 rounded-lg border border-border bg-muted/20 p-4 sm:flex-row sm:items-end">
               <div className="flex-1 space-y-1.5">
                 <Label htmlFor="policy-title">Save to library as</Label>
                 <Input

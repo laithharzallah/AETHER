@@ -46,10 +46,7 @@ export default async function IcfrProcessPage({
               {process.status}
             </Badge>
           </div>
-          <h1
-            className="mt-3 text-3xl tracking-tight md:text-4xl"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          >
+          <h1 className="page-title mt-3">
             {process.name}
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">

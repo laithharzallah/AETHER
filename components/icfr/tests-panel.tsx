@@ -81,7 +81,7 @@ function TestForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-border/60 bg-muted/20 p-3">
+    <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Field label="Period" htmlFor="t-period">
           <Input id="t-period" name="period" defaultValue={test?.period ?? defaultPeriod()} required />
@@ -241,7 +241,7 @@ export function TestsPanel({
               />
             </li>
           ) : (
-            <li key={t.id} className="rounded-lg border border-border/60 bg-card">
+            <li key={t.id} className="surface">
               <div className="flex items-center gap-2 px-3 py-2 text-xs">
                 <button
                   type="button"
@@ -283,7 +283,7 @@ export function TestsPanel({
                 </Button>
               </div>
               {expandedId === t.id && (
-                <div className="space-y-2 border-t border-border/60 px-3 py-2 text-xs">
+                <div className="space-y-2 border-t border-border px-3 py-2 text-xs">
                   {t.workpaper_ref && (
                     <p className="text-muted-foreground">Workpaper: {t.workpaper_ref}</p>
                   )}

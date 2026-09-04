@@ -67,7 +67,7 @@ function RiskForm({
   const scale = ['', '1', '2', '3', '4', '5']
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-border/60 bg-muted/20 p-3">
+    <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
       <div className="grid gap-3 sm:grid-cols-[90px_1fr]">
         <Field label="Ref" htmlFor="r-ref">
           <Input id="r-ref" name="ref" defaultValue={risk?.ref ?? suggestedRef ?? ''} required />
@@ -177,13 +177,13 @@ export function RisksTable({
       )}
 
       {risks.length === 0 && !adding ? (
-        <p className="rounded-lg border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
+        <p className="rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
           No risks yet. Start with what could go wrong in this process.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-border/60">
+        <div className="overflow-x-auto rounded-lg border border-border">
           <table className="w-full text-sm">
-            <thead className="bg-muted/40 text-left text-xs text-muted-foreground uppercase">
+            <thead className="bg-surface text-left text-[11px] tracking-wider text-muted-foreground uppercase">
               <tr>
                 <th className="px-3 py-2.5 font-medium">Risk</th>
                 <th className="hidden px-3 py-2.5 font-medium md:table-cell">Assertions</th>
@@ -195,13 +195,13 @@ export function RisksTable({
             <tbody>
               {risks.map((r) =>
                 editingId === r.id ? (
-                  <tr key={r.id} className="border-t border-border/60">
+                  <tr key={r.id} className="border-t border-border">
                     <td colSpan={5} className="p-2">
                       <RiskForm processId={processId} risk={r} onDone={() => setEditingId(null)} />
                     </td>
                   </tr>
                 ) : (
-                  <tr key={r.id} className="border-t border-border/60 hover:bg-foreground/[0.02]">
+                  <tr key={r.id} className="border-t border-border hover:bg-primary/[0.03]">
                     <td className="px-3 py-2.5">
                       <div className="flex items-start gap-2">
                         <code className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">
@@ -229,7 +229,7 @@ export function RisksTable({
                     </td>
                     <td className="hidden px-3 py-2.5 lg:table-cell">
                       {r.control_ids.length === 0 ? (
-                        <span className="text-xs text-amber-600 dark:text-amber-400">None</span>
+                        <span className="text-xs text-warning-foreground">None</span>
                       ) : (
                         <div className="flex flex-wrap gap-1">
                           {r.control_ids.map((cid) => (

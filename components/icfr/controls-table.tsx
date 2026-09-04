@@ -69,15 +69,15 @@ export function ControlsTable({
 }) {
   if (controls.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
+      <p className="rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
         No controls yet. Add a control or import a template.
       </p>
     )
   }
   return (
-    <div className="overflow-x-auto rounded-lg border border-border/60">
+    <div className="overflow-x-auto rounded-lg border border-border">
       <table className="w-full text-sm">
-        <thead className="bg-muted/40 text-left text-xs text-muted-foreground uppercase">
+        <thead className="bg-surface text-left text-[11px] tracking-wider text-muted-foreground uppercase">
           <tr>
             <th className="px-3 py-2.5 font-medium">Control</th>
             <th className="hidden px-3 py-2.5 font-medium lg:table-cell">Attributes</th>
@@ -94,7 +94,7 @@ export function ControlsTable({
               key={c.id}
               onClick={() => onSelect(c.id)}
               className={cn(
-                'cursor-pointer border-t border-border/60 transition-colors hover:bg-foreground/[0.03]',
+                'cursor-pointer border-t border-border transition-colors hover:bg-primary/[0.03]',
                 selectedId === c.id && 'bg-foreground/[0.04]',
                 c.status === 'retired' && 'opacity-60'
               )}

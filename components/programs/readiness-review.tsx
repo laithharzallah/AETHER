@@ -89,7 +89,7 @@ export function ReadinessReview({ programId, disabled }: ReadinessReviewProps) {
   const hasContent = markdown.trim().length > 0
 
   return (
-    <section className="rounded-lg border border-border/60 bg-card">
+    <section className="surface">
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
         <div>
           <h2 className="text-sm font-medium">AI readiness review</h2>
@@ -123,13 +123,13 @@ export function ReadinessReview({ programId, disabled }: ReadinessReviewProps) {
       </div>
 
       {error && (
-        <p className="border-t border-border/60 px-4 py-3 text-sm text-destructive">
+        <p className="border-t border-border px-4 py-3 text-sm text-destructive">
           {error}
         </p>
       )}
 
       {(hasContent || running) && (
-        <div className="border-t border-border/60 p-4">
+        <div className="border-t border-border p-4">
           {hasContent ? (
             <PolicyMarkdown markdown={markdown} className="border-0 p-0" />
           ) : (

@@ -60,7 +60,7 @@ function RiskLinks({
             const linked = control.risk_ids.includes(r.id)
             return (
               <li key={r.id}>
-                <label className="flex cursor-pointer items-start gap-2 rounded-md px-1.5 py-1 text-xs hover:bg-foreground/[0.03]">
+                <label className="flex cursor-pointer items-start gap-2 rounded-md px-1.5 py-1 text-xs hover:bg-primary/[0.03]">
                   <input
                     type="checkbox"
                     className="mt-0.5 h-3.5 w-3.5 accent-primary"
@@ -140,9 +140,9 @@ export function ControlDrawer({
       <aside
         role="dialog"
         aria-label={`Control ${control.ref}`}
-        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-2xl flex-col border-l border-border/60 bg-background shadow-xl"
+        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-2xl flex-col border-l border-border bg-background shadow-xl"
       >
-        <div className="flex items-start justify-between gap-3 border-b border-border/60 px-5 py-4">
+        <div className="flex items-start justify-between gap-3 border-b border-border px-5 py-4">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <KeyStar isKey={control.is_key} />
@@ -218,7 +218,7 @@ export function ControlDrawer({
                     </p>
                   </div>
                 </div>
-                <dl className="space-y-2 rounded-lg border border-border/60 p-3 text-xs">
+                <dl className="space-y-2 rounded-lg border border-border p-3 text-xs">
                   <div>
                     <dt className="text-muted-foreground">Owner</dt>
                     <dd>{control.owner?.name ?? '—'}</dd>

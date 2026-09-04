@@ -51,10 +51,7 @@ export default async function DashboardOverviewPage() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <h1
-        className="text-4xl tracking-tight md:text-5xl"
-        style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-      >
+      <h1 className="page-title">
         Welcome to AETHER
       </h1>
       <p className="mt-3 text-muted-foreground">
@@ -247,8 +244,8 @@ function Stat({
           <p
             className={cn(
               'mt-1 text-2xl font-semibold tracking-tight tabular-nums',
-              tone === 'warn' && 'text-amber-600 dark:text-amber-400',
-              tone === 'danger' && 'text-red-600 dark:text-red-400'
+              tone === 'warn' && 'text-warning-foreground',
+              tone === 'danger' && 'text-danger'
             )}
           >
             {value}
@@ -279,11 +276,11 @@ function ModuleCard({
     <Card
       className={cn(
         'flex flex-col transition-colors hover:border-border',
-        primary && 'border-foreground/15 bg-foreground/[0.02]'
+        primary && 'border-brass/40 bg-primary/[0.03]'
       )}
     >
       <CardHeader className="flex-1">
-        <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+        <div className="mb-2 icon-tile">
           <Icon className="h-5 w-5" />
         </div>
         <CardTitle>{title}</CardTitle>

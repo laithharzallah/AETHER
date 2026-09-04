@@ -23,8 +23,8 @@ const FIDELITY_LABEL: Record<string, string> = {
 }
 
 const CRITICALITY_CLASS: Record<string, string> = {
-  high: 'text-red-600 dark:text-red-400',
-  medium: 'text-amber-600 dark:text-amber-400',
+  high: 'text-danger',
+  medium: 'text-warning-foreground',
   low: 'text-muted-foreground',
 }
 
@@ -105,7 +105,7 @@ export function ControlsExplorer({
           />
         </div>
         <div className="flex items-center gap-2">
-          <div className="inline-flex rounded-lg border border-border/60 p-0.5">
+          <div className="inline-flex rounded-lg border border-border p-0.5">
             <Button
               type="button"
               size="sm"
@@ -177,7 +177,7 @@ export function ControlsExplorer({
                     {items.length}
                   </span>
                 </h2>
-                <div className="overflow-hidden rounded-lg border border-border/60">
+                <div className="surface overflow-hidden">
                   {items.map((c, i) => {
                     const open = expanded.has(c.id)
                     const title = isAr && c.title_ar ? c.title_ar : c.title_en
@@ -192,14 +192,14 @@ export function ControlsExplorer({
                         key={c.id}
                         className={cn(
                           'bg-card',
-                          i > 0 && 'border-t border-border/60'
+                          i > 0 && 'border-t border-border'
                         )}
                       >
                         <button
                           type="button"
                           onClick={() => toggle(c.id)}
                           aria-expanded={open}
-                          className="flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-foreground/[0.03]"
+                          className="flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-primary/[0.03]"
                         >
                           {open ? (
                             <ChevronDown className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
@@ -234,7 +234,7 @@ export function ControlsExplorer({
                             )}
                             {c.verified && (
                               <CheckCircle2
-                                className="h-4 w-4 text-green-600 dark:text-green-500"
+                                className="h-4 w-4 text-success"
                                 aria-label="Verified"
                               />
                             )}
@@ -244,7 +244,7 @@ export function ControlsExplorer({
                         {open && (
                           <div
                             className={cn(
-                              'border-t border-border/40 bg-muted/20 px-4 py-4 pl-[3.25rem]',
+                              'border-t border-border bg-muted/20 px-4 py-4 pl-[3.25rem]',
                               rtl && 'pr-[3.25rem] pl-4 text-right'
                             )}
                             dir={rtl ? 'rtl' : 'ltr'}

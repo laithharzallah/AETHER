@@ -65,14 +65,14 @@ type Override = Partial<
 
 const STATUS_CLASS: Record<ImplementationStatus, string> = {
   not_started: 'text-muted-foreground',
-  in_progress: 'text-amber-600 dark:text-amber-400',
-  implemented: 'text-green-600 dark:text-green-500',
+  in_progress: 'text-warning-foreground',
+  implemented: 'text-success',
   not_applicable: 'text-muted-foreground/70',
 }
 
 const CRITICALITY_CLASS: Record<string, string> = {
-  high: 'text-red-600 dark:text-red-400',
-  medium: 'text-amber-600 dark:text-amber-400',
+  high: 'text-danger',
+  medium: 'text-warning-foreground',
   low: 'text-muted-foreground',
 }
 
@@ -365,7 +365,7 @@ export function ControlMatrix({
             {allVisibleSelected ? 'Clear selection' : 'Select visible'}
           </button>
           {selected.size > 0 && (
-            <div className="flex items-center gap-1.5 rounded-lg border border-border/60 bg-card px-2 py-1">
+            <div className="flex items-center gap-1.5 surface px-2 py-1">
               <span className="tabular-nums">{selected.size} selected →</span>
               <select
                 value={bulkStatus}
@@ -455,9 +455,9 @@ export function ControlMatrix({
                   </span>
                 </div>
 
-                <div className="overflow-x-auto rounded-lg border border-border/60">
+                <div className="overflow-x-auto rounded-lg border border-border">
                   <table className="w-full min-w-[880px] text-sm">
-                    <thead className="bg-muted/40 text-left text-xs text-muted-foreground uppercase">
+                    <thead className="bg-surface text-left text-[11px] tracking-wider text-muted-foreground uppercase">
                       <tr>
                         <th className="w-8 px-2 py-2" />
                         <th className="w-28 px-2 py-2 font-medium">Ref</th>
@@ -621,8 +621,8 @@ function MatrixRowGroup({
     <>
       <tr
         className={cn(
-          'border-t border-border/60 bg-card align-top transition-colors',
-          isSelected ? 'bg-foreground/[0.04]' : 'hover:bg-foreground/[0.02]',
+          'border-t border-border bg-card align-top transition-colors',
+          isSelected ? 'bg-foreground/[0.04]' : 'hover:bg-primary/[0.03]',
           isNa && 'opacity-70'
         )}
       >
@@ -753,7 +753,7 @@ function MatrixRowGroup({
         </td>
       </tr>
       {open && (
-        <tr className="border-t border-border/40 bg-muted/20">
+        <tr className="border-t border-border bg-muted/20">
           <td colSpan={8} className="px-4 py-4">
             <div className="grid gap-5 lg:grid-cols-[1.2fr_1fr]">
               <div className="space-y-4">
@@ -857,7 +857,7 @@ function MatrixRowGroup({
                     item from the vault.
                   </p>
                 ) : (
-                  <ul className="divide-y divide-border/60 rounded-lg border border-border/60 bg-card">
+                  <ul className="divide-y divide-border/60 surface">
                     {impl.evidence.map((e) => {
                       const validity = validityState(e.valid_until)
                       return (

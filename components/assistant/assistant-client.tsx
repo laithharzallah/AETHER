@@ -26,6 +26,7 @@ type AssistantClientProps = {
   activeConversation: ConversationSummary | null
   initialMessages: ChatMessage[]
   libraryStats: { frameworks: number; controls: number; jurisdictions: number }
+  initialQuery?: string
 }
 
 type StreamEvent =
@@ -66,8 +67,10 @@ export function AssistantClient({
   activeConversation,
   initialMessages,
   libraryStats,
+  initialQuery,
 }: AssistantClientProps) {
   const router = useRouter()
+  const initialQueryRef = useRef(initialQuery)
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages)
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
@@ -229,6 +232,15 @@ export function AssistantClient({
     [conversationId, streaming]
   )
 
+  // A query handed over from the top-bar search: send it once on mount.
+  useEffect(() => {
+    const q = initialQueryRef.current
+    if (!q) return
+    initialQueryRef.current = undefined
+    window.history.replaceState(null, '', '/dashboard/assistant')
+    void send(q)
+  }, [send])
+
   function stop() {
     abortRef.current?.abort()
   }
@@ -255,7 +267,7 @@ export function AssistantClient({
   return (
     <div className="-m-6 flex h-[calc(100vh-3.5rem)] md:-m-8">
       {/* Sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-border/40 md:flex">
+      <aside className="hidden w-64 shrink-0 flex-col border-r border-border md:flex">
         <div className="p-3">
           <Button
             type="button"
@@ -307,7 +319,7 @@ export function AssistantClient({
             </ul>
           )}
         </div>
-        <div className="border-t border-border/40 p-3 text-[11px] text-muted-foreground">
+        <div className="border-t border-border p-3 text-[11px] text-muted-foreground">
           <div className="flex items-center gap-1.5">
             <BookOpen className="h-3 w-3" />
             Grounded in {libraryStats.controls.toLocaleString()} controls ·{' '}
@@ -322,13 +334,10 @@ export function AssistantClient({
           <div className="mx-auto max-w-3xl px-4 py-6 md:px-6">
             {empty ? (
               <div className="pt-10">
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+                <div className="mb-3 icon-tile">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h1
-                  className="text-3xl tracking-tight md:text-4xl"
-                  style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-                >
+                <h1 className="page-title">
                   Ask AETHER
                 </h1>
                 <p className="mt-3 max-w-xl text-muted-foreground">
@@ -344,7 +353,7 @@ export function AssistantClient({
                       onClick={() => void send(s)}
                       dir={isArabic(s) ? 'rtl' : 'ltr'}
                       className={cn(
-                        'rounded-lg border border-border/60 bg-card px-3.5 py-3 text-left text-sm text-foreground/90 transition-colors hover:border-border hover:bg-foreground/[0.03]',
+                        'surface px-3.5 py-3 text-left text-sm text-foreground/90 transition-colors hover:border-border hover:bg-primary/[0.03]',
                         isArabic(s) && 'text-right'
                       )}
                     >
@@ -378,7 +387,7 @@ export function AssistantClient({
         </div>
 
         {/* Composer */}
-        <div className="border-t border-border/40 bg-background">
+        <div className="border-t border-border bg-background">
           <div className="mx-auto max-w-3xl px-4 py-3 md:px-6">
             <div className="flex items-end gap-2 rounded-xl border border-input bg-card p-2 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50">
               <textarea
@@ -447,7 +456,7 @@ function MessageBubble({
 
   return (
     <div className="flex gap-3">
-      <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-foreground/5">
+      <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary">
         <Sparkles className="h-3.5 w-3.5" />
       </div>
       <div className="min-w-0 flex-1">
@@ -486,7 +495,7 @@ function MessageBubble({
                 key={c.controlId}
                 href={`/dashboard/regulations/${encodeURIComponent(c.frameworkCode)}`}
                 title={c.title}
-                className="inline-flex items-center gap-1 rounded-md border border-border/60 bg-card px-2 py-0.5 text-[11px] hover:border-border hover:bg-foreground/[0.03]"
+                className="inline-flex items-center gap-1 rounded-md border border-border bg-card px-2 py-0.5 text-[11px] hover:border-border hover:bg-primary/[0.03]"
               >
                 <BookOpen className="h-3 w-3 text-muted-foreground" />
                 <span className="font-medium">{c.frameworkName}</span>

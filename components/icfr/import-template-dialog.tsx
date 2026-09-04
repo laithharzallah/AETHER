@@ -85,7 +85,7 @@ export function ImportTemplateDialog({
                   'w-full rounded-lg border px-3 py-2 text-left transition-colors',
                   active
                     ? 'border-foreground/40 bg-foreground/[0.04]'
-                    : 'border-border/60 hover:bg-foreground/[0.03]',
+                    : 'border-border hover:bg-primary/[0.03]',
                   exists && 'cursor-not-allowed opacity-50'
                 )}
               >

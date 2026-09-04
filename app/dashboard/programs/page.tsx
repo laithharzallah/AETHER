@@ -71,10 +71,7 @@ export default async function ProgramsPage() {
     <div className="mx-auto max-w-5xl">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1
-            className="text-3xl tracking-tight md:text-4xl"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          >
+          <h1 className="page-title">
             Compliance Programs
           </h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -99,7 +96,7 @@ export default async function ProgramsPage() {
       {programs.length === 0 ? (
         <Card className="mt-10">
           <CardHeader>
-            <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+            <div className="mb-2 icon-tile">
               <ClipboardCheck className="h-5 w-5" />
             </div>
             <CardTitle>No programs yet</CardTitle>

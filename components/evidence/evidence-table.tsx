@@ -217,9 +217,9 @@ export function EvidenceTable({ rows, canReview }: EvidenceTableProps) {
           No evidence matches your filters.
         </p>
       ) : (
-        <div className="mt-4 overflow-x-auto rounded-lg border border-border/60">
+        <div className="mt-4 overflow-x-auto rounded-lg border border-border">
           <table className="w-full min-w-[900px] text-sm">
-            <thead className="bg-muted/40 text-left text-xs text-muted-foreground uppercase">
+            <thead className="bg-surface text-left text-[11px] tracking-wider text-muted-foreground uppercase">
               <tr>
                 <th className="px-4 py-2.5 font-medium">Evidence</th>
                 <th className="px-3 py-2.5 font-medium">Type</th>
@@ -245,7 +245,7 @@ export function EvidenceTable({ rows, canReview }: EvidenceTableProps) {
                 return (
                   <tr
                     key={r.id}
-                    className="border-t border-border/60 align-top transition-colors hover:bg-foreground/[0.03]"
+                    className="border-t border-border align-top transition-colors hover:bg-primary/[0.03]"
                   >
                     <td className="px-4 py-3">
                       <div className="flex items-start gap-2">
@@ -322,7 +322,7 @@ export function EvidenceTable({ rows, canReview }: EvidenceTableProps) {
                             aria-label="Accept evidence"
                             title="Accept"
                           >
-                            <Check className="text-green-600 dark:text-green-500" />
+                            <Check className="text-success" />
                           </Button>
                         )}
                         {canReview && rs !== 'rejected' && (
@@ -334,7 +334,7 @@ export function EvidenceTable({ rows, canReview }: EvidenceTableProps) {
                             aria-label="Reject evidence"
                             title="Reject"
                           >
-                            <X className="text-red-600 dark:text-red-400" />
+                            <X className="text-danger" />
                           </Button>
                         )}
                       </div>

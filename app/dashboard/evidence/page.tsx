@@ -88,10 +88,7 @@ export default async function EvidencePage() {
 
   return (
     <div className="mx-auto max-w-6xl">
-      <h1
-        className="text-3xl tracking-tight md:text-4xl"
-        style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-      >
+      <h1 className="page-title">
         Evidence Vault
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -129,7 +126,7 @@ export default async function EvidencePage() {
         {rows.length === 0 ? (
           <Card>
             <CardHeader>
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+              <div className="mb-2 icon-tile">
                 <FolderLock className="h-5 w-5" />
               </div>
               <CardTitle>The vault is empty</CardTitle>

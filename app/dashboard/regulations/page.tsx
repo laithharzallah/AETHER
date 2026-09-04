@@ -39,10 +39,7 @@ export default async function RegulationsPage() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      <h1
-        className="text-3xl tracking-tight md:text-4xl"
-        style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-      >
+      <h1 className="page-title">
         Regulatory Library
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -136,7 +133,7 @@ export default async function RegulationsPage() {
                         {f.domain_count ?? 0} domains
                       </span>
                       {(f.verified_count ?? 0) > 0 && (
-                        <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-500">
+                        <span className="inline-flex items-center gap-1 text-success">
                           <CheckCircle2 className="h-3 w-3" />
                           {f.verified_count} verified
                         </span>
@@ -165,7 +162,7 @@ function StatCard({
   return (
     <Card>
       <CardContent className="flex items-center gap-4 pt-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/5">
+        <div className="icon-tile">
           <Icon className="h-5 w-5" />
         </div>
         <div>

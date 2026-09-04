@@ -1,19 +1,24 @@
 import Link from 'next/link'
-import { Shield } from 'lucide-react'
+import { AuthLayout } from '@/components/auth/auth-layout'
 import { LoginForm } from './login-form'
+
+export const metadata = { title: 'Sign in' }
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <header className="border-b border-border/40 px-6 py-4">
-        <Link href="/" className="inline-flex items-center gap-2">
-          <Shield className="w-5 h-5" />
-          <span className="font-semibold tracking-tight">AETHER</span>
-        </Link>
-      </header>
-      <main className="flex flex-1 items-center justify-center px-6 py-12">
-        <LoginForm />
-      </main>
-    </div>
+    <AuthLayout
+      title="Sign in"
+      subtitle="Welcome back. Your programs, evidence and library are where you left them."
+      footer={
+        <>
+          New to AETHER?{' '}
+          <Link href="/signup" className="font-medium text-foreground underline-offset-4 hover:underline">
+            Request access
+          </Link>
+        </>
+      }
+    >
+      <LoginForm />
+    </AuthLayout>
   )
 }

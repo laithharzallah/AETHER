@@ -59,7 +59,7 @@ export function DeficiencyForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-border/60 bg-muted/20 p-3">
+    <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-border bg-muted/20 p-3">
       <div className="grid gap-3 sm:grid-cols-2">
         <Field label="Severity" htmlFor="d-sev">
           <NativeSelect id="d-sev" name="severity" defaultValue="deficiency">
@@ -168,7 +168,7 @@ export function DeficienciesPanel({
           const overdue =
             d.due_date && d.due_date < today && (d.status === 'open' || d.status === 'in_remediation')
           return (
-            <li key={d.id} className="rounded-lg border border-border/60 bg-card px-3 py-2 text-xs">
+            <li key={d.id} className="surface px-3 py-2 text-xs">
               <div className="flex flex-wrap items-center gap-2">
                 <SeverityBadge severity={d.severity} />
                 <DeficiencyStatusBadge status={d.status} />
@@ -176,7 +176,7 @@ export function DeficienciesPanel({
                   Identified {formatDate(d.identified_at)}
                 </span>
                 {d.due_date && (
-                  <span className={cn('text-muted-foreground', overdue && 'font-medium text-red-600 dark:text-red-400')}>
+                  <span className={cn('text-muted-foreground', overdue && 'font-medium text-danger')}>
                     Due {formatDate(d.due_date)}
                     {overdue && ' (overdue)'}
                   </span>

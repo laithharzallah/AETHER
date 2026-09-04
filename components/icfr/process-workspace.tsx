@@ -27,7 +27,7 @@ export function ProcessWorkspace({ detail }: { detail: ProcessDetail }) {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border">
         <div className="flex gap-1" role="tablist">
           {TABS.map((t) => (
             <button

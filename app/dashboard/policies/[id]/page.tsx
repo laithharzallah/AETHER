@@ -100,10 +100,7 @@ export default async function PolicyDetailPage({
               </Badge>
             ))}
           </div>
-          <h1
-            className="mt-3 text-3xl tracking-tight md:text-4xl"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          >
+          <h1 className="page-title mt-3">
             {policy.title}
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -124,7 +121,7 @@ export default async function PolicyDetailPage({
         <PolicyMarkdown markdown={policy.content_md} />
 
         <aside className="space-y-6">
-          <div className="rounded-lg border border-border/60 bg-card p-4">
+          <div className="surface p-4">
             <h2 className="text-sm font-medium">Control mappings</h2>
             <p className="mt-1 text-xs text-muted-foreground">
               {mapped.length === 0
@@ -156,7 +153,7 @@ export default async function PolicyDetailPage({
           </div>
 
           {policy.org_context && (
-            <div className="rounded-lg border border-border/60 bg-card p-4">
+            <div className="surface p-4">
               <h2 className="text-sm font-medium">Organization context</h2>
               <p className="mt-2 text-sm whitespace-pre-wrap text-foreground/80">
                 {policy.org_context}

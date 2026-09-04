@@ -154,7 +154,7 @@ export function EvidenceUploader({
     <form
       onSubmit={handleSubmit}
       className={cn(
-        'rounded-lg border border-border/60 bg-card',
+        'surface',
         compact ? 'p-3' : 'p-4',
         className
       )}
@@ -163,7 +163,7 @@ export function EvidenceUploader({
         <p className={cn('font-medium', compact ? 'text-xs' : 'text-sm')}>
           Add evidence
         </p>
-        <div className="inline-flex rounded-lg border border-border/60 p-0.5">
+        <div className="inline-flex rounded-lg border border-border p-0.5">
           {MODES.map((m) => (
             <Button
               key={m.value}
