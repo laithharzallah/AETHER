@@ -1,7 +1,7 @@
 'use client'
 
 import { useDeferredValue, useMemo, useState } from 'react'
-import { CheckCircle2, ChevronDown, ChevronRight, Search } from 'lucide-react'
+import { CheckCircle2, ChevronDown, ChevronRight, Search, ShieldQuestion } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -145,13 +145,20 @@ export function ControlsExplorer({
         <span className="tabular-nums">
           {filtered.length} of {controls.length} controls
         </span>
-        <span className="inline-flex items-center gap-1">
-          <CheckCircle2 className="h-3 w-3" />
-          {verifiedCount} verified against primary source
-        </span>
+        {verifiedCount > 0 ? (
+          <span className="inline-flex items-center gap-1 text-success">
+            <CheckCircle2 className="h-3 w-3" />
+            {verifiedCount} of {controls.length} reviewed by a named reviewer
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1 text-warning-foreground">
+            <ShieldQuestion className="h-3 w-3" />
+            No control in this framework has been reviewed by a named human yet
+          </span>
+        )}
         <span>
-          Requirement text is paraphrased for clarity — cite the primary document
-          in formal submissions.
+          Text is machine-drafted from the primary source. Cite the regulator&apos;s
+          own document in formal submissions.
         </span>
       </div>
 
@@ -232,11 +239,26 @@ export function ControlsExplorer({
                                 {c.criticality}
                               </span>
                             )}
-                            {c.verified && (
-                              <CheckCircle2
-                                className="h-4 w-4 text-success"
-                                aria-label="Verified"
-                              />
+                            {c.verified ? (
+                              <span
+                                title={
+                                  c.verified_by
+                                    ? `Reviewed by ${c.verified_by}${c.verified_at ? ` · ${c.verified_at}` : ''}`
+                                    : 'Reviewed'
+                                }
+                              >
+                                <CheckCircle2
+                                  className="h-4 w-4 text-success"
+                                  aria-label={`Reviewed by ${c.verified_by ?? 'a named reviewer'}`}
+                                />
+                              </span>
+                            ) : (
+                              <span title="Not yet reviewed by a human">
+                                <ShieldQuestion
+                                  className="h-4 w-4 text-muted-foreground/50"
+                                  aria-label="Not yet reviewed by a human"
+                                />
+                              </span>
                             )}
                           </div>
                         </button>
@@ -275,9 +297,15 @@ export function ControlsExplorer({
                               <Badge variant="ghost">
                                 {FIDELITY_LABEL[c.fidelity] ?? c.fidelity}
                               </Badge>
-                              {!c.verified && (
+                              {c.verified ? (
+                                <span className="inline-flex items-center gap-1 text-xs text-success">
+                                  <CheckCircle2 className="h-3 w-3" />
+                                  Reviewed by {c.verified_by}
+                                  {c.verified_at ? ` · ${c.verified_at}` : ''}
+                                </span>
+                              ) : (
                                 <span className="text-xs text-muted-foreground">
-                                  Not yet verified against the primary source.
+                                  Machine-drafted · not yet reviewed by a named human.
                                 </span>
                               )}
                             </div>

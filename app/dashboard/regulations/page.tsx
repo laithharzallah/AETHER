@@ -135,7 +135,7 @@ export default async function RegulationsPage() {
                       {(f.verified_count ?? 0) > 0 && (
                         <span className="inline-flex items-center gap-1 text-success">
                           <CheckCircle2 className="h-3 w-3" />
-                          {f.verified_count} verified
+                          {f.verified_count} reviewed
                         </span>
                       )}
                     </div>

@@ -107,7 +107,7 @@ export default function LandingPage() {
               </Link>
             </div>
             <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
-              <Metric value="511" label="Controls, EN / AR" />
+              <Metric value="615" label="Controls, EN / AR" />
               <Metric value="10" label="Frameworks, 5 jurisdictions" />
               <Metric value="7" label="ICFR cycle templates" />
             </dl>
@@ -191,6 +191,7 @@ export default function LandingPage() {
             <ul className="mt-8 space-y-3 text-sm">
               {[
                 'NCA ECC-2:2024 — all 108 controls across 4 domains and 28 subdomains',
+                'SAMA CSF — all 32 subdomains, 120 control considerations',
                 'NIST CSF 2.0 — all 106 subcategories, six functions',
                 'ISO/IEC 27001:2022 — all 93 Annex A controls',
                 'SAMA CSF, Saudi PDPL and the EU AI Act at obligation level',

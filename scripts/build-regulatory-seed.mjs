@@ -25,6 +25,10 @@ const OUT_FILE = join(
 )
 
 const checkOnly = process.argv.includes('--check')
+// A database that already applied the canonical seed will not re-run it. When the
+// JSON changes (e.g. after an Arabic review), emit a new timestamped migration so
+// `supabase db push` carries the update to an existing database.
+const asNewMigration = process.argv.includes('--as-new-migration')
 
 const FIDELITY = new Set(['structural', 'paraphrased', 'summarized'])
 const CONTROL_TYPE = new Set(['governance', 'preventive', 'detective', 'corrective'])
@@ -66,6 +70,9 @@ function flatten(doc, file) {
         if (!c.requirement_en) fail(file, `${c.ref}: missing requirement_en`)
         const fidelity = c.fidelity ?? defaults.fidelity ?? 'paraphrased'
         if (!FIDELITY.has(fidelity)) fail(file, `${c.ref}: bad fidelity ${fidelity}`)
+        if ((c.verified ?? defaults.verified) && !c.verified_by) {
+          fail(file, `${c.ref}: verified is true but verified_by is missing — a verification needs a named reviewer`)
+        }
         if (c.control_type && !CONTROL_TYPE.has(c.control_type)) fail(file, `${c.ref}: bad control_type ${c.control_type}`)
         if (c.criticality && !CRITICALITY.has(c.criticality)) fail(file, `${c.ref}: bad criticality ${c.criticality}`)
 
@@ -84,6 +91,8 @@ function flatten(doc, file) {
           criticality: c.criticality ?? null,
           fidelity,
           verified: Boolean(c.verified ?? defaults.verified ?? false),
+          verified_by: c.verified_by ?? null,
+          verified_at: c.verified_at ?? null,
           sort_order: sort,
         })
       }
@@ -156,16 +165,20 @@ for (const { framework: f, controls } of docs) {
   lines.push('')
 
   if (controls.length > 0) {
-    lines.push(`insert into public.controls (framework_id, control_ref, domain_en, domain_ar, subdomain_en, subdomain_ar, title_en, title_ar, requirement_en, requirement_ar, evidence_en, control_type, criticality, fidelity, verified, sort_order)`)
-    lines.push(`select f.id, c.* from public.frameworks f`)
+    lines.push(`insert into public.controls (framework_id, control_ref, domain_en, domain_ar, subdomain_en, subdomain_ar, title_en, title_ar, requirement_en, requirement_ar, evidence_en, control_type, criticality, fidelity, verified, verified_by, verified_at, sort_order)`)
+    lines.push(`select f.id, c.control_ref, c.domain_en, c.domain_ar, c.subdomain_en, c.subdomain_ar,`)
+    lines.push(`       c.title_en, c.title_ar, c.requirement_en, c.requirement_ar, c.evidence_en,`)
+    lines.push(`       c.control_type, c.criticality, c.fidelity, c.verified, c.verified_by,`)
+    lines.push(`       c.verified_at::date, c.sort_order`)
+    lines.push(`from public.frameworks f`)
     lines.push(`cross join (values`)
     const valueRows = controls.map((c) => `  (${[
       q(c.control_ref), q(c.domain_en), q(c.domain_ar), q(c.subdomain_en), q(c.subdomain_ar),
       q(c.title_en), q(c.title_ar), q(c.requirement_en), q(c.requirement_ar), q(c.evidence_en),
-      q(c.control_type), q(c.criticality), q(c.fidelity), q(c.verified), q(c.sort_order),
+      q(c.control_type), q(c.criticality), q(c.fidelity), q(c.verified), q(c.verified_by), q(c.verified_at), q(c.sort_order),
     ].join(', ')})`)
     lines.push(valueRows.join(',\n'))
-    lines.push(`) as c(control_ref, domain_en, domain_ar, subdomain_en, subdomain_ar, title_en, title_ar, requirement_en, requirement_ar, evidence_en, control_type, criticality, fidelity, verified, sort_order)`)
+    lines.push(`) as c(control_ref, domain_en, domain_ar, subdomain_en, subdomain_ar, title_en, title_ar, requirement_en, requirement_ar, evidence_en, control_type, criticality, fidelity, verified, verified_by, verified_at, sort_order)`)
     lines.push(`where f.code = ${q(f.code)}`)
     lines.push(`on conflict (framework_id, control_ref) do update set`)
     lines.push(`  domain_en = excluded.domain_en, domain_ar = excluded.domain_ar,`)
@@ -174,7 +187,8 @@ for (const { framework: f, controls } of docs) {
     lines.push(`  requirement_en = excluded.requirement_en, requirement_ar = excluded.requirement_ar,`)
     lines.push(`  evidence_en = excluded.evidence_en, control_type = excluded.control_type,`)
     lines.push(`  criticality = excluded.criticality, fidelity = excluded.fidelity,`)
-    lines.push(`  verified = excluded.verified, sort_order = excluded.sort_order;`)
+    lines.push(`  verified = excluded.verified, verified_by = excluded.verified_by,
+  verified_at = excluded.verified_at, sort_order = excluded.sort_order;`)
     lines.push('')
   }
 }
@@ -182,5 +196,15 @@ for (const { framework: f, controls } of docs) {
 lines.push('commit;')
 lines.push('')
 
-writeFileSync(OUT_FILE, lines.join('\n'))
-console.log(`\n→ wrote ${OUT_FILE}`)
+const stamp = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14)
+const target = asNewMigration
+  ? join(ROOT, 'supabase', 'migrations', `${stamp}_refresh_regulatory_library.sql`)
+  : OUT_FILE
+writeFileSync(target, lines.join('\n'))
+console.log(`\n→ wrote ${target}`)
+if (!asNewMigration) {
+  console.log(
+    'Note: this overwrites the canonical seed. A database that already applied it will\n' +
+    '      NOT pick up the change — use --as-new-migration to emit an update migration.'
+  )
+}

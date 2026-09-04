@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000). If port 3000 is already in 
 | Compliance Programs | `/dashboard/programs` | Live — adopt a framework, per-control status/owner/due/evidence, readiness %, AI readiness review |
 | Evidence | `/dashboard/evidence` | Live — private storage bucket, validity/expiry, review workflow, linked to controls |
 | ICFR | `/dashboard/icfr` | Live — COSO risk-control matrices, 7 cycle templates (52 risks / 84 controls), design & operating tests, deficiency log, AI RCM + test procedures |
-| Regulatory Library | `/dashboard/regulations` | Live — 10 frameworks, 511 controls, EN/AR |
+| Regulatory Library | `/dashboard/regulations` | Live — 10 frameworks, 615 controls, EN/AR |
 | Policy Generator | `/dashboard/policy-generator` | Live — grounded in the library, cites real control IDs |
 | Policies | `/dashboard/policies` | Live — saved policies with control mappings, status workflow |
 | Risk Horizon | `/dashboard/risk-horizon` | Placeholder |
@@ -36,7 +36,7 @@ The library is the substrate every other module reads from. Frameworks and contr
 | Code | Framework | Jurisdiction | Controls | Fidelity |
 |---|---|---|---|---|
 | `NCA-ECC` | NCA Essential Cybersecurity Controls (ECC-2:2024) | SA | 108 | paraphrased |
-| `SAMA-CSF` | SAMA Cyber Security Framework | SA | 48 | paraphrased |
+| `SAMA-CSF` | SAMA Cyber Security Framework | SA | 152 | paraphrased |
 | `KSA-PDPL` | Personal Data Protection Law | SA | 32 | summarized |
 | `UAE-IAS` | UAE Information Assurance Standards | AE | 27 | summarized |
 | `QA-NIA` | Qatar National Information Assurance Policy | QA | 25 | summarized |
@@ -47,6 +47,33 @@ The library is the substrate every other module reads from. Frameworks and contr
 | `EU-AI-ACT` | EU Artificial Intelligence Act | EU | 34 | summarized |
 
 **Fidelity** describes how closely `requirement_en` follows the source: `structural` (near-verbatim, public-domain source), `paraphrased` (control-by-control restatement), `summarized` (obligation-level summary; article or clause numbering may be approximate). `verified` is `false` for every row until a human has checked it against the primary document — the UI shows this. ISO text is deliberately paraphrased, not reproduced.
+
+### Arabic review (how a control becomes "verified")
+
+Every control ships `verified = false`. The database refuses to mark a control verified
+without a named reviewer (`controls_verified_requires_reviewer`), so the system cannot
+award itself a tick — a human has to sign.
+
+```bash
+# 1. Generate a bilingual review workbook (English beside Arabic, OK/Fix dropdowns)
+python3 scripts/export_arabic_review.py NCA-ECC review/
+python3 scripts/export_arabic_review.py SAMA-CSF review/
+
+# 2. Reviewer fills in the yellow cells and their name on the 'Read me' sheet.
+
+# 3. Read the corrections back into the seed JSON and stamp the reviewer's name
+python3 scripts/apply_arabic_review.py review/aether-arabic-review-nca-ecc.xlsx --dry-run
+python3 scripts/apply_arabic_review.py review/aether-arabic-review-nca-ecc.xlsx
+
+# 4. Emit an update migration and push
+node scripts/build-regulatory-seed.mjs --as-new-migration
+supabase db push
+```
+
+A row marked **Fix** with no correction is left unverified and reported, never silently
+accepted. A workbook with no reviewer name applies nothing. The library UI shows
+"Reviewed by <name> · <date>" on signed controls and an explicit unreviewed marker on
+the rest.
 
 ### Editing the library
 

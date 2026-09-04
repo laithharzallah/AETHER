@@ -3,7 +3,7 @@
 -- GENERATED FILE. Do not edit by hand.
 -- Source: supabase/seed/regulatory-library/*.json
 -- Rebuild: node scripts/build-regulatory-seed.mjs
--- Generated: 2026-09-04T02:00:20.920Z
+-- Generated: 2026-09-04T02:00:21.065Z
 -- =============================================================================
 
 begin;

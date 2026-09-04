@@ -61,6 +61,8 @@ create table if not exists public.controls (
   criticality    text,                                 -- high | medium | low
   fidelity       text not null default 'paraphrased',  -- structural | paraphrased | summarized
   verified       boolean not null default false,       -- reviewed against the primary source
+  verified_by    text,                                 -- named human reviewer who signed off
+  verified_at    date,                                 -- date that reviewer signed off
   sort_order     integer not null default 0,
   created_at     timestamptz not null default now(),
   updated_at     timestamptz not null default now(),
@@ -76,7 +78,8 @@ create table if not exists public.controls (
   constraint controls_framework_ref_unique unique (framework_id, control_ref),
   constraint controls_fidelity_check check (fidelity in ('structural', 'paraphrased', 'summarized')),
   constraint controls_type_check check (control_type is null or control_type in ('governance', 'preventive', 'detective', 'corrective')),
-  constraint controls_criticality_check check (criticality is null or criticality in ('high', 'medium', 'low'))
+  constraint controls_criticality_check check (criticality is null or criticality in ('high', 'medium', 'low')),
+  constraint controls_verified_requires_reviewer check (verified = false or verified_by is not null)
 );
 
 comment on table public.controls is

@@ -8,15 +8,17 @@
     "regulator_ar": "البنك المركزي السعودي",
     "jurisdiction": "SA",
     "category": "cybersecurity",
-    "version": "1.0",
+    "version": "1.0 (May 2017)",
     "effective_date": "2017-05-01",
     "source_url": "https://www.sama.gov.sa/en-US/RulesInstructions/CyberSecurity/Cyber%20Security%20Framework.pdf",
-    "description_en": "Mandatory framework for all SAMA-regulated member organizations (banks, insurers, financing companies, payment providers, credit bureaus). Four domains — Leadership & Governance, Risk Management & Compliance, Operations & Technology, Third Party — each broken into subdomains with a principle, objective and control considerations, assessed on a 0–5 maturity scale. Rows at the subdomain level carry the principle; numbered sub-rows carry key control considerations.",
-    "description_ar": "إطار إلزامي لجميع المؤسسات الخاضعة لإشراف البنك المركزي السعودي (البنوك وشركات التأمين والتمويل ومقدمي خدمات الدفع وشركات المعلومات الائتمانية). أربعة مجالات — القيادة والحوكمة، إدارة المخاطر والالتزام، العمليات والتقنية، الأطراف الخارجية — تنقسم إلى مجالات فرعية لكل منها مبدأ وهدف واعتبارات ضبط، وتُقيَّم على مقياس نضج من 0 إلى 5.",
+    "description_en": "Mandatory framework for all SAMA-regulated member organizations (banks, insurers, financing companies, payment service providers, credit bureaus and other supervised entities). Four domains — Leadership & Governance, Risk Management & Compliance, Operations & Technology, and Third Party — broken into 32 subdomains, each with a principle, an objective and control considerations, assessed on a 0–5 maturity scale where level 3 is the minimum expected. Rows numbered x.y.z are subdomain principles; rows numbered x.y.z.n are the control considerations beneath them. Control-consideration numbering follows SAMA's pattern and consolidates the lettered sub-items of the source document, so a reference here may cover more than one lettered item in the published framework — verify against the published PDF before citing a specific number in a regulatory submission.",
+    "description_ar": "إطار إلزامي لجميع المؤسسات الخاضعة لإشراف البنك المركزي السعودي (البنوك وشركات التأمين وشركات التمويل ومقدمي خدمات الدفع وشركات المعلومات الائتمانية وغيرها من الجهات الخاضعة للرقابة). أربعة مجالات — القيادة والحوكمة، وإدارة المخاطر والالتزام، والعمليات والتقنية، والأطراف الخارجية — تنقسم إلى 32 مجالاً فرعياً، لكل منها مبدأ وهدف واعتبارات ضبط، وتُقيَّم على مقياس نضج من 0 إلى 5 يُعد المستوى الثالث فيه الحد الأدنى المتوقع. الصفوف المرقمة x.y.z تمثل مبادئ المجالات الفرعية، والصفوف المرقمة x.y.z.n تمثل اعتبارات الضبط التابعة لها. ويتبع ترقيم اعتبارات الضبط نمط البنك المركزي مع دمج البنود الفرعية المرقمة بالحروف في الوثيقة الأصلية، لذا يجب التحقق من الوثيقة المنشورة قبل الاستشهاد برقم محدد في أي إفادة تنظيمية.",
     "mandatory": true,
     "sort_order": 20
   },
-  "defaults": { "fidelity": "paraphrased" },
+  "defaults": {
+    "fidelity": "paraphrased"
+  },
   "domains": [
     {
       "en": "Cyber Security Leadership and Governance",
@@ -26,57 +28,402 @@
           "en": "3.1.1 Cyber Security Governance",
           "ar": "3.1.1 حوكمة الأمن السيبراني",
           "controls": [
-            { "ref": "3.1.1", "title_en": "Establish cyber security governance", "title_ar": "إرساء حوكمة الأمن السيبراني", "requirement_en": "The member organization must define, approve, implement, communicate and monitor a cyber security governance structure that provides board-level direction and oversight of the cyber security program.", "requirement_ar": "يجب على المؤسسة العضو تحديد واعتماد وتطبيق وإبلاغ ومراقبة هيكل حوكمة للأمن السيبراني يوفر التوجيه والإشراف على مستوى مجلس الإدارة لبرنامج الأمن السيبراني.", "evidence_en": "Board mandate, governance charter, committee minutes.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.1.1.1", "title_en": "Board accountability for cyber security", "title_ar": "مسؤولية مجلس الإدارة عن الأمن السيبراني", "requirement_en": "The board of directors is ultimately responsible for cyber security, endorses the cyber security strategy and policy, and receives periodic reporting on cyber security status and risks.", "requirement_ar": "يتحمل مجلس الإدارة المسؤولية النهائية عن الأمن السيبراني، ويعتمد استراتيجية وسياسة الأمن السيبراني، ويتلقى تقارير دورية عن حالة الأمن السيبراني ومخاطره.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.1.1.2", "title_en": "Cyber security committee", "title_ar": "لجنة الأمن السيبراني", "requirement_en": "A cyber security committee, chaired by a senior executive and including the CISO and business/IT representatives, must be established with a documented charter to oversee cyber security initiatives and risk decisions.", "requirement_ar": "يجب إنشاء لجنة للأمن السيبراني برئاسة تنفيذي رفيع المستوى وعضوية رئيس أمن المعلومات وممثلي الأعمال وتقنية المعلومات، بميثاق موثق للإشراف على مبادرات الأمن السيبراني وقرارات المخاطر.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.1.1.3", "title_en": "Independent cyber security function", "title_ar": "وظيفة مستقلة للأمن السيبراني", "requirement_en": "A cyber security function headed by a full-time senior manager (CISO) must be established, independent of IT, with sufficient authority, budget and Saudi-national staffing.", "requirement_ar": "يجب إنشاء وظيفة للأمن السيبراني يرأسها مدير رفيع المستوى بدوام كامل (رئيس أمن المعلومات) تكون مستقلة عن تقنية المعلومات وتتمتع بالصلاحيات والميزانية الكافية وبتوطين الوظائف.", "control_type": "governance", "criticality": "high" }
+            {
+              "ref": "3.1.1",
+              "title_en": "Cyber security governance principle",
+              "title_ar": "مبدأ حوكمة الأمن السيبراني",
+              "requirement_en": "A cyber security governance structure must be defined, approved and implemented, and supported by the board of directors, to direct and oversee the member organization's cyber security activities.",
+              "requirement_ar": "يجب تحديد واعتماد وتطبيق هيكل لحوكمة الأمن السيبراني مدعوم من مجلس الإدارة، لتوجيه أنشطة الأمن السيبراني في المؤسسة العضو والإشراف عليها.",
+              "evidence_en": "Board-approved governance framework document; organization chart showing reporting lines.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.1.1",
+              "title_en": "Define and approve a cyber security governance framework",
+              "title_ar": "تحديد واعتماد إطار حوكمة الأمن السيبراني",
+              "requirement_en": "A cyber security governance framework must be defined, documented and approved by the board, covering the governance structure, decision rights, escalation paths and reporting lines for cyber security.",
+              "requirement_ar": "يجب تحديد وتوثيق إطار لحوكمة الأمن السيبراني واعتماده من مجلس الإدارة، يغطي هيكل الحوكمة وصلاحيات اتخاذ القرار ومسارات التصعيد وخطوط رفع التقارير الخاصة بالأمن السيبراني.",
+              "evidence_en": "Approved framework with board minutes recording approval.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.1.2",
+              "title_en": "Measure and evaluate governance effectiveness",
+              "title_ar": "قياس وتقييم فاعلية الحوكمة",
+              "requirement_en": "The effectiveness of the cyber security governance framework must be measured and periodically evaluated, with the results reported to the board.",
+              "requirement_ar": "يجب قياس فاعلية إطار حوكمة الأمن السيبراني وتقييمه دورياً، ورفع النتائج إلى مجلس الإدارة.",
+              "evidence_en": "Effectiveness review reports; board reporting pack.",
+              "control_type": "detective",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.1.3",
+              "title_en": "Establish a cyber security committee",
+              "title_ar": "إنشاء لجنة للأمن السيبراني",
+              "requirement_en": "A cyber security committee must be established with an approved mandate, senior-level membership including the CISO, and a defined meeting frequency, to oversee cyber security initiatives and risk decisions.",
+              "requirement_ar": "يجب إنشاء لجنة للأمن السيبراني بتفويض معتمد وعضوية على مستوى الإدارة العليا تشمل رئيس أمن المعلومات، وبتواتر اجتماعات محدد، للإشراف على مبادرات الأمن السيبراني وقرارات المخاطر.",
+              "evidence_en": "Committee charter, membership list, minutes of meetings.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.1.4",
+              "title_en": "Appoint a CISO at senior management level",
+              "title_ar": "تعيين رئيس لأمن المعلومات على مستوى الإدارة العليا",
+              "requirement_en": "A full-time Chief Information Security Officer must be appointed at senior management level, reporting to the Managing Director or Chief Executive Officer, with the authority and budget to discharge the role.",
+              "requirement_ar": "يجب تعيين رئيس لأمن المعلومات بدوام كامل على مستوى الإدارة العليا يرتبط بالعضو المنتدب أو الرئيس التنفيذي، ويتمتع بالصلاحية والميزانية اللازمتين لأداء دوره.",
+              "evidence_en": "Appointment letter, job description, reporting line in the organization chart.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.1.5",
+              "title_en": "Maintain independence of the cyber security function",
+              "title_ar": "الحفاظ على استقلالية وظيفة الأمن السيبراني",
+              "requirement_en": "The cyber security function must be organizationally independent from the information technology development and operations functions to avoid conflicts of interest.",
+              "requirement_ar": "يجب أن تكون وظيفة الأمن السيبراني مستقلة تنظيمياً عن وظائف تطوير وتشغيل تقنية المعلومات لتفادي تعارض المصالح.",
+              "evidence_en": "Organization chart; documented segregation of duties.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.1.6",
+              "title_en": "Apply the three lines of defence model",
+              "title_ar": "تطبيق نموذج خطوط الدفاع الثلاثة",
+              "requirement_en": "Cyber security responsibilities must be allocated across the three lines of defence — business ownership, the cyber security and risk functions, and internal audit — with each line's role documented.",
+              "requirement_ar": "يجب توزيع مسؤوليات الأمن السيبراني على خطوط الدفاع الثلاثة — ملكية الأعمال، ووظائف الأمن السيبراني وإدارة المخاطر، والمراجعة الداخلية — مع توثيق دور كل خط.",
+              "evidence_en": "Three-lines-of-defence model document; RACI matrix.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.1.7",
+              "title_en": "Resource the cyber security function",
+              "title_ar": "توفير الموارد لوظيفة الأمن السيبراني",
+              "requirement_en": "The cyber security function must be staffed with a sufficient number of qualified and, where required, Saudi national personnel, and allocated an approved annual budget.",
+              "requirement_ar": "يجب تزويد وظيفة الأمن السيبراني بعدد كافٍ من الموظفين المؤهلين، ومن الكوادر السعودية حيثما يُشترط ذلك، وتخصيص ميزانية سنوية معتمدة لها.",
+              "evidence_en": "Headcount plan, Saudization records, approved budget.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.1.2 Cyber Security Strategy",
           "ar": "3.1.2 استراتيجية الأمن السيبراني",
           "controls": [
-            { "ref": "3.1.2", "title_en": "Define and maintain a cyber security strategy", "title_ar": "تحديد استراتيجية الأمن السيبراني والمحافظة عليها", "requirement_en": "A cyber security strategy, aligned with the organization's strategic objectives and SAMA requirements, must be defined, approved by the board, maintained and executed through a roadmap.", "requirement_ar": "يجب تحديد استراتيجية للأمن السيبراني تتوافق مع الأهداف الاستراتيجية للمؤسسة ومتطلبات البنك المركزي، واعتمادها من مجلس الإدارة، والمحافظة عليها وتنفيذها عبر خطة عمل.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.1.2.1", "title_en": "Strategy content", "title_ar": "محتوى الاستراتيجية", "requirement_en": "The strategy must set the importance and objectives of cyber security, current and target maturity, the initiatives and roadmap to close gaps, and required resources and budget.", "requirement_ar": "يجب أن تحدد الاستراتيجية أهمية وأهداف الأمن السيبراني، ومستوى النضج الحالي والمستهدف، والمبادرات وخطة العمل لسد الفجوات، والموارد والميزانية المطلوبة.", "control_type": "governance", "criticality": "medium" }
+            {
+              "ref": "3.1.2",
+              "title_en": "Cyber security strategy principle",
+              "title_ar": "مبدأ استراتيجية الأمن السيبراني",
+              "requirement_en": "A cyber security strategy must be defined, approved and executed, aligned with the member organization's business strategy and with SAMA requirements.",
+              "requirement_ar": "يجب تحديد استراتيجية للأمن السيبراني واعتمادها وتنفيذها بما يتوافق مع استراتيجية أعمال المؤسسة العضو ومتطلبات البنك المركزي.",
+              "evidence_en": "Approved strategy document; alignment mapping to business objectives.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.2.1",
+              "title_en": "Define and approve the strategy",
+              "title_ar": "تحديد الاستراتيجية واعتمادها",
+              "requirement_en": "The cyber security strategy must be defined and approved by the board, and must state the importance of cyber security to the organization, its objectives, and the current and target maturity levels.",
+              "requirement_ar": "يجب تحديد استراتيجية الأمن السيبراني واعتمادها من مجلس الإدارة، وأن تبيّن أهمية الأمن السيبراني للمؤسسة وأهدافه ومستويات النضج الحالية والمستهدفة.",
+              "evidence_en": "Strategy document with maturity baseline and targets; board approval.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.2.2",
+              "title_en": "Support the strategy with an implementation roadmap",
+              "title_ar": "دعم الاستراتيجية بخطة تنفيذية",
+              "requirement_en": "The strategy must be supported by a roadmap of initiatives with owners, timelines, dependencies, required resources and budget, and progress must be tracked and reported.",
+              "requirement_ar": "يجب دعم الاستراتيجية بخطة عمل تتضمن المبادرات والمسؤولين والجداول الزمنية والاعتماديات والموارد والميزانية المطلوبة، مع تتبع التقدم ورفع التقارير عنه.",
+              "evidence_en": "Roadmap, initiative tracker, periodic progress reports.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.2.3",
+              "title_en": "Review the strategy periodically",
+              "title_ar": "مراجعة الاستراتيجية دورياً",
+              "requirement_en": "The cyber security strategy must be reviewed at planned intervals and upon significant changes in the threat landscape, business model or regulatory requirements.",
+              "requirement_ar": "يجب مراجعة استراتيجية الأمن السيبراني على فترات مخططة وعند حدوث تغييرات جوهرية في مشهد التهديدات أو نموذج الأعمال أو المتطلبات التنظيمية.",
+              "evidence_en": "Review records; version history.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.1.3 Cyber Security Policy",
           "ar": "3.1.3 سياسة الأمن السيبراني",
           "controls": [
-            { "ref": "3.1.3", "title_en": "Define and maintain a cyber security policy", "title_ar": "تحديد سياسة الأمن السيبراني والمحافظة عليها", "requirement_en": "A cyber security policy must be defined, approved by the board, communicated to staff and third parties, and periodically reviewed, supported by detailed standards and procedures.", "requirement_ar": "يجب تحديد سياسة للأمن السيبراني واعتمادها من مجلس الإدارة وإبلاغها للموظفين والأطراف الخارجية ومراجعتها دورياً، مدعومة بمعايير وإجراءات تفصيلية.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.1.3.1", "title_en": "Policy scope and content", "title_ar": "نطاق ومحتوى السياسة", "requirement_en": "The policy must cover the organization's cyber security objectives and scope, ownership and roles, compliance obligations, and consequences of non-compliance, and must be consistent with SAMA CSF and relevant laws.", "requirement_ar": "يجب أن تغطي السياسة أهداف ونطاق الأمن السيبراني، والملكية والأدوار، والتزامات الامتثال، وعواقب عدم الالتزام، وأن تتوافق مع إطار ساما والأنظمة ذات العلاقة.", "control_type": "governance", "criticality": "medium" }
+            {
+              "ref": "3.1.3",
+              "title_en": "Cyber security policy principle",
+              "title_ar": "مبدأ سياسة الأمن السيبراني",
+              "requirement_en": "A cyber security policy must be defined, approved by the board, communicated and maintained, and compliance with it must be monitored.",
+              "requirement_ar": "يجب تحديد سياسة للأمن السيبراني واعتمادها من مجلس الإدارة وإبلاغها والمحافظة عليها، ومراقبة الالتزام بها.",
+              "evidence_en": "Approved policy; communication and acknowledgement records.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.3.1",
+              "title_en": "Define and approve the policy",
+              "title_ar": "تحديد السياسة واعتمادها",
+              "requirement_en": "The cyber security policy must be documented and approved by the board, and must state the organization's cyber security objectives, scope, guiding principles and the consequences of non-compliance.",
+              "requirement_ar": "يجب توثيق سياسة الأمن السيبراني واعتمادها من مجلس الإدارة، وأن تبيّن أهداف الأمن السيبراني في المؤسسة ونطاقها ومبادئها التوجيهية وعواقب عدم الالتزام بها.",
+              "evidence_en": "Policy document; board approval record.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.3.2",
+              "title_en": "Communicate the policy",
+              "title_ar": "إبلاغ السياسة",
+              "requirement_en": "The cyber security policy must be communicated to all staff and to relevant third parties, and their acknowledgement of it must be recorded.",
+              "requirement_ar": "يجب إبلاغ سياسة الأمن السيبراني إلى جميع الموظفين والأطراف الخارجية ذات العلاقة، وتوثيق إقرارهم بالاطلاع عليها.",
+              "evidence_en": "Distribution records; signed acknowledgements.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.3.3",
+              "title_en": "Support the policy with standards and procedures",
+              "title_ar": "دعم السياسة بالمعايير والإجراءات",
+              "requirement_en": "The cyber security policy must be supported by detailed security standards, procedures and technical baselines that make its requirements operable.",
+              "requirement_ar": "يجب دعم سياسة الأمن السيبراني بمعايير وإجراءات أمنية تفصيلية وخطوط أساس تقنية تجعل متطلباتها قابلة للتطبيق.",
+              "evidence_en": "Standards library; procedure documents; hardening baselines.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.3.4",
+              "title_en": "Review the policy periodically",
+              "title_ar": "مراجعة السياسة دورياً",
+              "requirement_en": "The cyber security policy must be reviewed at least annually and updated when significant changes occur, with changes approved and recorded.",
+              "requirement_ar": "يجب مراجعة سياسة الأمن السيبراني سنوياً على الأقل وتحديثها عند حدوث تغييرات جوهرية، مع اعتماد التغييرات وتوثيقها.",
+              "evidence_en": "Review schedule; version control log.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.3.5",
+              "title_en": "Monitor compliance with the policy",
+              "title_ar": "مراقبة الالتزام بالسياسة",
+              "requirement_en": "Compliance with the cyber security policy must be monitored, deviations recorded and formally approved as exceptions with defined expiry, and results reported to the cyber security committee.",
+              "requirement_ar": "يجب مراقبة الالتزام بسياسة الأمن السيبراني، وتوثيق حالات الانحراف واعتمادها رسمياً كاستثناءات ذات مدة انتهاء محددة، ورفع النتائج إلى لجنة الأمن السيبراني.",
+              "evidence_en": "Compliance monitoring reports; exception register with expiry dates.",
+              "control_type": "detective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.1.4 Cyber Security Roles and Responsibilities",
           "ar": "3.1.4 أدوار ومسؤوليات الأمن السيبراني",
           "controls": [
-            { "ref": "3.1.4", "title_en": "Define cyber security roles and responsibilities", "title_ar": "تحديد أدوار ومسؤوليات الأمن السيبراني", "requirement_en": "Responsibilities for cyber security must be defined and allocated across the board, senior management, the cyber security function, business owners, IT and all staff, and documented in a RACI.", "requirement_ar": "يجب تحديد مسؤوليات الأمن السيبراني وتوزيعها على مجلس الإدارة والإدارة العليا ووظيفة الأمن السيبراني ومالكي الأعمال وتقنية المعلومات وجميع الموظفين، وتوثيقها في مصفوفة مسؤوليات.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.1.4.1", "title_en": "CISO responsibilities", "title_ar": "مسؤوليات رئيس أمن المعلومات", "requirement_en": "The CISO is responsible for developing and maintaining the cyber security strategy, policy, architecture, risk management, awareness, incident management and reporting to the committee and board.", "requirement_ar": "يتولى رئيس أمن المعلومات مسؤولية تطوير وصيانة استراتيجية وسياسة وبنية الأمن السيبراني وإدارة المخاطر والتوعية وإدارة الحوادث ورفع التقارير إلى اللجنة ومجلس الإدارة.", "control_type": "governance", "criticality": "medium" }
+            {
+              "ref": "3.1.4",
+              "title_en": "Roles and responsibilities principle",
+              "title_ar": "مبدأ الأدوار والمسؤوليات",
+              "requirement_en": "Cyber security responsibilities must be defined, allocated, communicated and enforced across the organization.",
+              "requirement_ar": "يجب تحديد مسؤوليات الأمن السيبراني وتوزيعها وإبلاغها وإنفاذها في جميع أنحاء المؤسسة.",
+              "evidence_en": "RACI matrix; job descriptions.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.4.1",
+              "title_en": "Document responsibilities in a RACI",
+              "title_ar": "توثيق المسؤوليات في مصفوفة مسؤوليات",
+              "requirement_en": "Cyber security roles and responsibilities must be documented in a responsibility assignment matrix covering the board, senior management, the cyber security function, business owners, IT and all staff.",
+              "requirement_ar": "يجب توثيق أدوار ومسؤوليات الأمن السيبراني في مصفوفة إسناد المسؤوليات تغطي مجلس الإدارة والإدارة العليا ووظيفة الأمن السيبراني ومالكي الأعمال وتقنية المعلومات وجميع الموظفين.",
+              "evidence_en": "Approved RACI matrix.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.4.2",
+              "title_en": "Define board and senior management accountability",
+              "title_ar": "تحديد مساءلة مجلس الإدارة والإدارة العليا",
+              "requirement_en": "The board retains ultimate accountability for cyber security; senior management is responsible for implementing the approved strategy and policy and for allocating the necessary resources.",
+              "requirement_ar": "يتحمل مجلس الإدارة المساءلة النهائية عن الأمن السيبراني، وتتولى الإدارة العليا مسؤولية تنفيذ الاستراتيجية والسياسة المعتمدتين وتخصيص الموارد اللازمة.",
+              "evidence_en": "Board charter; management objectives referencing cyber security.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.4.3",
+              "title_en": "Define CISO responsibilities",
+              "title_ar": "تحديد مسؤوليات رئيس أمن المعلومات",
+              "requirement_en": "The CISO's responsibilities must be documented, covering development and maintenance of the strategy, policy and architecture, risk management, awareness, incident management, and periodic reporting to the committee and the board.",
+              "requirement_ar": "يجب توثيق مسؤوليات رئيس أمن المعلومات بحيث تشمل تطوير وصيانة الاستراتيجية والسياسة والبنية الأمنية، وإدارة المخاطر، والتوعية، وإدارة الحوادث، ورفع التقارير الدورية إلى اللجنة ومجلس الإدارة.",
+              "evidence_en": "CISO job description; reporting calendar.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.4.4",
+              "title_en": "Enforce segregation of duties within the function",
+              "title_ar": "إنفاذ فصل المهام داخل الوظيفة",
+              "requirement_en": "Segregation of duties must be applied within the cyber security function so that no single individual can define, implement and assure the same control.",
+              "requirement_ar": "يجب تطبيق فصل المهام داخل وظيفة الأمن السيبراني بحيث لا ينفرد شخص واحد بتحديد الضابط نفسه وتنفيذه والتحقق منه.",
+              "evidence_en": "Segregation of duties matrix; access review evidence.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.1.5 Cyber Security in Project Management",
           "ar": "3.1.5 الأمن السيبراني في إدارة المشاريع",
           "controls": [
-            { "ref": "3.1.5", "title_en": "Integrate cyber security into project management", "title_ar": "دمج الأمن السيبراني في إدارة المشاريع", "requirement_en": "Cyber security must be integrated into the project management methodology so that security requirements are defined, risk-assessed, implemented and tested before go-live for all projects involving information assets.", "requirement_ar": "يجب دمج الأمن السيبراني في منهجية إدارة المشاريع بحيث تُحدد المتطلبات الأمنية وتُقيَّم مخاطرها وتُنفذ وتُختبر قبل الإطلاق لجميع المشاريع المتعلقة بالأصول المعلوماتية.", "control_type": "preventive", "criticality": "high" },
-            { "ref": "3.1.5.1", "title_en": "Security gates in the project lifecycle", "title_ar": "بوابات أمنية في دورة حياة المشروع", "requirement_en": "Projects must include cyber security involvement at initiation, a risk assessment, definition of security requirements, security review of design, security testing, and formal cyber security sign-off before production.", "requirement_ar": "يجب أن تتضمن المشاريع مشاركة الأمن السيبراني عند البدء، وتقييم المخاطر، وتحديد المتطلبات الأمنية، ومراجعة أمنية للتصميم، واختبار الأمن، واعتماداً رسمياً من الأمن السيبراني قبل الإنتاج.", "control_type": "preventive", "criticality": "medium" }
+            {
+              "ref": "3.1.5",
+              "title_en": "Cyber security in project management principle",
+              "title_ar": "مبدأ الأمن السيبراني في إدارة المشاريع",
+              "requirement_en": "Cyber security requirements must be integrated into the project management methodology so that security is addressed throughout the project lifecycle.",
+              "requirement_ar": "يجب دمج متطلبات الأمن السيبراني في منهجية إدارة المشاريع بحيث يُعالج الأمن طوال دورة حياة المشروع.",
+              "evidence_en": "Project methodology with security gates.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.5.1",
+              "title_en": "Embed security in the project methodology",
+              "title_ar": "تضمين الأمن في منهجية المشاريع",
+              "requirement_en": "The project management methodology must require cyber security involvement from project initiation, with defined security deliverables at each stage gate.",
+              "requirement_ar": "يجب أن تشترط منهجية إدارة المشاريع مشاركة الأمن السيبراني منذ بدء المشروع، مع مخرجات أمنية محددة عند كل بوابة مرحلية.",
+              "evidence_en": "Methodology document; stage gate checklists.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.5.2",
+              "title_en": "Perform a project risk assessment",
+              "title_ar": "إجراء تقييم مخاطر المشروع",
+              "requirement_en": "A cyber security risk assessment must be performed for each project that introduces or changes information assets, and the resulting risks must be treated before go-live.",
+              "requirement_ar": "يجب إجراء تقييم لمخاطر الأمن السيبراني لكل مشروع يستحدث أصولاً معلوماتية أو يغيّرها، ومعالجة المخاطر الناتجة قبل الإطلاق.",
+              "evidence_en": "Project risk assessment reports; treatment records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.5.3",
+              "title_en": "Define security requirements at design",
+              "title_ar": "تحديد المتطلبات الأمنية في مرحلة التصميم",
+              "requirement_en": "Cyber security requirements must be specified during design and reflected in solution architecture, and the design must be reviewed and approved by the cyber security function.",
+              "requirement_ar": "يجب تحديد متطلبات الأمن السيبراني خلال مرحلة التصميم وانعكاسها في بنية الحل، ومراجعة التصميم واعتماده من وظيفة الأمن السيبراني.",
+              "evidence_en": "Security requirements specification; design review sign-off.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.1.5.4",
+              "title_en": "Obtain security sign-off before go-live",
+              "title_ar": "الحصول على الاعتماد الأمني قبل الإطلاق",
+              "requirement_en": "Security testing, including vulnerability assessment and secure configuration review, must be completed and a formal cyber security sign-off obtained before a project moves into production.",
+              "requirement_ar": "يجب استكمال اختبارات الأمن، بما في ذلك تقييم الثغرات ومراجعة الإعدادات الآمنة، والحصول على اعتماد رسمي من الأمن السيبراني قبل انتقال المشروع إلى بيئة الإنتاج.",
+              "evidence_en": "Pre-go-live security test reports; signed approval.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.1.6 Cyber Security Awareness",
           "ar": "3.1.6 التوعية بالأمن السيبراني",
           "controls": [
-            { "ref": "3.1.6", "title_en": "Cyber security awareness program", "title_ar": "برنامج التوعية بالأمن السيبراني", "requirement_en": "A cyber security awareness program must be defined, approved and conducted for staff, third parties and customers to promote awareness of cyber security responsibilities and threats.", "requirement_ar": "يجب تحديد واعتماد وتنفيذ برنامج للتوعية بالأمن السيبراني للموظفين والأطراف الخارجية والعملاء لتعزيز الوعي بمسؤوليات الأمن السيبراني وتهديداته.", "control_type": "preventive", "criticality": "medium" },
-            { "ref": "3.1.6.1", "title_en": "Awareness targeting and measurement", "title_ar": "استهداف التوعية وقياسها", "requirement_en": "Awareness content must be tailored to target groups (including new joiners, privileged users and customers), delivered through multiple channels, and its effectiveness measured and reported.", "requirement_ar": "يجب تخصيص محتوى التوعية للفئات المستهدفة (بما في ذلك الموظفون الجدد والمستخدمون ذوو الصلاحيات والعملاء)، وتقديمه عبر قنوات متعددة، وقياس فاعليته ورفع التقارير عنها.", "control_type": "preventive", "criticality": "low" }
+            {
+              "ref": "3.1.6",
+              "title_en": "Cyber security awareness principle",
+              "title_ar": "مبدأ التوعية بالأمن السيبراني",
+              "requirement_en": "A cyber security awareness programme must be defined, approved and delivered to build a security-conscious culture among staff, third parties and customers.",
+              "requirement_ar": "يجب تحديد برنامج للتوعية بالأمن السيبراني واعتماده وتنفيذه لبناء ثقافة واعية بالأمن لدى الموظفين والأطراف الخارجية والعملاء.",
+              "evidence_en": "Approved awareness programme; delivery records.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.6.1",
+              "title_en": "Define and approve the awareness programme",
+              "title_ar": "تحديد برنامج التوعية واعتماده",
+              "requirement_en": "The awareness programme must be documented and approved, and must define target audiences, topics, delivery channels and frequency.",
+              "requirement_ar": "يجب توثيق برنامج التوعية واعتماده، وأن يحدد الفئات المستهدفة والموضوعات وقنوات التقديم والتواتر.",
+              "evidence_en": "Programme plan with annual calendar.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.6.2",
+              "title_en": "Deliver awareness to staff, third parties and customers",
+              "title_ar": "تقديم التوعية للموظفين والأطراف الخارجية والعملاء",
+              "requirement_en": "Awareness must be delivered to all staff on joining and periodically thereafter, to relevant third parties, and to customers in respect of the organization's electronic services.",
+              "requirement_ar": "يجب تقديم التوعية لجميع الموظفين عند الالتحاق وبشكل دوري بعد ذلك، وللأطراف الخارجية ذات العلاقة، وللعملاء فيما يخص الخدمات الإلكترونية للمؤسسة.",
+              "evidence_en": "Attendance and completion records; customer awareness campaigns.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.6.3",
+              "title_en": "Measure awareness effectiveness",
+              "title_ar": "قياس فاعلية التوعية",
+              "requirement_en": "The effectiveness of the awareness programme must be measured, including through simulated phishing exercises and knowledge assessments, and results must be reported and used to improve the programme.",
+              "requirement_ar": "يجب قياس فاعلية برنامج التوعية، بما في ذلك عبر تمارين التصيد المحاكاة واختبارات المعرفة، ورفع النتائج واستخدامها لتحسين البرنامج.",
+              "evidence_en": "Phishing simulation results; assessment scores; trend reporting.",
+              "control_type": "detective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.1.7 Cyber Security Training",
           "ar": "3.1.7 التدريب على الأمن السيبراني",
           "controls": [
-            { "ref": "3.1.7", "title_en": "Cyber security training for staff", "title_ar": "تدريب الموظفين على الأمن السيبراني", "requirement_en": "Staff must be provided with cyber security training appropriate to their role, with specialized training and certification for cyber security staff and relevant technical staff.", "requirement_ar": "يجب تزويد الموظفين بتدريب على الأمن السيبراني يتناسب مع أدوارهم، مع تدريب متخصص وشهادات لموظفي الأمن السيبراني والموظفين التقنيين ذوي الصلة.", "control_type": "preventive", "criticality": "medium" }
+            {
+              "ref": "3.1.7",
+              "title_en": "Cyber security training principle",
+              "title_ar": "مبدأ التدريب على الأمن السيبراني",
+              "requirement_en": "Staff must receive cyber security training appropriate to their role, with specialized training and professional certification for cyber security and technical personnel.",
+              "requirement_ar": "يجب أن يتلقى الموظفون تدريباً على الأمن السيبراني يتناسب مع أدوارهم، مع تدريب متخصص وشهادات مهنية للعاملين في الأمن السيبراني والوظائف التقنية.",
+              "evidence_en": "Training plan; certificates; competency records.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.7.1",
+              "title_en": "Identify role-based training needs",
+              "title_ar": "تحديد الاحتياجات التدريبية حسب الدور",
+              "requirement_en": "Cyber security training needs must be identified for each role, documented in a training plan and reviewed annually.",
+              "requirement_ar": "يجب تحديد الاحتياجات التدريبية في الأمن السيبراني لكل دور وتوثيقها في خطة تدريب ومراجعتها سنوياً.",
+              "evidence_en": "Training needs analysis; annual training plan.",
+              "control_type": "governance",
+              "criticality": "low"
+            },
+            {
+              "ref": "3.1.7.2",
+              "title_en": "Provide specialized training and certification",
+              "title_ar": "توفير التدريب المتخصص والشهادات",
+              "requirement_en": "Cyber security personnel must receive specialized technical training and be supported in obtaining and maintaining recognized professional certifications.",
+              "requirement_ar": "يجب أن يتلقى العاملون في الأمن السيبراني تدريباً تقنياً متخصصاً وأن يُدعموا في الحصول على الشهادات المهنية المعتمدة والمحافظة عليها.",
+              "evidence_en": "Certification register; training completion records.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.1.7.3",
+              "title_en": "Train developers and IT staff in secure practices",
+              "title_ar": "تدريب المطورين وموظفي تقنية المعلومات على الممارسات الآمنة",
+              "requirement_en": "Application developers and IT operations staff must be trained in secure coding, secure configuration and the organization's security standards.",
+              "requirement_ar": "يجب تدريب مطوري التطبيقات وموظفي عمليات تقنية المعلومات على البرمجة الآمنة والإعدادات الآمنة والمعايير الأمنية المعتمدة في المؤسسة.",
+              "evidence_en": "Secure coding training records; curriculum.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            }
           ]
         }
       ]
@@ -89,37 +436,210 @@
           "en": "3.2.1 Cyber Security Risk Management",
           "ar": "3.2.1 إدارة مخاطر الأمن السيبراني",
           "controls": [
-            { "ref": "3.2.1", "title_en": "Cyber security risk management process", "title_ar": "عملية إدارة مخاطر الأمن السيبراني", "requirement_en": "A cyber security risk management process, aligned with enterprise risk management, must be defined, approved and implemented to identify, analyze, respond to and monitor cyber security risks.", "requirement_ar": "يجب تحديد واعتماد وتطبيق عملية لإدارة مخاطر الأمن السيبراني تتوافق مع إدارة المخاطر المؤسسية، لتحديد مخاطر الأمن السيبراني وتحليلها والاستجابة لها ومراقبتها.", "control_type": "governance", "criticality": "high" },
-            { "ref": "3.2.1.1", "title_en": "Risk assessment triggers and scope", "title_ar": "محفزات ونطاق تقييم المخاطر", "requirement_en": "Risk assessments must be performed periodically on all information assets and at key triggers (new systems, major changes, new third parties, new products or delivery channels).", "requirement_ar": "يجب إجراء تقييمات المخاطر دورياً على جميع الأصول المعلوماتية وعند المحفزات الرئيسية (الأنظمة الجديدة، والتغييرات الجوهرية، والأطراف الخارجية الجديدة، والمنتجات أو قنوات التقديم الجديدة).", "control_type": "detective", "criticality": "high" },
-            { "ref": "3.2.1.2", "title_en": "Risk register and treatment", "title_ar": "سجل المخاطر ومعالجتها", "requirement_en": "Cyber security risks must be recorded in a risk register with owners, risk ratings, treatment decisions (mitigate, accept, transfer, avoid) and action plans, and reported to the cyber security committee.", "requirement_ar": "يجب تسجيل مخاطر الأمن السيبراني في سجل مخاطر يتضمن المالكين وتصنيف المخاطر وقرارات المعالجة (التخفيف أو القبول أو النقل أو التجنب) وخطط العمل، ورفعها إلى لجنة الأمن السيبراني.", "control_type": "governance", "criticality": "high" }
+            {
+              "ref": "3.2.1",
+              "title_en": "Cyber security risk management principle",
+              "title_ar": "مبدأ إدارة مخاطر الأمن السيبراني",
+              "requirement_en": "A cyber security risk management process must be defined, approved and implemented, and must be aligned with the member organization's enterprise risk management framework.",
+              "requirement_ar": "يجب تحديد عملية لإدارة مخاطر الأمن السيبراني واعتمادها وتطبيقها، وأن تتوافق مع إطار إدارة المخاطر المؤسسية في المؤسسة العضو.",
+              "evidence_en": "Approved risk management methodology; risk register.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.1.1",
+              "title_en": "Define the risk management methodology",
+              "title_ar": "تحديد منهجية إدارة المخاطر",
+              "requirement_en": "A documented methodology must define how cyber security risks are identified, analysed, evaluated, treated, accepted and monitored, including impact and likelihood scales and risk acceptance criteria.",
+              "requirement_ar": "يجب أن تحدد منهجية موثقة كيفية تحديد مخاطر الأمن السيبراني وتحليلها وتقييمها ومعالجتها وقبولها ومراقبتها، بما في ذلك مقاييس الأثر والاحتمالية ومعايير قبول المخاطر.",
+              "evidence_en": "Methodology document with scoring scales and acceptance criteria.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.1.2",
+              "title_en": "Perform risk assessments at defined trigger points",
+              "title_ar": "إجراء تقييمات المخاطر عند نقاط محددة",
+              "requirement_en": "Cyber security risk assessments must be performed periodically on all information assets and at defined triggers, including new or materially changed systems, new products or delivery channels, and before engaging a third party.",
+              "requirement_ar": "يجب إجراء تقييمات مخاطر الأمن السيبراني دورياً على جميع الأصول المعلوماتية وعند محفزات محددة، تشمل الأنظمة الجديدة أو المتغيرة جوهرياً، والمنتجات أو قنوات التقديم الجديدة، وقبل التعاقد مع أي طرف خارجي.",
+              "evidence_en": "Risk assessment reports linked to project, change and vendor records.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.1.3",
+              "title_en": "Maintain a cyber security risk register",
+              "title_ar": "الاحتفاظ بسجل مخاطر الأمن السيبراني",
+              "requirement_en": "Identified risks must be recorded in a risk register capturing the risk owner, inherent and residual ratings, treatment decision, action plan, target date and status.",
+              "requirement_ar": "يجب تسجيل المخاطر المحددة في سجل مخاطر يتضمن مالك الخطر والتصنيف الكامن والمتبقي وقرار المعالجة وخطة العمل والتاريخ المستهدف والحالة.",
+              "evidence_en": "Risk register extract with owners and target dates.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.1.4",
+              "title_en": "Govern risk acceptance",
+              "title_ar": "حوكمة قبول المخاطر",
+              "requirement_en": "Risk acceptance must be formally approved at an authority level commensurate with the risk rating, must be time-bound, and must be reviewed on expiry.",
+              "requirement_ar": "يجب اعتماد قبول المخاطر رسمياً على مستوى صلاحية يتناسب مع تصنيف الخطر، وأن يكون محدد المدة، وأن يُراجع عند انتهائها.",
+              "evidence_en": "Risk acceptance forms with approver, rationale and expiry.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.1.5",
+              "title_en": "Report the risk profile to governance bodies",
+              "title_ar": "رفع ملف المخاطر إلى جهات الحوكمة",
+              "requirement_en": "The cyber security risk profile, including significant risks, treatment progress and accepted risks, must be reported periodically to the cyber security committee and the board.",
+              "requirement_ar": "يجب رفع ملف مخاطر الأمن السيبراني، بما يشمل المخاطر الجوهرية وتقدم المعالجة والمخاطر المقبولة، دورياً إلى لجنة الأمن السيبراني ومجلس الإدارة.",
+              "evidence_en": "Committee and board reporting packs.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.2.2 Regulatory Compliance",
           "ar": "3.2.2 الالتزام التنظيمي",
           "controls": [
-            { "ref": "3.2.2", "title_en": "Regulatory compliance process", "title_ar": "عملية الالتزام التنظيمي", "requirement_en": "A process must be established to identify, monitor and ensure compliance with SAMA cyber security requirements and other applicable laws and regulations, with non-compliance tracked and reported.", "requirement_ar": "يجب إنشاء عملية لتحديد ومراقبة وضمان الالتزام بمتطلبات الأمن السيبراني للبنك المركزي والأنظمة الأخرى المعمول بها، مع تتبع حالات عدم الالتزام ورفع التقارير عنها.", "control_type": "governance", "criticality": "high" }
+            {
+              "ref": "3.2.2",
+              "title_en": "Regulatory compliance principle",
+              "title_ar": "مبدأ الالتزام التنظيمي",
+              "requirement_en": "A process must be established to comply with SAMA cyber security requirements and all other applicable laws and regulations.",
+              "requirement_ar": "يجب إنشاء عملية للالتزام بمتطلبات الأمن السيبراني الصادرة عن البنك المركزي وسائر الأنظمة والتشريعات المعمول بها.",
+              "evidence_en": "Regulatory obligations register; compliance reports.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.2.1",
+              "title_en": "Maintain a register of regulatory obligations",
+              "title_ar": "الاحتفاظ بسجل للالتزامات التنظيمية",
+              "requirement_en": "Applicable cyber security laws, regulations and SAMA circulars must be identified and maintained in a register, with an assigned owner for each obligation.",
+              "requirement_ar": "يجب تحديد الأنظمة والتشريعات وتعاميم البنك المركزي المتعلقة بالأمن السيبراني والمنطبقة على المؤسسة، والاحتفاظ بها في سجل مع تحديد مالك لكل التزام.",
+              "evidence_en": "Obligations register mapped to internal controls.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.2.2",
+              "title_en": "Monitor and report compliance status",
+              "title_ar": "مراقبة حالة الالتزام ورفع التقارير عنها",
+              "requirement_en": "Compliance with SAMA cyber security requirements must be assessed periodically, gaps tracked to closure, and the compliance status reported to SAMA in the required form and frequency.",
+              "requirement_ar": "يجب تقييم الالتزام بمتطلبات الأمن السيبراني الصادرة عن البنك المركزي دورياً، ومتابعة الفجوات حتى إغلاقها، ورفع حالة الالتزام إلى البنك المركزي بالشكل والتواتر المطلوبين.",
+              "evidence_en": "Self-assessment submissions; gap closure tracker.",
+              "control_type": "detective",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.2.3 Compliance with (Inter)national Industry Standards",
           "ar": "3.2.3 الالتزام بالمعايير الصناعية الوطنية والدولية",
           "controls": [
-            { "ref": "3.2.3", "title_en": "Compliance with mandatory industry standards", "title_ar": "الالتزام بالمعايير الصناعية الإلزامية", "requirement_en": "The organization must comply with mandatory (inter)national industry standards applicable to its services, such as PCI DSS for card payments and SWIFT Customer Security Programme for SWIFT users.", "requirement_ar": "يجب على المؤسسة الالتزام بالمعايير الصناعية الوطنية والدولية الإلزامية المنطبقة على خدماتها، مثل PCI DSS لمدفوعات البطاقات وبرنامج أمن العملاء لسويفت لمستخدمي سويفت.", "control_type": "governance", "criticality": "high" }
+            {
+              "ref": "3.2.3",
+              "title_en": "Industry standards compliance principle",
+              "title_ar": "مبدأ الالتزام بالمعايير الصناعية",
+              "requirement_en": "The member organization must comply with mandatory national and international industry standards applicable to the services it provides.",
+              "requirement_ar": "يجب على المؤسسة العضو الالتزام بالمعايير الصناعية الوطنية والدولية الإلزامية المنطبقة على الخدمات التي تقدمها.",
+              "evidence_en": "Certificates of compliance; attestation reports.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.3.1",
+              "title_en": "Comply with payment card industry requirements",
+              "title_ar": "الالتزام بمتطلبات صناعة بطاقات الدفع",
+              "requirement_en": "Where card data is stored, processed or transmitted, the organization must comply with the Payment Card Industry Data Security Standard and maintain evidence of its current compliance status.",
+              "requirement_ar": "عند تخزين بيانات البطاقات أو معالجتها أو نقلها، يجب على المؤسسة الالتزام بمعيار أمن بيانات صناعة بطاقات الدفع والاحتفاظ بما يثبت حالة التزامها السارية.",
+              "evidence_en": "PCI DSS Attestation of Compliance; scope document.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.3.2",
+              "title_en": "Comply with the SWIFT Customer Security Programme",
+              "title_ar": "الالتزام ببرنامج أمن العملاء لسويفت",
+              "requirement_en": "Users of the SWIFT network must implement the mandatory SWIFT Customer Security Controls and submit the required annual attestation.",
+              "requirement_ar": "يجب على مستخدمي شبكة سويفت تطبيق ضوابط أمن العملاء الإلزامية وتقديم الإقرار السنوي المطلوب.",
+              "evidence_en": "Annual CSP attestation; independent assessment report.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.2.4 Cyber Security Review",
           "ar": "3.2.4 مراجعة الأمن السيبراني",
           "controls": [
-            { "ref": "3.2.4", "title_en": "Periodic cyber security reviews", "title_ar": "المراجعات الدورية للأمن السيبراني", "requirement_en": "The cyber security function must periodically review compliance of business units, IT and third parties with the cyber security policy and standards, with findings tracked to closure.", "requirement_ar": "يجب على وظيفة الأمن السيبراني مراجعة التزام وحدات الأعمال وتقنية المعلومات والأطراف الخارجية بسياسة ومعايير الأمن السيبراني دورياً، مع متابعة الملاحظات حتى إغلاقها.", "control_type": "detective", "criticality": "medium" }
+            {
+              "ref": "3.2.4",
+              "title_en": "Cyber security review principle",
+              "title_ar": "مبدأ مراجعة الأمن السيبراني",
+              "requirement_en": "The cyber security function must periodically review the implementation of cyber security controls across the organization and with third parties.",
+              "requirement_ar": "يجب على وظيفة الأمن السيبراني مراجعة تطبيق ضوابط الأمن السيبراني دورياً في جميع أنحاء المؤسسة ولدى الأطراف الخارجية.",
+              "evidence_en": "Review plan and reports; finding tracker.",
+              "control_type": "detective",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.2.4.1",
+              "title_en": "Plan and perform periodic reviews",
+              "title_ar": "التخطيط للمراجعات الدورية وتنفيذها",
+              "requirement_en": "A risk-based review plan must be approved and executed, covering business units, IT functions and material third parties.",
+              "requirement_ar": "يجب اعتماد خطة مراجعة قائمة على المخاطر وتنفيذها، تغطي وحدات الأعمال ووظائف تقنية المعلومات والأطراف الخارجية الجوهرية.",
+              "evidence_en": "Approved annual review plan; completed review reports.",
+              "control_type": "detective",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.2.4.2",
+              "title_en": "Track review findings to closure",
+              "title_ar": "متابعة ملاحظات المراجعة حتى الإغلاق",
+              "requirement_en": "Findings from cyber security reviews must be recorded with owners and due dates, tracked to closure, and escalated when overdue.",
+              "requirement_ar": "يجب تسجيل ملاحظات مراجعات الأمن السيبراني مع تحديد المسؤولين وتواريخ الاستحقاق، ومتابعتها حتى إغلاقها، وتصعيدها عند تجاوز موعدها.",
+              "evidence_en": "Finding register with ageing and escalation records.",
+              "control_type": "corrective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.2.5 Cyber Security Audits",
           "ar": "3.2.5 تدقيق الأمن السيبراني",
           "controls": [
-            { "ref": "3.2.5", "title_en": "Independent cyber security audits", "title_ar": "التدقيق المستقل للأمن السيبراني", "requirement_en": "Cyber security audits must be performed by an independent internal audit function or external auditor according to an approved audit plan, with results reported to the audit committee and remediation tracked.", "requirement_ar": "يجب إجراء تدقيق الأمن السيبراني من قبل وظيفة مراجعة داخلية مستقلة أو مدقق خارجي وفق خطة تدقيق معتمدة، مع رفع النتائج إلى لجنة المراجعة ومتابعة المعالجة.", "control_type": "detective", "criticality": "high" }
+            {
+              "ref": "3.2.5",
+              "title_en": "Cyber security audit principle",
+              "title_ar": "مبدأ تدقيق الأمن السيبراني",
+              "requirement_en": "Cyber security must be audited by an independent function in accordance with an approved audit plan and generally accepted auditing standards.",
+              "requirement_ar": "يجب تدقيق الأمن السيبراني من قبل جهة مستقلة وفق خطة تدقيق معتمدة ومعايير التدقيق المتعارف عليها.",
+              "evidence_en": "Audit plan; audit reports; audit committee minutes.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.5.1",
+              "title_en": "Audit independently of the cyber security function",
+              "title_ar": "التدقيق باستقلالية عن وظيفة الأمن السيبراني",
+              "requirement_en": "Cyber security audits must be performed by internal audit or an external auditor independent of the cyber security function, by personnel with appropriate technical competence.",
+              "requirement_ar": "يجب أن يُنفذ تدقيق الأمن السيبراني من قبل المراجعة الداخلية أو مدقق خارجي مستقل عن وظيفة الأمن السيبراني، وبواسطة أشخاص يمتلكون الكفاءة التقنية المناسبة.",
+              "evidence_en": "Auditor independence declaration; team qualifications.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.2.5.2",
+              "title_en": "Report audit results to the audit committee",
+              "title_ar": "رفع نتائج التدقيق إلى لجنة المراجعة",
+              "requirement_en": "Audit results, including findings, agreed management actions and remediation status, must be reported to the audit committee and, where required, to SAMA.",
+              "requirement_ar": "يجب رفع نتائج التدقيق، بما يشمل الملاحظات وإجراءات الإدارة المتفق عليها وحالة المعالجة، إلى لجنة المراجعة وإلى البنك المركزي عند الاقتضاء.",
+              "evidence_en": "Audit committee packs; remediation tracker.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         }
       ]
@@ -132,125 +652,902 @@
           "en": "3.3.1 Human Resources",
           "ar": "3.3.1 الموارد البشرية",
           "controls": [
-            { "ref": "3.3.1", "title_en": "Cyber security in the HR lifecycle", "title_ar": "الأمن السيبراني في دورة حياة الموارد البشرية", "requirement_en": "Cyber security requirements must be applied before, during and at termination of employment, including screening, contractual security obligations, confidentiality agreements, and timely revocation of access.", "requirement_ar": "يجب تطبيق متطلبات الأمن السيبراني قبل وأثناء وعند انتهاء العلاقة الوظيفية، بما في ذلك التحقق من الخلفية والالتزامات الأمنية التعاقدية واتفاقيات السرية وإلغاء الصلاحيات في الوقت المناسب.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.1",
+              "title_en": "Human resources security principle",
+              "title_ar": "مبدأ أمن الموارد البشرية",
+              "requirement_en": "Cyber security requirements must be applied before, during and at the end of employment to reduce the risk of human error, theft, fraud and misuse of information assets.",
+              "requirement_ar": "يجب تطبيق متطلبات الأمن السيبراني قبل التوظيف وأثناءه وعند انتهائه للحد من مخاطر الخطأ البشري والسرقة والاحتيال وإساءة استخدام الأصول المعلوماتية.",
+              "evidence_en": "HR security procedure; onboarding and offboarding checklists.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.1.1",
+              "title_en": "Screen candidates before employment",
+              "title_ar": "التحقق من المرشحين قبل التوظيف",
+              "requirement_en": "Background screening must be performed before employment, proportionate to the sensitivity of the role, and repeated periodically for staff in critical or privileged positions.",
+              "requirement_ar": "يجب إجراء التحقق من الخلفية قبل التوظيف بما يتناسب مع حساسية الوظيفة، وتكراره دورياً للعاملين في الوظائف الحساسة أو ذات الصلاحيات الهامة.",
+              "evidence_en": "Screening records; re-screening schedule for critical roles.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.1.2",
+              "title_en": "Include security obligations in employment terms",
+              "title_ar": "تضمين الالتزامات الأمنية في شروط التوظيف",
+              "requirement_en": "Employment contracts must include cyber security responsibilities, confidentiality and non-disclosure obligations, and acceptable use terms that survive termination.",
+              "requirement_ar": "يجب أن تتضمن عقود العمل مسؤوليات الأمن السيبراني والتزامات السرية وعدم الإفصاح وشروط الاستخدام المقبول التي تظل سارية بعد انتهاء العلاقة الوظيفية.",
+              "evidence_en": "Contract templates; signed NDAs.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.1.3",
+              "title_en": "Revoke access on termination or role change",
+              "title_ar": "إلغاء الصلاحيات عند الإنهاء أو تغيير الدور",
+              "requirement_en": "On termination or change of role, all access rights must be revoked or adjusted without delay and all information assets returned, with the process evidenced.",
+              "requirement_ar": "عند انتهاء العلاقة الوظيفية أو تغيير الدور، يجب إلغاء جميع صلاحيات الوصول أو تعديلها دون تأخير وإعادة جميع الأصول المعلوماتية، مع توثيق الإجراء.",
+              "evidence_en": "Offboarding checklist; access revocation logs with timestamps.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.1.4",
+              "title_en": "Apply a disciplinary process",
+              "title_ar": "تطبيق الإجراءات التأديبية",
+              "requirement_en": "A formal disciplinary process must be defined and applied for breaches of the cyber security policy, and must be communicated to staff.",
+              "requirement_ar": "يجب تحديد إجراءات تأديبية رسمية وتطبيقها في حالات مخالفة سياسة الأمن السيبراني، وإبلاغها للموظفين.",
+              "evidence_en": "Disciplinary procedure; case records.",
+              "control_type": "corrective",
+              "criticality": "low"
+            }
           ]
         },
         {
           "en": "3.3.2 Physical Security",
           "ar": "3.3.2 الأمن المادي",
           "controls": [
-            { "ref": "3.3.2", "title_en": "Physical protection of information assets", "title_ar": "الحماية المادية للأصول المعلوماتية", "requirement_en": "Physical security controls must protect information assets and facilities (data centers, branches, ATMs, offices) from unauthorized access, damage and environmental threats, including access control, monitoring and secure disposal.", "requirement_ar": "يجب أن تحمي ضوابط الأمن المادي الأصول المعلوماتية والمرافق (مراكز البيانات والفروع وأجهزة الصراف الآلي والمكاتب) من الوصول غير المصرح به والأضرار والتهديدات البيئية، بما في ذلك التحكم في الدخول والمراقبة والتخلص الآمن.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.2",
+              "title_en": "Physical security principle",
+              "title_ar": "مبدأ الأمن المادي",
+              "requirement_en": "Information assets must be physically protected against unauthorized access, damage, theft and environmental threats.",
+              "requirement_ar": "يجب حماية الأصول المعلوماتية مادياً من الوصول غير المصرح به والأضرار والسرقة والتهديدات البيئية.",
+              "evidence_en": "Physical security standard; site assessments.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.2.1",
+              "title_en": "Control physical access to sensitive areas",
+              "title_ar": "التحكم في الدخول المادي للمناطق الحساسة",
+              "requirement_en": "Access to data centres, network rooms, cash-handling and other sensitive areas must be restricted to authorized personnel, logged, and reviewed periodically.",
+              "requirement_ar": "يجب قصر الدخول إلى مراكز البيانات وغرف الشبكات ومناطق التعامل النقدي وغيرها من المناطق الحساسة على المصرح لهم، مع تسجيل الدخول ومراجعته دورياً.",
+              "evidence_en": "Badge access lists; entry logs; periodic access review records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.2.2",
+              "title_en": "Monitor premises with surveillance",
+              "title_ar": "مراقبة المباني بأنظمة المراقبة",
+              "requirement_en": "Sensitive areas must be monitored by CCTV, recordings must be protected against tampering, and retained for the period required by regulation.",
+              "requirement_ar": "يجب مراقبة المناطق الحساسة بكاميرات المراقبة، وحماية التسجيلات من العبث، والاحتفاظ بها للمدة التي تتطلبها الأنظمة.",
+              "evidence_en": "CCTV coverage plan; retention configuration.",
+              "control_type": "detective",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.2.3",
+              "title_en": "Protect against environmental threats",
+              "title_ar": "الحماية من التهديدات البيئية",
+              "requirement_en": "Facilities housing information assets must be protected against fire, flood, power failure and extremes of temperature and humidity, with protective systems tested periodically.",
+              "requirement_ar": "يجب حماية المرافق التي تضم الأصول المعلوماتية من الحريق والفيضان وانقطاع الطاقة والتقلبات الشديدة في الحرارة والرطوبة، مع اختبار أنظمة الحماية دورياً.",
+              "evidence_en": "Fire suppression and UPS test records; environmental monitoring.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.2.4",
+              "title_en": "Secure ATMs and self-service devices",
+              "title_ar": "تأمين أجهزة الصراف الآلي والخدمة الذاتية",
+              "requirement_en": "ATMs, kiosks and other self-service devices must be physically secured against tampering and skimming, inspected on a defined schedule, and monitored for anomalies.",
+              "requirement_ar": "يجب تأمين أجهزة الصراف الآلي والأكشاك وأجهزة الخدمة الذاتية مادياً ضد العبث والنسخ غير المشروع للبطاقات، وفحصها وفق جدول محدد، ومراقبتها لاكتشاف الحالات الشاذة.",
+              "evidence_en": "Inspection logs; anti-skimming device inventory.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.3 Asset Management",
           "ar": "3.3.3 إدارة الأصول",
           "controls": [
-            { "ref": "3.3.3", "title_en": "Information asset management", "title_ar": "إدارة الأصول المعلوماتية", "requirement_en": "An accurate inventory of information assets must be maintained with defined owners, classification according to an approved scheme, and handling requirements throughout the asset lifecycle.", "requirement_ar": "يجب الاحتفاظ بجرد دقيق للأصول المعلوماتية مع تحديد المالكين وتصنيفها وفق آلية معتمدة ومتطلبات التعامل معها طوال دورة حياتها.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.3",
+              "title_en": "Asset management principle",
+              "title_ar": "مبدأ إدارة الأصول",
+              "requirement_en": "Information assets must be identified, owned, classified and managed throughout their lifecycle.",
+              "requirement_ar": "يجب تحديد الأصول المعلوماتية وتعيين مالكيها وتصنيفها وإدارتها طوال دورة حياتها.",
+              "evidence_en": "Asset inventory; classification scheme.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.3.1",
+              "title_en": "Maintain an accurate asset inventory",
+              "title_ar": "الاحتفاظ بجرد دقيق للأصول",
+              "requirement_en": "A complete and current inventory of information and technology assets must be maintained, including hardware, software, data stores, network devices and cloud services.",
+              "requirement_ar": "يجب الاحتفاظ بجرد كامل ومحدّث للأصول المعلوماتية والتقنية، يشمل الأجهزة والبرمجيات ومستودعات البيانات وأجهزة الشبكة والخدمات السحابية.",
+              "evidence_en": "Asset register with last-updated dates and reconciliation evidence.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.3.2",
+              "title_en": "Assign an owner to every asset",
+              "title_ar": "تعيين مالك لكل أصل",
+              "requirement_en": "Every information asset must have a named business owner accountable for its classification, access authorization and protection.",
+              "requirement_ar": "يجب أن يكون لكل أصل معلوماتي مالك من جهة الأعمال يُحدَّد بالاسم ويكون مسؤولاً عن تصنيفه والتصريح بالوصول إليه وحمايته.",
+              "evidence_en": "Ownership field populated in the asset register.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.3.3",
+              "title_en": "Classify and label information",
+              "title_ar": "تصنيف المعلومات ووسمها",
+              "requirement_en": "Information must be classified according to an approved scheme, labelled accordingly, and handled — stored, transmitted and disposed of — in line with the requirements of its classification.",
+              "requirement_ar": "يجب تصنيف المعلومات وفق آلية معتمدة، ووسمها بما يتوافق مع ذلك، والتعامل معها تخزيناً ونقلاً وإتلافاً بما يتماشى مع متطلبات تصنيفها.",
+              "evidence_en": "Classification scheme; handling matrix; labelling samples.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.4 Cyber Security Architecture",
           "ar": "3.3.4 بنية الأمن السيبراني",
           "controls": [
-            { "ref": "3.3.4", "title_en": "Cyber security architecture", "title_ar": "بنية الأمن السيبراني", "requirement_en": "A cyber security architecture must be defined and maintained that describes security principles, standards and reference designs (defense-in-depth, segmentation, secure-by-design) and is applied to all new and changed systems.", "requirement_ar": "يجب تحديد بنية للأمن السيبراني والمحافظة عليها تصف المبادئ والمعايير والتصاميم المرجعية الأمنية (الدفاع متعدد المستويات والعزل والأمن بالتصميم) وتُطبق على جميع الأنظمة الجديدة والمعدلة.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.4",
+              "title_en": "Cyber security architecture principle",
+              "title_ar": "مبدأ بنية الأمن السيبراني",
+              "requirement_en": "A cyber security architecture must be defined, approved and maintained, and must be applied to all new and materially changed systems.",
+              "requirement_ar": "يجب تحديد بنية للأمن السيبراني واعتمادها والمحافظة عليها، وتطبيقها على جميع الأنظمة الجديدة والمتغيرة جوهرياً.",
+              "evidence_en": "Architecture document; design review records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.4.1",
+              "title_en": "Document security architecture principles",
+              "title_ar": "توثيق مبادئ البنية الأمنية",
+              "requirement_en": "Security architecture principles must be documented, including defence in depth, least privilege, secure by design, fail-secure and segregation of environments.",
+              "requirement_ar": "يجب توثيق مبادئ البنية الأمنية، بما يشمل الدفاع متعدد المستويات والحد الأدنى من الصلاحيات والأمن بالتصميم والفشل الآمن وفصل البيئات.",
+              "evidence_en": "Architecture principles document.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.4.2",
+              "title_en": "Maintain reference architectures and patterns",
+              "title_ar": "الاحتفاظ بالبنى والأنماط المرجعية",
+              "requirement_en": "Approved reference architectures and security patterns must be maintained for common solution types and used as the basis for new designs.",
+              "requirement_ar": "يجب الاحتفاظ ببنى مرجعية وأنماط أمنية معتمدة لأنواع الحلول الشائعة واستخدامها أساساً للتصاميم الجديدة.",
+              "evidence_en": "Pattern library; design templates.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.4.3",
+              "title_en": "Review architecture compliance",
+              "title_ar": "مراجعة الالتزام بالبنية الأمنية",
+              "requirement_en": "Solution designs must be reviewed against the approved architecture, and deviations must be recorded, risk-assessed and formally approved.",
+              "requirement_ar": "يجب مراجعة تصاميم الحلول مقابل البنية المعتمدة، وتوثيق الانحرافات وتقييم مخاطرها واعتمادها رسمياً.",
+              "evidence_en": "Architecture review board minutes; deviation register.",
+              "control_type": "detective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.3.5 Identity and Access Management",
           "ar": "3.3.5 إدارة الهوية والصلاحيات",
           "controls": [
-            { "ref": "3.3.5", "title_en": "Identity and access management", "title_ar": "إدارة الهوية والصلاحيات", "requirement_en": "Access to information assets must be restricted to authorized users on a need-to-have basis through an approved identity and access management process covering the full user lifecycle.", "requirement_ar": "يجب قصر الوصول إلى الأصول المعلوماتية على المستخدمين المصرح لهم وفق مبدأ الحاجة، من خلال عملية معتمدة لإدارة الهوية والصلاحيات تغطي دورة حياة المستخدم بالكامل.", "control_type": "preventive", "criticality": "high" },
-            { "ref": "3.3.5.1", "title_en": "Authentication and privileged access", "title_ar": "المصادقة والوصول المميز", "requirement_en": "Strong authentication (multi-factor) must be enforced for remote access, privileged access and sensitive systems; privileged accounts must be restricted, monitored and managed through privileged access management.", "requirement_ar": "يجب فرض المصادقة القوية (متعددة العناصر) للوصول عن بُعد والوصول المميز والأنظمة الحساسة؛ ويجب تقييد الحسابات المميزة ومراقبتها وإدارتها من خلال إدارة الوصول المميز.", "control_type": "preventive", "criticality": "high" },
-            { "ref": "3.3.5.2", "title_en": "Access reviews and segregation of duties", "title_ar": "مراجعة الصلاحيات وفصل المهام", "requirement_en": "User access rights must be reviewed periodically by asset owners, segregation of duties enforced, and access revoked immediately on role change or termination.", "requirement_ar": "يجب مراجعة صلاحيات المستخدمين دورياً من قبل مالكي الأصول، وفرض فصل المهام، وإلغاء الصلاحيات فوراً عند تغيير الدور أو انتهاء العلاقة.", "control_type": "detective", "criticality": "high" }
+            {
+              "ref": "3.3.5",
+              "title_en": "Identity and access management principle",
+              "title_ar": "مبدأ إدارة الهوية والصلاحيات",
+              "requirement_en": "Access to information assets must be granted only to authorized users on a need-to-have basis and managed throughout the identity lifecycle.",
+              "requirement_ar": "يجب ألا تُمنح صلاحيات الوصول إلى الأصول المعلوماتية إلا للمستخدمين المصرح لهم وفق مبدأ الحاجة، وأن تُدار طوال دورة حياة الهوية.",
+              "evidence_en": "IAM policy; joiner-mover-leaver process.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.5.1",
+              "title_en": "Manage the identity lifecycle formally",
+              "title_ar": "إدارة دورة حياة الهوية رسمياً",
+              "requirement_en": "User registration, modification and de-registration must follow a formal approved process, with access requests authorized by the asset owner before provisioning.",
+              "requirement_ar": "يجب أن يتبع تسجيل المستخدمين وتعديل صلاحياتهم وإلغاؤها عملية رسمية معتمدة، مع اعتماد مالك الأصل لطلبات الوصول قبل منحها.",
+              "evidence_en": "Access request records with owner approvals.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.5.2",
+              "title_en": "Enforce multi-factor authentication",
+              "title_ar": "فرض المصادقة متعددة العناصر",
+              "requirement_en": "Multi-factor authentication must be enforced for remote access, administrative and privileged access, and access to sensitive systems and customer-facing channels.",
+              "requirement_ar": "يجب فرض المصادقة متعددة العناصر للدخول عن بُعد والوصول الإداري وذي الصلاحيات الهامة والوصول إلى الأنظمة الحساسة والقنوات الموجهة للعملاء.",
+              "evidence_en": "MFA coverage report by system and user population.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.5.3",
+              "title_en": "Control privileged access",
+              "title_ar": "التحكم في الوصول ذي الصلاحيات الهامة",
+              "requirement_en": "Privileged accounts must be inventoried, restricted to named individuals, issued on a just-in-time basis where feasible, vaulted, and all privileged sessions must be logged and monitored.",
+              "requirement_ar": "يجب حصر الحسابات ذات الصلاحيات الهامة وقصرها على أشخاص محددين بالاسم، ومنحها عند الحاجة حيثما أمكن، وحفظها في خزنة كلمات المرور، وتسجيل جميع الجلسات ذات الصلاحيات الهامة ومراقبتها.",
+              "evidence_en": "Privileged account inventory; PAM session recordings.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.5.4",
+              "title_en": "Manage default, shared and service accounts",
+              "title_ar": "إدارة الحسابات الافتراضية والمشتركة وحسابات الخدمات",
+              "requirement_en": "Default credentials must be changed before deployment, shared accounts avoided or individually attributable, and service accounts inventoried with rotated credentials and restricted interactive logon.",
+              "requirement_ar": "يجب تغيير بيانات الاعتماد الافتراضية قبل التشغيل، وتجنب الحسابات المشتركة أو جعلها قابلة للعزو إلى أفراد، وحصر حسابات الخدمات مع تدوير بيانات اعتمادها وتقييد الدخول التفاعلي بها.",
+              "evidence_en": "Service account register; credential rotation evidence.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.5.5",
+              "title_en": "Review access rights periodically",
+              "title_ar": "مراجعة صلاحيات الوصول دورياً",
+              "requirement_en": "User access rights must be reviewed and recertified by asset owners at defined intervals, at least annually and more frequently for privileged access, with revocations actioned and evidenced.",
+              "requirement_ar": "يجب مراجعة صلاحيات المستخدمين وإعادة اعتمادها من مالكي الأصول على فترات محددة، سنوياً على الأقل وبتواتر أعلى للصلاحيات الهامة، مع تنفيذ عمليات الإلغاء وتوثيقها.",
+              "evidence_en": "Recertification campaign results; revocation tickets.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.5.6",
+              "title_en": "Enforce segregation of duties in access design",
+              "title_ar": "إنفاذ فصل المهام في تصميم الصلاحيات",
+              "requirement_en": "Access rights must be designed to enforce segregation of duties, and toxic combinations of entitlements must be identified, prevented or compensated by monitoring.",
+              "requirement_ar": "يجب تصميم صلاحيات الوصول بما يفرض فصل المهام، وتحديد التركيبات المتعارضة من الصلاحيات ومنعها أو تعويضها بالمراقبة.",
+              "evidence_en": "Segregation of duties ruleset; conflict exception approvals.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.6 Application Security",
           "ar": "3.3.6 أمن التطبيقات",
           "controls": [
-            { "ref": "3.3.6", "title_en": "Application security", "title_ar": "أمن التطبيقات", "requirement_en": "Applications must be developed, acquired and maintained with security requirements addressed throughout the lifecycle, including secure coding, input validation, authentication, session management, logging and security testing before release.", "requirement_ar": "يجب تطوير التطبيقات واقتناؤها وصيانتها مع معالجة المتطلبات الأمنية طوال دورة الحياة، بما في ذلك البرمجة الآمنة والتحقق من المدخلات والمصادقة وإدارة الجلسات والتسجيل واختبار الأمن قبل الإطلاق.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.6",
+              "title_en": "Application security principle",
+              "title_ar": "مبدأ أمن التطبيقات",
+              "requirement_en": "Applications must be developed, acquired and maintained so that security requirements are addressed throughout the application lifecycle.",
+              "requirement_ar": "يجب تطوير التطبيقات واقتناؤها وصيانتها بحيث تُعالج المتطلبات الأمنية طوال دورة حياة التطبيق.",
+              "evidence_en": "Secure SDLC standard; security test reports.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.6.1",
+              "title_en": "Apply secure coding standards",
+              "title_ar": "تطبيق معايير البرمجة الآمنة",
+              "requirement_en": "Approved secure coding standards must be applied, covering input validation, output encoding, authentication, session management, error handling and logging.",
+              "requirement_ar": "يجب تطبيق معايير معتمدة للبرمجة الآمنة تغطي التحقق من المدخلات وترميز المخرجات والمصادقة وإدارة الجلسات ومعالجة الأخطاء والتسجيل.",
+              "evidence_en": "Secure coding standard; code review records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.6.2",
+              "title_en": "Perform application security testing",
+              "title_ar": "إجراء اختبارات أمن التطبيقات",
+              "requirement_en": "Applications must undergo security testing, including static and dynamic analysis and, for internet-facing applications, penetration testing, before release and after significant change.",
+              "requirement_ar": "يجب إخضاع التطبيقات لاختبارات الأمن، بما في ذلك التحليل الساكن والديناميكي، واختبار الاختراق للتطبيقات المتاحة عبر الإنترنت، قبل الإطلاق وبعد التغييرات الجوهرية.",
+              "evidence_en": "SAST/DAST reports; penetration test reports with remediation.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.6.3",
+              "title_en": "Manage third-party components and libraries",
+              "title_ar": "إدارة المكونات والمكتبات من أطراف خارجية",
+              "requirement_en": "Third-party libraries and components must be obtained from trusted sources, inventoried, scanned for known vulnerabilities and kept at supported versions.",
+              "requirement_ar": "يجب الحصول على المكتبات والمكونات من مصادر موثوقة، وحصرها، وفحصها بحثاً عن الثغرات المعروفة، والإبقاء عليها في إصدارات مدعومة.",
+              "evidence_en": "Software bill of materials; dependency scan results.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.6.4",
+              "title_en": "Protect application data and secrets",
+              "title_ar": "حماية بيانات التطبيقات والأسرار",
+              "requirement_en": "Credentials, keys and other secrets must not be hard-coded in source code or configuration, and sensitive data must not be exposed in logs, error messages or client-side code.",
+              "requirement_ar": "يجب عدم تضمين بيانات الاعتماد والمفاتيح وسائر الأسرار في الشفرة المصدرية أو ملفات الإعداد، وعدم كشف البيانات الحساسة في السجلات أو رسائل الأخطاء أو الشفرة التي تعمل لدى العميل.",
+              "evidence_en": "Secret scanning results; secrets management solution.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.7 Change Management",
           "ar": "3.3.7 إدارة التغيير",
           "controls": [
-            { "ref": "3.3.7", "title_en": "Secure change management", "title_ar": "إدارة التغيير الآمنة", "requirement_en": "Changes to information assets must follow a formal change management process with cyber security risk assessment, approval, testing, segregation of environments, and rollback procedures.", "requirement_ar": "يجب أن تتبع التغييرات على الأصول المعلوماتية عملية رسمية لإدارة التغيير تتضمن تقييم مخاطر الأمن السيبراني والاعتماد والاختبار وفصل البيئات وإجراءات التراجع.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.7",
+              "title_en": "Change management principle",
+              "title_ar": "مبدأ إدارة التغيير",
+              "requirement_en": "Changes to information assets must follow a formal change management process that addresses cyber security risk.",
+              "requirement_ar": "يجب أن تتبع التغييرات على الأصول المعلوماتية عملية رسمية لإدارة التغيير تعالج مخاطر الأمن السيبراني.",
+              "evidence_en": "Change management procedure; CAB minutes.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.7.1",
+              "title_en": "Assess and approve changes",
+              "title_ar": "تقييم التغييرات واعتمادها",
+              "requirement_en": "Every change must be documented, assessed for cyber security impact, and approved by an authorized body before implementation, with emergency changes approved retrospectively within a defined period.",
+              "requirement_ar": "يجب توثيق كل تغيير وتقييم أثره على الأمن السيبراني واعتماده من جهة مخوّلة قبل التنفيذ، مع اعتماد التغييرات الطارئة بأثر رجعي خلال مدة محددة.",
+              "evidence_en": "Change records with security impact assessment and approvals.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.7.2",
+              "title_en": "Test changes and provide rollback",
+              "title_ar": "اختبار التغييرات وتوفير خطة تراجع",
+              "requirement_en": "Changes must be tested in a non-production environment before deployment, and a documented rollback plan must exist for each change.",
+              "requirement_ar": "يجب اختبار التغييرات في بيئة غير إنتاجية قبل نشرها، ووجود خطة تراجع موثقة لكل تغيير.",
+              "evidence_en": "Test evidence; rollback plans attached to change records.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.7.3",
+              "title_en": "Segregate development, test and production",
+              "title_ar": "فصل بيئات التطوير والاختبار والإنتاج",
+              "requirement_en": "Development, test and production environments must be segregated, developers must not have standing access to production, and production data must not be used in lower environments without masking.",
+              "requirement_ar": "يجب فصل بيئات التطوير والاختبار والإنتاج، وعدم منح المطورين صلاحيات دائمة على بيئة الإنتاج، وعدم استخدام بيانات الإنتاج في البيئات الأخرى دون إخفاء البيانات.",
+              "evidence_en": "Environment topology; access matrix; data masking evidence.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.8 Infrastructure Security",
           "ar": "3.3.8 أمن البنية التحتية",
           "controls": [
-            { "ref": "3.3.8", "title_en": "Infrastructure security", "title_ar": "أمن البنية التحتية", "requirement_en": "Infrastructure components (networks, servers, endpoints, databases, wireless, remote access) must be protected through hardening baselines, segmentation, malware protection, patching, secure configuration and monitoring.", "requirement_ar": "يجب حماية مكونات البنية التحتية (الشبكات والخوادم والأجهزة الطرفية وقواعد البيانات والشبكات اللاسلكية والوصول عن بُعد) من خلال خطوط أساس التحصين والعزل والحماية من البرمجيات الضارة والتحديثات والإعدادات الآمنة والمراقبة.", "control_type": "preventive", "criticality": "high" },
-            { "ref": "3.3.8.1", "title_en": "Network protection and segmentation", "title_ar": "حماية الشبكات وعزلها", "requirement_en": "Networks must be segmented by security zones with firewalls, intrusion detection/prevention, DDoS protection and restricted internet connectivity; wireless networks must use strong encryption and authentication.", "requirement_ar": "يجب عزل الشبكات إلى مناطق أمنية بجدران حماية وأنظمة كشف ومنع الاختراق والحماية من هجمات حجب الخدمة وتقييد الاتصال بالإنترنت؛ ويجب أن تستخدم الشبكات اللاسلكية تشفيراً ومصادقة قويين.", "control_type": "preventive", "criticality": "high" },
-            { "ref": "3.3.8.2", "title_en": "Endpoint and server hardening", "title_ar": "تحصين الأجهزة الطرفية والخوادم", "requirement_en": "Servers and endpoints must be hardened against approved baselines, protected by centrally managed anti-malware, patched within defined timelines, and restricted from unauthorized software and removable media.", "requirement_ar": "يجب تحصين الخوادم والأجهزة الطرفية وفق خطوط أساس معتمدة، وحمايتها ببرامج مكافحة البرمجيات الضارة المدارة مركزياً، وتحديثها ضمن مدد محددة، وتقييد البرمجيات غير المصرح بها والوسائط القابلة للإزالة.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.8",
+              "title_en": "Infrastructure security principle",
+              "title_ar": "مبدأ أمن البنية التحتية",
+              "requirement_en": "Infrastructure components must be protected through secure configuration, segmentation, malware protection, patching and monitoring.",
+              "requirement_ar": "يجب حماية مكونات البنية التحتية من خلال الإعدادات الآمنة والعزل والحماية من البرمجيات الضارة والتحديثات والمراقبة.",
+              "evidence_en": "Hardening baselines; patch compliance dashboards.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.8.1",
+              "title_en": "Harden systems against approved baselines",
+              "title_ar": "تحصين الأنظمة وفق خطوط أساس معتمدة",
+              "requirement_en": "Servers, workstations, databases and network devices must be configured against approved hardening baselines, and compliance with those baselines must be monitored and deviations remediated.",
+              "requirement_ar": "يجب إعداد الخوادم وأجهزة المستخدمين وقواعد البيانات وأجهزة الشبكة وفق خطوط أساس معتمدة للتحصين، ومراقبة الالتزام بها ومعالجة الانحرافات.",
+              "evidence_en": "Baseline documents; configuration compliance scan results.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.8.2",
+              "title_en": "Segment networks into security zones",
+              "title_ar": "عزل الشبكات إلى مناطق أمنية",
+              "requirement_en": "Networks must be segmented into security zones separated by firewalls, with rule sets following least privilege and reviewed periodically, and critical systems isolated from general user networks.",
+              "requirement_ar": "يجب عزل الشبكات إلى مناطق أمنية تفصلها جدران حماية، مع قواعد تتبع مبدأ الحد الأدنى من الصلاحيات وتُراجع دورياً، وعزل الأنظمة الحساسة عن شبكات المستخدمين العامة.",
+              "evidence_en": "Network segmentation diagram; firewall rule review records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.8.3",
+              "title_en": "Deploy malware protection",
+              "title_ar": "نشر الحماية من البرمجيات الضارة",
+              "requirement_en": "Centrally managed anti-malware and endpoint detection and response capabilities must be deployed on all servers and endpoints, kept current, and alerts must be monitored.",
+              "requirement_ar": "يجب نشر حلول مُدارة مركزياً لمكافحة البرمجيات الضارة والكشف والاستجابة على الأجهزة الطرفية في جميع الخوادم وأجهزة المستخدمين، وإبقاؤها محدّثة، ومراقبة تنبيهاتها.",
+              "evidence_en": "Coverage reports; console alert handling records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.8.4",
+              "title_en": "Manage security patches within defined timelines",
+              "title_ar": "إدارة التحديثات الأمنية ضمن مدد محددة",
+              "requirement_en": "Security patches must be assessed, tested and applied within timelines defined by severity, with exceptions formally approved and compensating controls applied.",
+              "requirement_ar": "يجب تقييم التحديثات الأمنية واختبارها وتطبيقها ضمن مدد محددة حسب درجة الخطورة، مع اعتماد الاستثناءات رسمياً وتطبيق ضوابط تعويضية.",
+              "evidence_en": "Patch SLA definition; compliance reporting; exception register.",
+              "control_type": "corrective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.8.5",
+              "title_en": "Secure wireless and remote access",
+              "title_ar": "تأمين الشبكات اللاسلكية والدخول عن بُعد",
+              "requirement_en": "Wireless networks must use strong encryption and authentication and be segregated from the corporate network where appropriate; remote access must be through approved encrypted channels with multi-factor authentication and device posture checks.",
+              "requirement_ar": "يجب أن تستخدم الشبكات اللاسلكية تشفيراً ومصادقة قويين وأن تُعزل عن شبكة المؤسسة عند الاقتضاء، وأن يتم الدخول عن بُعد عبر قنوات مشفرة معتمدة مع المصادقة متعددة العناصر والتحقق من حالة الجهاز.",
+              "evidence_en": "Wireless configuration standard; VPN policy and logs.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.8.6",
+              "title_en": "Protect against denial of service",
+              "title_ar": "الحماية من هجمات حجب الخدمة",
+              "requirement_en": "Internet-facing services must be protected against distributed denial-of-service attacks, with mitigation capacity appropriate to the threat and tested response arrangements.",
+              "requirement_ar": "يجب حماية الخدمات المتاحة عبر الإنترنت من هجمات حجب الخدمة الموزعة، بقدرة تخفيف تتناسب مع التهديد وترتيبات استجابة مختبرة.",
+              "evidence_en": "DDoS protection contract; mitigation test records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.9 Cryptography",
           "ar": "3.3.9 التشفير",
           "controls": [
-            { "ref": "3.3.9", "title_en": "Cryptography and key management", "title_ar": "التشفير وإدارة المفاتيح", "requirement_en": "Approved cryptographic algorithms and key lengths must protect sensitive data at rest and in transit, with keys managed securely across generation, distribution, storage, rotation and destruction, using HSMs where appropriate.", "requirement_ar": "يجب استخدام خوارزميات تشفير وأطوال مفاتيح معتمدة لحماية البيانات الحساسة أثناء التخزين والنقل، مع إدارة المفاتيح بشكل آمن عبر التوليد والتوزيع والتخزين والتدوير والإتلاف، واستخدام وحدات الأمن المادية عند الاقتضاء.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.9",
+              "title_en": "Cryptography principle",
+              "title_ar": "مبدأ التشفير",
+              "requirement_en": "Cryptographic solutions must be used to protect the confidentiality, integrity and authenticity of sensitive information, and cryptographic keys must be managed securely.",
+              "requirement_ar": "يجب استخدام حلول التشفير لحماية سرية المعلومات الحساسة وسلامتها وصحتها، وإدارة مفاتيح التشفير بشكل آمن.",
+              "evidence_en": "Cryptography standard; key management procedures.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.9.1",
+              "title_en": "Use approved algorithms and key lengths",
+              "title_ar": "استخدام الخوارزميات وأطوال المفاتيح المعتمدة",
+              "requirement_en": "Only cryptographic algorithms, protocols and key lengths approved in the organization's standard and consistent with national requirements may be used; deprecated algorithms and protocols must be disabled.",
+              "requirement_ar": "لا يجوز استخدام سوى خوارزميات وبروتوكولات وأطوال مفاتيح التشفير المعتمدة في معيار المؤسسة والمتوافقة مع المتطلبات الوطنية، ويجب تعطيل الخوارزميات والبروتوكولات المهجورة.",
+              "evidence_en": "Approved algorithm list; TLS configuration scan results.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.9.2",
+              "title_en": "Encrypt sensitive data at rest and in transit",
+              "title_ar": "تشفير البيانات الحساسة أثناء التخزين والنقل",
+              "requirement_en": "Sensitive and customer data must be encrypted at rest and in transit, including on backup media and when transmitted across untrusted networks.",
+              "requirement_ar": "يجب تشفير البيانات الحساسة وبيانات العملاء أثناء التخزين والنقل، بما في ذلك على وسائط النسخ الاحتياطي وعند نقلها عبر شبكات غير موثوقة.",
+              "evidence_en": "Encryption inventory by data store; transport encryption evidence.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.9.3",
+              "title_en": "Manage keys across their lifecycle",
+              "title_ar": "إدارة المفاتيح طوال دورة حياتها",
+              "requirement_en": "Cryptographic keys must be generated, distributed, stored, rotated, archived and destroyed under documented procedures, with dual control and split knowledge for the most sensitive keys and hardware security modules used where required.",
+              "requirement_ar": "يجب توليد مفاتيح التشفير وتوزيعها وتخزينها وتدويرها وأرشفتها وإتلافها وفق إجراءات موثقة، مع تطبيق الرقابة المزدوجة وتجزئة المعرفة لأكثر المفاتيح حساسية، واستخدام وحدات الأمن المادية حيثما يُشترط ذلك.",
+              "evidence_en": "Key ceremony records; HSM inventory; rotation logs.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.10 Bring Your Own Device (BYOD)",
           "ar": "3.3.10 استخدام الأجهزة الشخصية",
           "controls": [
-            { "ref": "3.3.10", "title_en": "BYOD security", "title_ar": "أمن الأجهزة الشخصية", "requirement_en": "Where personal devices are permitted, a BYOD policy must require device registration, mobile device management, containerization and encryption of organizational data, remote wipe, and restrictions on jailbroken devices.", "requirement_ar": "عند السماح بالأجهزة الشخصية، يجب أن تشترط سياسة الأجهزة الشخصية تسجيل الجهاز وإدارة الأجهزة المحمولة وفصل بيانات المؤسسة وتشفيرها والمسح عن بُعد وحظر الأجهزة المكسورة الحماية.", "control_type": "preventive", "criticality": "medium" }
+            {
+              "ref": "3.3.10",
+              "title_en": "BYOD principle",
+              "title_ar": "مبدأ استخدام الأجهزة الشخصية",
+              "requirement_en": "Where personally owned devices are permitted to access the member organization's information, the associated risks must be assessed and controlled.",
+              "requirement_ar": "عند السماح للأجهزة الشخصية بالوصول إلى معلومات المؤسسة العضو، يجب تقييم المخاطر المرتبطة بذلك والتحكم فيها.",
+              "evidence_en": "BYOD policy; risk assessment; MDM enrolment records.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.10.1",
+              "title_en": "Define and approve a BYOD policy",
+              "title_ar": "تحديد سياسة الأجهزة الشخصية واعتمادها",
+              "requirement_en": "A BYOD policy must define which devices, users and data are eligible, the security requirements devices must meet, and the organization's rights over corporate data on the device, with user acceptance recorded.",
+              "requirement_ar": "يجب أن تحدد سياسة الأجهزة الشخصية الأجهزة والمستخدمين والبيانات المشمولة، والمتطلبات الأمنية الواجب توافرها في الأجهزة، وحقوق المؤسسة على بياناتها الموجودة على الجهاز، مع توثيق موافقة المستخدم.",
+              "evidence_en": "Approved BYOD policy; signed user agreements.",
+              "control_type": "governance",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.10.2",
+              "title_en": "Enforce technical controls on enrolled devices",
+              "title_ar": "فرض الضوابط التقنية على الأجهزة المسجلة",
+              "requirement_en": "Enrolled devices must be managed through a mobile device management solution enforcing device encryption, screen lock, containerization of corporate data, and blocking of jailbroken or rooted devices.",
+              "requirement_ar": "يجب إدارة الأجهزة المسجلة عبر حل لإدارة الأجهزة المحمولة يفرض تشفير الجهاز وقفل الشاشة وفصل بيانات المؤسسة في حاوية آمنة وحظر الأجهزة المكسورة الحماية.",
+              "evidence_en": "MDM policy configuration; compliance reporting.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.10.3",
+              "title_en": "Enable remote wipe of corporate data",
+              "title_ar": "تمكين المسح عن بُعد لبيانات المؤسسة",
+              "requirement_en": "The organization must be able to remotely wipe its data from a personally owned device on loss, theft or termination of employment, and must exercise this capability under a documented procedure.",
+              "requirement_ar": "يجب أن تتمكن المؤسسة من مسح بياناتها عن بُعد من الجهاز الشخصي عند فقدانه أو سرقته أو انتهاء العلاقة الوظيفية، وأن تمارس هذه القدرة وفق إجراء موثق.",
+              "evidence_en": "Remote wipe procedure; execution records.",
+              "control_type": "corrective",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.11 Secure Disposal of Information Assets",
           "ar": "3.3.11 التخلص الآمن من الأصول المعلوماتية",
           "controls": [
-            { "ref": "3.3.11", "title_en": "Secure disposal", "title_ar": "التخلص الآمن", "requirement_en": "Information assets and media must be securely disposed of or sanitized according to classification when no longer required, with disposal recorded and certified.", "requirement_ar": "يجب التخلص من الأصول المعلوماتية والوسائط أو مسحها بشكل آمن وفق تصنيفها عند انتفاء الحاجة إليها، مع تسجيل عملية التخلص وتوثيقها بشهادات.", "control_type": "preventive", "criticality": "medium" }
+            {
+              "ref": "3.3.11",
+              "title_en": "Secure disposal principle",
+              "title_ar": "مبدأ التخلص الآمن",
+              "requirement_en": "Information assets must be disposed of securely so that sensitive information cannot be recovered.",
+              "requirement_ar": "يجب التخلص من الأصول المعلوماتية بشكل آمن بحيث يتعذر استرجاع المعلومات الحساسة منها.",
+              "evidence_en": "Disposal procedure; destruction certificates.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.11.1",
+              "title_en": "Sanitize media before disposal or re-use",
+              "title_ar": "مسح الوسائط قبل التخلص منها أو إعادة استخدامها",
+              "requirement_en": "Storage media must be securely erased or physically destroyed before disposal or re-use, using methods appropriate to the classification of the data held.",
+              "requirement_ar": "يجب مسح وسائط التخزين بشكل آمن أو إتلافها مادياً قبل التخلص منها أو إعادة استخدامها، بأساليب تتناسب مع تصنيف البيانات المخزنة عليها.",
+              "evidence_en": "Sanitization logs; destruction certificates from the vendor.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.11.2",
+              "title_en": "Dispose of physical records securely",
+              "title_ar": "التخلص الآمن من السجلات الورقية",
+              "requirement_en": "Paper records containing sensitive or customer information must be destroyed by cross-cut shredding or an approved secure destruction service, and the destruction recorded.",
+              "requirement_ar": "يجب إتلاف السجلات الورقية التي تحتوي على معلومات حساسة أو معلومات عملاء بالتقطيع المتقاطع أو عبر خدمة إتلاف آمنة معتمدة، مع توثيق عملية الإتلاف.",
+              "evidence_en": "Destruction records; vendor certificates.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.3.12 Payment Systems",
           "ar": "3.3.12 أنظمة الدفع",
           "controls": [
-            { "ref": "3.3.12", "title_en": "Payment systems security", "title_ar": "أمن أنظمة الدفع", "requirement_en": "Payment systems (SWIFT, SARIE, mada, card systems, ATMs, POS) must be protected with dedicated controls including segregation, strong authentication, transaction monitoring, fraud detection and compliance with applicable scheme standards.", "requirement_ar": "يجب حماية أنظمة الدفع (سويفت وسريع ومدى وأنظمة البطاقات والصراف الآلي ونقاط البيع) بضوابط مخصصة تشمل العزل والمصادقة القوية ومراقبة المعاملات وكشف الاحتيال والالتزام بمعايير شبكات الدفع المعمول بها.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.12",
+              "title_en": "Payment systems security principle",
+              "title_ar": "مبدأ أمن أنظمة الدفع",
+              "requirement_en": "Payment systems and the transactions they process must be protected against unauthorized access, manipulation and fraud.",
+              "requirement_ar": "يجب حماية أنظمة الدفع والمعاملات التي تعالجها من الوصول غير المصرح به والتلاعب والاحتيال.",
+              "evidence_en": "Payment security standard; transaction monitoring reports.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.12.1",
+              "title_en": "Segregate and harden payment infrastructure",
+              "title_ar": "عزل وتحصين البنية التحتية للدفع",
+              "requirement_en": "Payment systems, including SWIFT, national payment and card processing infrastructure, must be logically and physically segregated from the general corporate environment and hardened to the applicable scheme standards.",
+              "requirement_ar": "يجب عزل أنظمة الدفع، بما فيها سويفت وأنظمة المدفوعات الوطنية وبنية معالجة البطاقات، منطقياً ومادياً عن بيئة المؤسسة العامة، وتحصينها وفق معايير الشبكات المعمول بها.",
+              "evidence_en": "Network diagrams showing segregation; hardening evidence.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.12.2",
+              "title_en": "Apply dual control to payment operations",
+              "title_ar": "تطبيق الرقابة المزدوجة على عمليات الدفع",
+              "requirement_en": "Payment initiation, authorization and release must be subject to dual control and segregation of duties, with limits enforced by system configuration rather than manual procedure alone.",
+              "requirement_ar": "يجب إخضاع إنشاء المدفوعات واعتمادها وإطلاقها للرقابة المزدوجة وفصل المهام، مع فرض الحدود عبر إعدادات النظام لا عبر الإجراءات اليدوية وحدها.",
+              "evidence_en": "System configuration showing maker-checker; limit settings.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.12.3",
+              "title_en": "Monitor payment transactions for fraud",
+              "title_ar": "مراقبة معاملات الدفع لاكتشاف الاحتيال",
+              "requirement_en": "Payment transactions must be monitored in real time against fraud detection rules and behavioural profiles, with alerts investigated and suspicious transactions held pending verification.",
+              "requirement_ar": "يجب مراقبة معاملات الدفع في الوقت الفعلي مقابل قواعد كشف الاحتيال والأنماط السلوكية، مع التحقيق في التنبيهات وتعليق المعاملات المشبوهة لحين التحقق منها.",
+              "evidence_en": "Fraud monitoring rule set; alert investigation records.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.12.4",
+              "title_en": "Protect ATM and point-of-sale channels",
+              "title_ar": "حماية قنوات الصراف الآلي ونقاط البيع",
+              "requirement_en": "ATM and point-of-sale devices must run supported and patched software, use encrypted PIN entry, and be protected against logical attacks such as malware injection and black-box attacks.",
+              "requirement_ar": "يجب أن تعمل أجهزة الصراف الآلي ونقاط البيع ببرمجيات مدعومة ومحدّثة، وأن تستخدم إدخال الرقم السري المشفّر، وأن تُحمى من الهجمات المنطقية مثل حقن البرمجيات الضارة وهجمات الصندوق الأسود.",
+              "evidence_en": "ATM software inventory; whitelisting configuration; incident records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            }
           ]
         },
         {
           "en": "3.3.13 Electronic Banking Services",
           "ar": "3.3.13 الخدمات المصرفية الإلكترونية",
           "controls": [
-            { "ref": "3.3.13", "title_en": "Electronic banking services security", "title_ar": "أمن الخدمات المصرفية الإلكترونية", "requirement_en": "Online, mobile and other electronic channels must implement multi-factor customer authentication, transaction verification and limits, secure session handling, fraud monitoring, customer security awareness and secure application development.", "requirement_ar": "يجب أن تطبق القنوات الإلكترونية عبر الإنترنت والهاتف المحمول وغيرها مصادقة العملاء متعددة العناصر والتحقق من المعاملات وحدودها والتعامل الآمن مع الجلسات ومراقبة الاحتيال وتوعية العملاء والتطوير الآمن للتطبيقات.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.3.13",
+              "title_en": "Electronic banking security principle",
+              "title_ar": "مبدأ أمن الخدمات المصرفية الإلكترونية",
+              "requirement_en": "Electronic banking channels must be protected to safeguard customer transactions and data.",
+              "requirement_ar": "يجب حماية قنوات الخدمات المصرفية الإلكترونية لضمان أمن معاملات العملاء وبياناتهم.",
+              "evidence_en": "Channel security standard; customer authentication design.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.13.1",
+              "title_en": "Authenticate customers with multiple factors",
+              "title_ar": "مصادقة العملاء بعناصر متعددة",
+              "requirement_en": "Customer access to electronic banking channels must use multi-factor authentication, and high-risk transactions must require additional verification such as transaction signing or out-of-band confirmation.",
+              "requirement_ar": "يجب أن يستخدم دخول العملاء إلى قنوات الخدمات المصرفية الإلكترونية المصادقة متعددة العناصر، وأن تتطلب المعاملات عالية المخاطر تحققاً إضافياً مثل توقيع المعاملة أو التأكيد عبر قناة منفصلة.",
+              "evidence_en": "Authentication design document; step-up rules for high-risk transactions.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.13.2",
+              "title_en": "Secure sessions and enrolment",
+              "title_ar": "تأمين الجلسات وعمليات التسجيل",
+              "requirement_en": "Sessions must be protected by encryption, timeout, re-authentication for sensitive actions and protection against session hijacking; customer enrolment and device binding must be verified to prevent account takeover.",
+              "requirement_ar": "يجب حماية الجلسات بالتشفير وانتهاء المهلة وإعادة المصادقة للعمليات الحساسة والحماية من اختطاف الجلسات، والتحقق من تسجيل العملاء وربط الأجهزة لمنع الاستيلاء على الحسابات.",
+              "evidence_en": "Session management configuration; enrolment verification procedure.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.13.3",
+              "title_en": "Notify customers of sensitive events",
+              "title_ar": "إشعار العملاء بالأحداث الحساسة",
+              "requirement_en": "Customers must be notified through an independent channel of security-sensitive events, including password and contact detail changes, device registration and transactions above defined thresholds.",
+              "requirement_ar": "يجب إشعار العملاء عبر قناة مستقلة بالأحداث الحساسة أمنياً، بما في ذلك تغيير كلمة المرور وبيانات الاتصال وتسجيل الأجهزة والمعاملات التي تتجاوز حدوداً محددة.",
+              "evidence_en": "Notification rule configuration; sample alerts.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.13.4",
+              "title_en": "Educate customers on secure use",
+              "title_ar": "توعية العملاء بالاستخدام الآمن",
+              "requirement_en": "Customers must be provided with clear guidance on the secure use of electronic banking services and on recognizing phishing and social engineering, through the channels they use.",
+              "requirement_ar": "يجب تزويد العملاء بإرشادات واضحة حول الاستخدام الآمن للخدمات المصرفية الإلكترونية والتعرف على التصيد والهندسة الاجتماعية، عبر القنوات التي يستخدمونها.",
+              "evidence_en": "Customer awareness content; campaign records.",
+              "control_type": "preventive",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.3.14 Cyber Security Event Management",
           "ar": "3.3.14 إدارة أحداث الأمن السيبراني",
           "controls": [
-            { "ref": "3.3.14", "title_en": "Security event logging and monitoring", "title_ar": "تسجيل ومراقبة الأحداث الأمنية", "requirement_en": "Security events from critical systems must be logged, centrally collected, correlated and monitored 24/7 through a security operations capability, with logs protected and retained per regulatory requirements.", "requirement_ar": "يجب تسجيل الأحداث الأمنية من الأنظمة الحساسة وتجميعها مركزياً وربطها ومراقبتها على مدار الساعة من خلال قدرة عمليات أمنية، مع حماية السجلات والاحتفاظ بها وفق المتطلبات التنظيمية.", "control_type": "detective", "criticality": "high" }
+            {
+              "ref": "3.3.14",
+              "title_en": "Event management principle",
+              "title_ar": "مبدأ إدارة الأحداث",
+              "requirement_en": "Cyber security events must be logged, centrally collected, correlated and monitored to enable timely detection of malicious activity.",
+              "requirement_ar": "يجب تسجيل أحداث الأمن السيبراني وتجميعها مركزياً وربطها ومراقبتها لتمكين الاكتشاف المبكر للأنشطة الضارة.",
+              "evidence_en": "Logging standard; SIEM use case catalogue.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.14.1",
+              "title_en": "Enable and centralize security logging",
+              "title_ar": "تفعيل تسجيل الأحداث الأمنية وتجميعها مركزياً",
+              "requirement_en": "Security-relevant events must be logged on all critical systems, including authentication, privileged activity, configuration change and data access, and forwarded to a central platform in near real time.",
+              "requirement_ar": "يجب تسجيل الأحداث ذات الصلة بالأمن على جميع الأنظمة الحساسة، بما يشمل المصادقة وأنشطة الصلاحيات الهامة وتغييرات الإعدادات والوصول إلى البيانات، وإرسالها إلى منصة مركزية في الوقت شبه الفعلي.",
+              "evidence_en": "Log source inventory with onboarding status.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.14.2",
+              "title_en": "Protect and retain logs",
+              "title_ar": "حماية السجلات والاحتفاظ بها",
+              "requirement_en": "Logs must be protected against unauthorized access and modification, time-synchronized to a trusted source, and retained for the period required by SAMA and applicable regulation.",
+              "requirement_ar": "يجب حماية السجلات من الوصول والتعديل غير المصرح بهما، ومزامنة وقتها مع مصدر موثوق، والاحتفاظ بها للمدة التي يتطلبها البنك المركزي والأنظمة المعمول بها.",
+              "evidence_en": "Log retention configuration; integrity protection; NTP settings.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.14.3",
+              "title_en": "Monitor events continuously",
+              "title_ar": "المراقبة المستمرة للأحداث",
+              "requirement_en": "A security operations capability must monitor correlated events on a 24x7 basis against defined use cases, with alerts triaged according to severity and defined response times.",
+              "requirement_ar": "يجب أن تتولى قدرة لعمليات الأمن مراقبة الأحداث المرتبطة على مدار الساعة طوال الأسبوع وفق حالات استخدام محددة، مع فرز التنبيهات حسب الخطورة وأزمنة استجابة محددة.",
+              "evidence_en": "SOC operating model; use case library; alert handling metrics.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.14.4",
+              "title_en": "Tune detection use cases",
+              "title_ar": "ضبط حالات الكشف",
+              "requirement_en": "Detection use cases must be reviewed and tuned periodically based on incidents, threat intelligence and changes to the technology estate, and coverage gaps must be tracked.",
+              "requirement_ar": "يجب مراجعة حالات الكشف وضبطها دورياً استناداً إلى الحوادث ومعلومات التهديدات والتغييرات في البيئة التقنية، مع تتبع فجوات التغطية.",
+              "evidence_en": "Use case review records; coverage matrix.",
+              "control_type": "detective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.3.15 Cyber Security Incident Management",
           "ar": "3.3.15 إدارة حوادث الأمن السيبراني",
           "controls": [
-            { "ref": "3.3.15", "title_en": "Cyber security incident management", "title_ar": "إدارة حوادث الأمن السيبراني", "requirement_en": "An incident management process must be established covering detection, classification, response, containment, eradication, recovery, forensics and lessons learned, with defined roles and a tested incident response plan.", "requirement_ar": "يجب إنشاء عملية لإدارة الحوادث تغطي الاكتشاف والتصنيف والاستجابة والاحتواء والاستئصال والتعافي والتحليل الجنائي والدروس المستفادة، مع أدوار محددة وخطة استجابة مختبرة.", "control_type": "corrective", "criticality": "high" },
-            { "ref": "3.3.15.1", "title_en": "SAMA incident reporting", "title_ar": "الإبلاغ عن الحوادث للبنك المركزي", "requirement_en": "Medium and high severity cyber security incidents must be reported to SAMA within the timelines SAMA prescribes, with follow-up reports on root cause and remediation.", "requirement_ar": "يجب إبلاغ البنك المركزي بحوادث الأمن السيبراني متوسطة وعالية الخطورة ضمن المدد التي يحددها، مع تقارير متابعة عن السبب الجذري والمعالجة.", "control_type": "corrective", "criticality": "high" }
+            {
+              "ref": "3.3.15",
+              "title_en": "Incident management principle",
+              "title_ar": "مبدأ إدارة الحوادث",
+              "requirement_en": "Cyber security incidents must be identified, classified, responded to, recovered from and learned from under a defined and tested process.",
+              "requirement_ar": "يجب تحديد حوادث الأمن السيبراني وتصنيفها والاستجابة لها والتعافي منها والاستفادة منها وفق عملية محددة ومختبرة.",
+              "evidence_en": "Incident response plan; incident register.",
+              "control_type": "corrective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.15.1",
+              "title_en": "Define an incident response plan",
+              "title_ar": "وضع خطة الاستجابة للحوادث",
+              "requirement_en": "An incident response plan must define roles, severity classification, escalation paths, containment and eradication procedures, communication protocols and criteria for invoking crisis management.",
+              "requirement_ar": "يجب أن تحدد خطة الاستجابة للحوادث الأدوار وتصنيف الخطورة ومسارات التصعيد وإجراءات الاحتواء والاستئصال وبروتوكولات التواصل ومعايير تفعيل إدارة الأزمات.",
+              "evidence_en": "Approved incident response plan with severity matrix.",
+              "control_type": "corrective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.15.2",
+              "title_en": "Report incidents to SAMA within required timelines",
+              "title_ar": "إبلاغ البنك المركزي بالحوادث ضمن المدد المطلوبة",
+              "requirement_en": "Medium and high severity cyber security incidents must be reported to SAMA within the timelines and in the format it prescribes, followed by root cause analysis and remediation reporting.",
+              "requirement_ar": "يجب إبلاغ البنك المركزي بحوادث الأمن السيبراني متوسطة وعالية الخطورة ضمن المدد وبالصيغة التي يحددها، يلي ذلك تحليل السبب الجذري ورفع تقارير المعالجة.",
+              "evidence_en": "SAMA notification records with timestamps; follow-up reports.",
+              "control_type": "corrective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.15.3",
+              "title_en": "Preserve forensic evidence",
+              "title_ar": "الحفاظ على الأدلة الجنائية",
+              "requirement_en": "Procedures must ensure that evidence is collected and preserved in a forensically sound manner, with chain of custody maintained, and forensic capability available either in-house or through a retained provider.",
+              "requirement_ar": "يجب أن تضمن الإجراءات جمع الأدلة والحفاظ عليها بأسلوب سليم جنائياً مع الحفاظ على سلسلة الحيازة، وتوفر قدرة التحليل الجنائي داخلياً أو عبر مزود متعاقد معه.",
+              "evidence_en": "Forensic procedure; chain of custody forms; retainer agreement.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.15.4",
+              "title_en": "Test the response plan and capture lessons learned",
+              "title_ar": "اختبار خطة الاستجابة وتوثيق الدروس المستفادة",
+              "requirement_en": "The incident response plan must be tested at least annually through scenario exercises, and post-incident reviews must produce lessons learned that are tracked to implementation.",
+              "requirement_ar": "يجب اختبار خطة الاستجابة للحوادث سنوياً على الأقل عبر تمارين سيناريو، وأن تنتج مراجعات ما بعد الحادث دروساً مستفادة تُتابع حتى تنفيذها.",
+              "evidence_en": "Exercise reports; post-incident review records; action tracker.",
+              "control_type": "corrective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.3.16 Threat Management",
           "ar": "3.3.16 إدارة التهديدات",
           "controls": [
-            { "ref": "3.3.16", "title_en": "Threat intelligence and management", "title_ar": "معلومات التهديدات وإدارتها", "requirement_en": "A threat management process must collect, analyze and act on threat intelligence from internal and external sources (including SAMA and sector sharing platforms) to anticipate and mitigate emerging threats.", "requirement_ar": "يجب إنشاء عملية لإدارة التهديدات تجمع وتحلل معلومات التهديدات من مصادر داخلية وخارجية (بما في ذلك البنك المركزي ومنصات التبادل القطاعية) وتتخذ إجراءات بشأنها لاستباق التهديدات الناشئة والتخفيف منها.", "control_type": "detective", "criticality": "medium" }
+            {
+              "ref": "3.3.16",
+              "title_en": "Threat management principle",
+              "title_ar": "مبدأ إدارة التهديدات",
+              "requirement_en": "Cyber threats relevant to the member organization must be identified, analysed and acted upon proactively.",
+              "requirement_ar": "يجب تحديد التهديدات السيبرانية ذات الصلة بالمؤسسة العضو وتحليلها واتخاذ إجراءات استباقية بشأنها.",
+              "evidence_en": "Threat intelligence process; intelligence reports.",
+              "control_type": "detective",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.16.1",
+              "title_en": "Collect threat intelligence from multiple sources",
+              "title_ar": "جمع معلومات التهديدات من مصادر متعددة",
+              "requirement_en": "Threat intelligence must be collected from internal telemetry, commercial and open sources, and sector and regulatory sharing channels including SAMA and the financial sector sharing arrangements.",
+              "requirement_ar": "يجب جمع معلومات التهديدات من البيانات الداخلية والمصادر التجارية والمفتوحة وقنوات التبادل القطاعية والتنظيمية، بما فيها البنك المركزي وترتيبات التبادل في القطاع المالي.",
+              "evidence_en": "Source inventory; subscription records; sharing memberships.",
+              "control_type": "detective",
+              "criticality": "medium"
+            },
+            {
+              "ref": "3.3.16.2",
+              "title_en": "Operationalize intelligence into detection and response",
+              "title_ar": "تحويل معلومات التهديدات إلى كشف واستجابة",
+              "requirement_en": "Threat intelligence must be analysed for relevance and converted into detection content, blocking rules, hunting hypotheses and risk assessment inputs.",
+              "requirement_ar": "يجب تحليل معلومات التهديدات من حيث صلتها بالمؤسسة وتحويلها إلى محتوى كشف وقواعد حجب وفرضيات تصيد استباقي ومدخلات لتقييم المخاطر.",
+              "evidence_en": "Indicator ingestion records; threat hunting reports.",
+              "control_type": "detective",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.3.17 Vulnerability Management",
           "ar": "3.3.17 إدارة الثغرات",
           "controls": [
-            { "ref": "3.3.17", "title_en": "Vulnerability management", "title_ar": "إدارة الثغرات", "requirement_en": "Technical vulnerabilities must be identified through regular scanning and penetration testing, classified by risk, and remediated within defined timelines, with exceptions formally approved and tracked.", "requirement_ar": "يجب تحديد الثغرات التقنية من خلال الفحص الدوري واختبارات الاختراق، وتصنيفها حسب المخاطر، ومعالجتها ضمن مدد محددة، مع اعتماد الاستثناءات رسمياً وتتبعها.", "control_type": "detective", "criticality": "high" },
-            { "ref": "3.3.17.1", "title_en": "Penetration testing of critical and internet-facing systems", "title_ar": "اختبار اختراق الأنظمة الحساسة والمتصلة بالإنترنت", "requirement_en": "Penetration tests must be performed at least annually and after major changes on internet-facing and critical systems by qualified independent testers.", "requirement_ar": "يجب إجراء اختبارات الاختراق سنوياً على الأقل وبعد التغييرات الجوهرية على الأنظمة المتصلة بالإنترنت والأنظمة الحساسة من قبل مختبرين مستقلين مؤهلين.", "control_type": "detective", "criticality": "high" }
+            {
+              "ref": "3.3.17",
+              "title_en": "Vulnerability management principle",
+              "title_ar": "مبدأ إدارة الثغرات",
+              "requirement_en": "Technical vulnerabilities must be identified, assessed and remediated in a timely and risk-based manner.",
+              "requirement_ar": "يجب تحديد الثغرات التقنية وتقييمها ومعالجتها في الوقت المناسب وبأسلوب قائم على المخاطر.",
+              "evidence_en": "Vulnerability management standard; scan and remediation reports.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.17.1",
+              "title_en": "Scan the estate regularly",
+              "title_ar": "الفحص الدوري للبيئة التقنية",
+              "requirement_en": "Authenticated vulnerability scanning must be performed regularly across the full estate, including servers, endpoints, network devices, databases and web applications, with complete asset coverage demonstrated.",
+              "requirement_ar": "يجب إجراء فحص للثغرات بصلاحيات مصادقة بشكل منتظم على كامل البيئة التقنية، بما يشمل الخوادم وأجهزة المستخدمين وأجهزة الشبكة وقواعد البيانات وتطبيقات الويب، مع إثبات تغطية جميع الأصول.",
+              "evidence_en": "Scan schedule; coverage reconciliation against the asset inventory.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.17.2",
+              "title_en": "Remediate within risk-based timelines",
+              "title_ar": "المعالجة ضمن مدد قائمة على المخاطر",
+              "requirement_en": "Vulnerabilities must be prioritized by severity and exposure and remediated within defined service levels, with overdue items escalated and exceptions formally approved with compensating controls.",
+              "requirement_ar": "يجب ترتيب أولويات الثغرات حسب خطورتها ومدى التعرض لها ومعالجتها ضمن مستويات خدمة محددة، مع تصعيد المتأخر منها واعتماد الاستثناءات رسمياً مع ضوابط تعويضية.",
+              "evidence_en": "SLA definition; ageing report; exception register.",
+              "control_type": "corrective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.17.3",
+              "title_en": "Conduct penetration testing",
+              "title_ar": "إجراء اختبارات الاختراق",
+              "requirement_en": "Penetration testing must be performed at least annually and after significant change on internet-facing and critical internal systems, by qualified testers independent of the teams that built or operate the systems.",
+              "requirement_ar": "يجب إجراء اختبارات الاختراق سنوياً على الأقل وبعد التغييرات الجوهرية على الأنظمة المتاحة عبر الإنترنت والأنظمة الداخلية الحساسة، بواسطة مختبرين مؤهلين مستقلين عن الفرق التي بنت الأنظمة أو تشغلها.",
+              "evidence_en": "Test scope and reports; tester qualifications and independence.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.3.17.4",
+              "title_en": "Report vulnerability posture to governance",
+              "title_ar": "رفع وضع الثغرات إلى جهات الحوكمة",
+              "requirement_en": "Vulnerability metrics, including open critical findings, ageing and remediation performance against service levels, must be reported periodically to the cyber security committee.",
+              "requirement_ar": "يجب رفع مؤشرات الثغرات، بما يشمل الملاحظات الحرجة المفتوحة وأعمارها وأداء المعالجة مقارنة بمستويات الخدمة، دورياً إلى لجنة الأمن السيبراني.",
+              "evidence_en": "Committee reporting pack with vulnerability KPIs.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         }
       ]
@@ -263,21 +1560,198 @@
           "en": "3.4.1 Contract and Vendor Management",
           "ar": "3.4.1 إدارة العقود والموردين",
           "controls": [
-            { "ref": "3.4.1", "title_en": "Contract and vendor management", "title_ar": "إدارة العقود والموردين", "requirement_en": "Cyber security requirements must be embedded in vendor selection, due diligence, contracts (including right to audit, incident notification, confidentiality and data return/destruction) and ongoing monitoring of third parties.", "requirement_ar": "يجب تضمين متطلبات الأمن السيبراني في اختيار الموردين والعناية الواجبة والعقود (بما في ذلك حق التدقيق والإبلاغ عن الحوادث والسرية وإعادة البيانات أو إتلافها) والمراقبة المستمرة للأطراف الخارجية.", "control_type": "preventive", "criticality": "high" }
+            {
+              "ref": "3.4.1",
+              "title_en": "Contract and vendor management principle",
+              "title_ar": "مبدأ إدارة العقود والموردين",
+              "requirement_en": "Cyber security requirements must be embedded in the selection, contracting and ongoing management of third parties.",
+              "requirement_ar": "يجب تضمين متطلبات الأمن السيبراني في اختيار الأطراف الخارجية والتعاقد معها وإدارتها بشكل مستمر.",
+              "evidence_en": "Third-party security standard; contract clause library.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.1.1",
+              "title_en": "Assess third parties before contracting",
+              "title_ar": "تقييم الأطراف الخارجية قبل التعاقد",
+              "requirement_en": "A cyber security due diligence assessment must be completed before contracting with a third party that will access, process or host the organization's information, and the results must inform the contracting decision.",
+              "requirement_ar": "يجب استكمال تقييم العناية الواجبة للأمن السيبراني قبل التعاقد مع أي طرف خارجي سيصل إلى معلومات المؤسسة أو يعالجها أو يستضيفها، وأن تُبنى قرارات التعاقد على نتائجه.",
+              "evidence_en": "Vendor security questionnaires; assessment reports; approval records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.1.2",
+              "title_en": "Include security clauses in contracts",
+              "title_ar": "تضمين البنود الأمنية في العقود",
+              "requirement_en": "Contracts must include cyber security obligations covering confidentiality and non-disclosure, the organization's right to audit, incident notification within defined timelines, sub-contracting restrictions, data location, and return or secure destruction of data on exit.",
+              "requirement_ar": "يجب أن تتضمن العقود التزامات الأمن السيبراني التي تغطي السرية وعدم الإفصاح، وحق المؤسسة في التدقيق، والإبلاغ عن الحوادث ضمن مدد محددة، وقيود التعاقد من الباطن، وموقع البيانات، وإعادة البيانات أو إتلافها بشكل آمن عند انتهاء العلاقة.",
+              "evidence_en": "Executed contracts with security schedules.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.1.3",
+              "title_en": "Monitor third-party security performance",
+              "title_ar": "مراقبة الأداء الأمني للأطراف الخارجية",
+              "requirement_en": "The security performance of material third parties must be monitored throughout the relationship through periodic assessments, review of assurance reports and monitoring of service levels, with findings tracked to closure.",
+              "requirement_ar": "يجب مراقبة الأداء الأمني للأطراف الخارجية الجوهرية طوال فترة العلاقة عبر التقييمات الدورية ومراجعة تقارير التأكيد ومتابعة مستويات الخدمة، مع متابعة الملاحظات حتى إغلاقها.",
+              "evidence_en": "Periodic reassessment records; SOC 2 or equivalent reports; issue tracker.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.1.4",
+              "title_en": "Control third-party access",
+              "title_ar": "التحكم في وصول الأطراف الخارجية",
+              "requirement_en": "Third-party access to the organization's systems must be individually attributable, time-bound, least-privilege, monitored, and revoked promptly on contract end or when no longer required.",
+              "requirement_ar": "يجب أن يكون وصول الأطراف الخارجية إلى أنظمة المؤسسة قابلاً للعزو إلى أفراد محددين، ومحدد المدة، وبأقل الصلاحيات، وخاضعاً للمراقبة، وأن يُلغى فور انتهاء العقد أو انتفاء الحاجة إليه.",
+              "evidence_en": "Third-party account register; access review and revocation records.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.1.5",
+              "title_en": "Plan for exit and transition",
+              "title_ar": "التخطيط للخروج والانتقال",
+              "requirement_en": "Exit arrangements must be defined before contracting, covering return of data in a usable format, secure destruction of residual copies, revocation of access and transfer of knowledge.",
+              "requirement_ar": "يجب تحديد ترتيبات الخروج قبل التعاقد، بحيث تغطي إعادة البيانات بصيغة قابلة للاستخدام والإتلاف الآمن للنسخ المتبقية وإلغاء الصلاحيات ونقل المعرفة.",
+              "evidence_en": "Exit plan in the contract; destruction certificates on termination.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.4.2 Outsourcing",
           "ar": "3.4.2 الإسناد الخارجي",
           "controls": [
-            { "ref": "3.4.2", "title_en": "Outsourcing cyber security", "title_ar": "الأمن السيبراني في الإسناد الخارجي", "requirement_en": "Outsourcing arrangements must comply with SAMA outsourcing rules, include a cyber security risk assessment before contracting, define security obligations and SLAs, and preserve the organization's accountability and SAMA's access rights.", "requirement_ar": "يجب أن تلتزم ترتيبات الإسناد الخارجي بقواعد البنك المركزي للإسناد، وأن تتضمن تقييم مخاطر الأمن السيبراني قبل التعاقد، وتحديد الالتزامات الأمنية ومستويات الخدمة، مع الحفاظ على مسؤولية المؤسسة وحقوق وصول البنك المركزي.", "control_type": "governance", "criticality": "high" }
+            {
+              "ref": "3.4.2",
+              "title_en": "Outsourcing principle",
+              "title_ar": "مبدأ الإسناد الخارجي",
+              "requirement_en": "Outsourcing arrangements must comply with SAMA's outsourcing requirements and must not diminish the member organization's accountability for cyber security.",
+              "requirement_ar": "يجب أن تلتزم ترتيبات الإسناد الخارجي بمتطلبات البنك المركزي بشأن الإسناد، وألا تقلل من مسؤولية المؤسسة العضو عن الأمن السيبراني.",
+              "evidence_en": "Outsourcing policy; SAMA approvals where required.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.2.1",
+              "title_en": "Obtain approval for material outsourcing",
+              "title_ar": "الحصول على الموافقة للإسناد الجوهري",
+              "requirement_en": "Material outsourcing arrangements must be assessed for cyber security risk and submitted for SAMA no-objection where required by the outsourcing rules, before the arrangement commences.",
+              "requirement_ar": "يجب تقييم ترتيبات الإسناد الجوهرية من حيث مخاطر الأمن السيبراني وتقديمها للحصول على عدم ممانعة البنك المركزي حيثما تشترط قواعد الإسناد ذلك، قبل بدء الترتيب.",
+              "evidence_en": "Materiality assessment; SAMA no-objection correspondence.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.2.2",
+              "title_en": "Retain accountability and oversight",
+              "title_ar": "الاحتفاظ بالمسؤولية والإشراف",
+              "requirement_en": "The member organization remains accountable for outsourced activities and must retain sufficient in-house knowledge and oversight capability to supervise the provider effectively.",
+              "requirement_ar": "تظل المؤسسة العضو مسؤولة عن الأنشطة المسندة، ويجب أن تحتفظ بمعرفة داخلية كافية وقدرة إشرافية تمكّنها من الرقابة الفعالة على مقدم الخدمة.",
+              "evidence_en": "Governance model for outsourced services; retained-organization roles.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.2.3",
+              "title_en": "Preserve regulator and audit access",
+              "title_ar": "الحفاظ على حق وصول الجهة الرقابية والمدقق",
+              "requirement_en": "Outsourcing contracts must preserve the right of the member organization, its auditors and SAMA to access the provider's premises, systems and records relevant to the outsourced service.",
+              "requirement_ar": "يجب أن تحفظ عقود الإسناد حق المؤسسة العضو ومدققيها والبنك المركزي في الوصول إلى مقار مقدم الخدمة وأنظمته وسجلاته المتعلقة بالخدمة المسندة.",
+              "evidence_en": "Contract clauses granting audit and regulator access.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.2.4",
+              "title_en": "Address concentration and sub-outsourcing risk",
+              "title_ar": "معالجة مخاطر التركز والإسناد من الباطن",
+              "requirement_en": "Concentration risk arising from reliance on a single provider, and risks arising from sub-outsourcing, must be assessed and controlled, with sub-outsourcing subject to prior notification or approval.",
+              "requirement_ar": "يجب تقييم مخاطر التركز الناشئة عن الاعتماد على مزود واحد والمخاطر الناشئة عن الإسناد من الباطن والتحكم فيها، مع إخضاع الإسناد من الباطن للإشعار أو الموافقة المسبقة.",
+              "evidence_en": "Concentration risk analysis; sub-outsourcing register and approvals.",
+              "control_type": "governance",
+              "criticality": "medium"
+            }
           ]
         },
         {
           "en": "3.4.3 Cloud Computing",
           "ar": "3.4.3 الحوسبة السحابية",
           "controls": [
-            { "ref": "3.4.3", "title_en": "Cloud computing security", "title_ar": "أمن الحوسبة السحابية", "requirement_en": "Use of cloud services must be risk-assessed and approved, with data classification, data residency within the Kingdom for sensitive data, tenant isolation, encryption, provider security assurance, exit strategy and SAMA non-objection where required.", "requirement_ar": "يجب تقييم مخاطر استخدام الخدمات السحابية واعتمادها، مع تصنيف البيانات وبقاء البيانات الحساسة داخل المملكة وعزل المستأجرين والتشفير وتأكيد أمن مقدم الخدمة واستراتيجية الخروج والحصول على عدم ممانعة البنك المركزي عند الاقتضاء.", "control_type": "governance", "criticality": "high" }
+            {
+              "ref": "3.4.3",
+              "title_en": "Cloud computing principle",
+              "title_ar": "مبدأ الحوسبة السحابية",
+              "requirement_en": "The use of cloud services must be risk-assessed, approved and controlled in line with SAMA requirements before adoption.",
+              "requirement_ar": "يجب تقييم مخاطر استخدام الخدمات السحابية واعتمادها والتحكم فيها بما يتوافق مع متطلبات البنك المركزي قبل تبنيها.",
+              "evidence_en": "Cloud policy; risk assessments; approval records.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.3.1",
+              "title_en": "Assess and approve cloud adoption",
+              "title_ar": "تقييم اعتماد الحوسبة السحابية واعتماده",
+              "requirement_en": "A cyber security risk assessment must be completed and internal approval obtained before any material system or customer data is placed in a cloud service, with SAMA no-objection sought where required.",
+              "requirement_ar": "يجب استكمال تقييم مخاطر الأمن السيبراني والحصول على الموافقة الداخلية قبل وضع أي نظام جوهري أو بيانات عملاء في خدمة سحابية، مع طلب عدم ممانعة البنك المركزي عند الاقتضاء.",
+              "evidence_en": "Cloud risk assessment; approval record; SAMA correspondence.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.3.2",
+              "title_en": "Comply with data residency requirements",
+              "title_ar": "الالتزام بمتطلبات موقع البيانات",
+              "requirement_en": "Customer and other regulated data must be hosted and processed within the Kingdom of Saudi Arabia unless an exemption applies, and the physical location of data, including backups and replicas, must be known and contractually fixed.",
+              "requirement_ar": "يجب استضافة بيانات العملاء وسائر البيانات الخاضعة للتنظيم ومعالجتها داخل المملكة العربية السعودية ما لم ينطبق استثناء، وأن يكون الموقع المادي للبيانات، بما في ذلك النسخ الاحتياطية والنسخ المتماثلة، معلوماً ومحدداً تعاقدياً.",
+              "evidence_en": "Data residency attestation; region configuration evidence.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.3.3",
+              "title_en": "Define the shared responsibility model",
+              "title_ar": "تحديد نموذج المسؤولية المشتركة",
+              "requirement_en": "The division of security responsibilities between the member organization and the cloud service provider must be documented for each service, and the organization's own responsibilities must be implemented and assured.",
+              "requirement_ar": "يجب توثيق توزيع المسؤوليات الأمنية بين المؤسسة العضو ومقدم الخدمة السحابية لكل خدمة، وتنفيذ مسؤوليات المؤسسة نفسها والتحقق منها.",
+              "evidence_en": "Shared responsibility matrix per service; control implementation evidence.",
+              "control_type": "governance",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.3.4",
+              "title_en": "Isolate the tenancy and control keys",
+              "title_ar": "عزل بيئة المؤسسة والتحكم في المفاتيح",
+              "requirement_en": "The organization's cloud environment must be logically isolated from other tenants, and encryption keys protecting regulated data should be under the organization's control where the service permits.",
+              "requirement_ar": "يجب عزل بيئة المؤسسة السحابية منطقياً عن بيئات المستأجرين الآخرين، ويُفضل أن تكون مفاتيح التشفير التي تحمي البيانات الخاضعة للتنظيم تحت سيطرة المؤسسة حيثما تتيح الخدمة ذلك.",
+              "evidence_en": "Tenancy isolation design; customer-managed key configuration.",
+              "control_type": "preventive",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.3.5",
+              "title_en": "Monitor cloud configuration and activity",
+              "title_ar": "مراقبة إعدادات الحوسبة السحابية والأنشطة فيها",
+              "requirement_en": "Cloud configuration must be continuously monitored against a secure baseline, and control-plane and administrative activity logs must be collected into the organization's central monitoring.",
+              "requirement_ar": "يجب مراقبة إعدادات الحوسبة السحابية بشكل مستمر مقابل خط أساس آمن، وتجميع سجلات مستوى التحكم والأنشطة الإدارية في المراقبة المركزية للمؤسسة.",
+              "evidence_en": "CSPM findings and remediation; cloud log onboarding evidence.",
+              "control_type": "detective",
+              "criticality": "high"
+            },
+            {
+              "ref": "3.4.3.6",
+              "title_en": "Plan cloud exit and portability",
+              "title_ar": "التخطيط للخروج من الحوسبة السحابية وقابلية النقل",
+              "requirement_en": "A documented and tested exit strategy must exist for material cloud services, covering data extraction in a usable format, migration approach and continuity of service during transition.",
+              "requirement_ar": "يجب وجود استراتيجية خروج موثقة ومختبرة للخدمات السحابية الجوهرية، تغطي استخراج البيانات بصيغة قابلة للاستخدام ونهج الترحيل واستمرارية الخدمة أثناء الانتقال.",
+              "evidence_en": "Exit plan; extraction test results.",
+              "control_type": "corrective",
+              "criticality": "medium"
+            }
           ]
         }
       ]

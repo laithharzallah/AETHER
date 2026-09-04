@@ -176,6 +176,8 @@ export type Database = {
           title_en: string
           updated_at: string
           verified: boolean
+          verified_at: string | null
+          verified_by: string | null
         }
         Insert: {
           control_ref: string
@@ -197,6 +199,8 @@ export type Database = {
           title_en: string
           updated_at?: string
           verified?: boolean
+          verified_at?: string | null
+          verified_by?: string | null
         }
         Update: {
           control_ref?: string
@@ -218,6 +222,8 @@ export type Database = {
           title_en?: string
           updated_at?: string
           verified?: boolean
+          verified_at?: string | null
+          verified_by?: string | null
         }
         Relationships: [
           {
