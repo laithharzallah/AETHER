@@ -101,7 +101,7 @@ export async function importTemplate(
 
   const { data, error } = await ctx.supabase.rpc('import_icfr_template', {
     p_template_code: templateCode,
-    p_client_workspace_id: optUuid(workspaceId),
+    p_client_workspace_id: optUuid(workspaceId) ?? undefined,
   })
   if (error || !data) {
     console.error('[icfr] importTemplate', error)

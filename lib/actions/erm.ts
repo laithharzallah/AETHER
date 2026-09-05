@@ -487,11 +487,12 @@ export async function assessRisk(input: AssessmentInput): Promise<ActionResult> 
     p_inherent_i: ii,
     p_residual_l: rl,
     p_residual_i: ri,
-    p_rationale: optStr(input.rationale, 4000),
-    p_velocity: optScale(input.velocity),
-    p_trend: trend,
-    p_target_l: optScale(input.targetLikelihood),
-    p_target_i: optScale(input.targetImpact),
+    // Optional RPC parameters default to SQL NULL when omitted.
+    p_rationale: optStr(input.rationale, 4000) ?? undefined,
+    p_velocity: optScale(input.velocity) ?? undefined,
+    p_trend: trend ?? undefined,
+    p_target_l: optScale(input.targetLikelihood) ?? undefined,
+    p_target_i: optScale(input.targetImpact) ?? undefined,
     p_impact_dimensions: Object.keys(dims).length ? dims : null,
   })
   if (error) {
