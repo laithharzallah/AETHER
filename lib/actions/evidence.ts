@@ -203,7 +203,7 @@ export async function reviewEvidence(
     return { ok: false, error: 'Only owners and admins can review evidence.' }
   }
 
-  const { error } = await supabase
+  const { data: reviewed, error } = await supabase
     .from('evidence')
     .update({
       review_status: decision,
@@ -211,11 +211,14 @@ export async function reviewEvidence(
       reviewed_at: new Date().toISOString(),
     })
     .eq('id', id)
+    .select('id')
+    .maybeSingle()
 
   if (error) {
     console.error('[reviewEvidence]', error)
     return { ok: false, error: 'Could not update review status.' }
   }
+  if (!reviewed) return { ok: false, error: 'Evidence not found or not accessible.' }
 
   revalidateEvidence()
   return { ok: true }
