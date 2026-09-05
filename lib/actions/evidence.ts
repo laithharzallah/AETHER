@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
+import { safeExternalUrl } from '@/lib/security/urls'
 import {
   EVIDENCE_BUCKET,
   type EvidenceSource,
@@ -59,6 +60,10 @@ export async function createEvidenceRecord(
   if (input.source === 'upload' && !input.storagePath) {
     return { ok: false, error: 'Upload path is missing.' }
   }
+  const externalUrl = safeExternalUrl(input.externalUrl)
+  if ((input.source === 'link' || input.externalUrl) && !externalUrl) {
+    return { ok: false, error: 'Enter a valid HTTP or HTTPS evidence URL.' }
+  }
 
   const { data: profile } = await supabase
     .from('profiles')
@@ -89,7 +94,7 @@ export async function createEvidenceRecord(
       mime_type: input.mimeType || null,
       size_bytes: input.sizeBytes ?? null,
       source: input.source,
-      external_url: input.externalUrl?.trim() || null,
+      external_url: externalUrl,
       valid_until: input.validUntil?.trim() || null,
       uploaded_by: user.id,
     })
@@ -198,7 +203,7 @@ export async function reviewEvidence(
     return { ok: false, error: 'Only owners and admins can review evidence.' }
   }
 
-  const { error } = await supabase
+  const { data: reviewed, error } = await supabase
     .from('evidence')
     .update({
       review_status: decision,
@@ -206,11 +211,14 @@ export async function reviewEvidence(
       reviewed_at: new Date().toISOString(),
     })
     .eq('id', id)
+    .select('id')
+    .maybeSingle()
 
   if (error) {
     console.error('[reviewEvidence]', error)
     return { ok: false, error: 'Could not update review status.' }
   }
+  if (!reviewed) return { ok: false, error: 'Evidence not found or not accessible.' }
 
   revalidateEvidence()
   return { ok: true }
@@ -265,7 +273,12 @@ export async function getEvidenceDownloadUrl(
 
   if (!row) return { ok: false, error: 'Evidence not found.' }
   if (!row.storage_path) {
-    if (row.external_url) return { ok: true, url: row.external_url }
+    if (row.external_url) {
+      const url = safeExternalUrl(row.external_url)
+      return url
+        ? { ok: true, url }
+        : { ok: false, error: 'This evidence link is not a valid HTTP or HTTPS URL.' }
+    }
     return { ok: false, error: 'This evidence has no file attached.' }
   }
 

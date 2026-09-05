@@ -52,8 +52,8 @@ export async function createProgram(
   const { data, error } = await supabase.rpc('create_program', {
     p_framework_id: frameworkId,
     p_name: trimmed,
-    p_target_date: targetDate?.trim() || null,
-    p_description: description?.trim() || null,
+    p_target_date: targetDate?.trim() || undefined,
+    p_description: description?.trim() || undefined,
   })
 
   if (error || !data) {
