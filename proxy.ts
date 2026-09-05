@@ -9,7 +9,7 @@ function isPublicRoute(pathname: string) {
   )
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Skip session refresh for health checks (Render deploy probe)
@@ -28,12 +28,6 @@ export async function middleware(request: NextRequest) {
     if (isPublicRoute(pathname)) {
       return NextResponse.next()
     }
-    const url = request.nextUrl.clone()
-    url.pathname = '/login'
-    return NextResponse.redirect(url)
-  }
-
-  if (!user && !isPublicRoute(pathname)) {
     if (pathname.startsWith('/api/')) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
@@ -42,10 +36,27 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // Redirects must carry any refreshed session cookies back to the browser.
+  function withSessionCookies(response: NextResponse) {
+    for (const cookie of supabaseResponse.cookies.getAll()) {
+      response.cookies.set(cookie)
+    }
+    return response
+  }
+
+  if (!user && !isPublicRoute(pathname)) {
+    if (pathname.startsWith('/api/')) {
+      return withSessionCookies(NextResponse.json({ error: 'Unauthorized' }, { status: 401 }))
+    }
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    return withSessionCookies(NextResponse.redirect(url))
+  }
+
   if (user && (pathname === '/login' || pathname === '/signup')) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
-    return NextResponse.redirect(url)
+    return withSessionCookies(NextResponse.redirect(url))
   }
 
   return supabaseResponse

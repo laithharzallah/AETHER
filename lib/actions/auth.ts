@@ -10,23 +10,11 @@ export type AuthState = {
 }
 
 function logSupabaseError(step: string, error: unknown) {
-  console.error(step, JSON.stringify(error, null, 2))
-
-  if (error && typeof error === 'object') {
-    const err = error as {
-      message?: string
-      code?: string
-      details?: string
-      hint?: string
-    }
-    console.error(`${step} message:`, err.message ?? '(none)')
-    console.error(`${step} code:`, err.code ?? '(none)')
-    console.error(`${step} details:`, err.details ?? '(none)')
-    console.error(`${step} hint:`, err.hint ?? '(none)')
-    return
-  }
-
-  console.error(step, error)
+  // Provider errors can contain submitted identities and database row values.
+  const code = error && typeof error === 'object' && 'code' in error
+    && typeof error.code === 'string' && /^[A-Za-z0-9_]{1,64}$/.test(error.code)
+    ? error.code : 'unknown'
+  console.error(step, { code })
 }
 
 export async function signup(
@@ -37,14 +25,6 @@ export async function signup(
   const password = formData.get('password') as string
   const fullName = formData.get('fullName') as string
   const organizationName = formData.get('organizationName') as string
-
-  console.error('[signup][formData]', {
-    fullName,
-    orgName: organizationName,
-    email,
-    hasPassword: !!password,
-  })
-  console.error('[signup][formData keys]', [...formData.keys()])
 
   if (!email?.trim() || !password || !fullName?.trim() || !organizationName?.trim()) {
     return { error: 'All fields are required.' }
@@ -70,7 +50,7 @@ export async function signup(
       ) {
         return { error: 'An account with this email already exists.' }
       }
-      return { error: userError.message }
+      return { error: 'Could not create the account. Please check your details and try again.' }
     }
 
     if (!userData.user) {
@@ -87,8 +67,6 @@ export async function signup(
       type: 'consulting_firm',
     }
 
-    console.error('[signup][org insert] payload before call', orgPayload)
-
     const { data: org, error: orgError } = await admin
       .from('organizations')
       .insert(orgPayload)
@@ -96,7 +74,6 @@ export async function signup(
       .single()
 
     if (orgError || !org) {
-      console.error('[signup][org insert] payload', orgPayload)
       logSupabaseError('[signup][org insert]', orgError)
       throw new Error('ORG_CREATE_FAILED')
     }
@@ -117,7 +94,7 @@ export async function signup(
     }
   } catch (error) {
     if (!(error instanceof Error && (error.message === 'ORG_CREATE_FAILED' || error.message === 'PROFILE_CREATE_FAILED'))) {
-      console.error('[signup][unexpected]', error)
+      logSupabaseError('[signup][unexpected]', error)
     }
     if (orgId) {
       await admin.from('organizations').delete().eq('id', orgId)
