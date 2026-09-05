@@ -1,0 +1,29 @@
+name: Application checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm audit --audit-level=high
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_test_only
+          SUPABASE_SECRET_KEY: sb_secret_test_only
+          ANTHROPIC_API_KEY: test-only-not-a-real-key
+      - run: npm run test:smoke
